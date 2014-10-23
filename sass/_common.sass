@@ -47,29 +47,186 @@
 // p
 // 	+jpg(bla)
 
+=f
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif
+	font-weight: 300
 
 body
-	font-family: Arial, sans-serif 
-	font-size: 12px 
-	line-height: 1.4
+	+f
+	font-size: 24px 
+	line-height: 1.3
+	color: #FFF 
+button, input, textarea
+	+f
+	font-size: 24px
+button
+	background: none 
+	color: #FFF 
+a
+	text-decoration: none
+	color: #FFF 
 
+$red: #ff3e4b
+$orange: #ff5a00
+$turquoise: #40cdc5
 
 // common blocks      
+.wrapper, .screen
+	width: 640px
+	min-height: 1136px
 
+.screen
+	position: relative
+	background: url(../img/bg.jpg) no-repeat 0 0
+	overflow: auto
+	.screen__in
+		position: relative
+		padding: 50px
+		z-index: 4 
+	
+.bg
+	position: absolute
+	top: 0
+	left: 0
+	right: 0
+	bottom: 0
+	background: url(../img/bg-picture.png) no-repeat 100% 100%
+	z-index: 2  
 
+.icon
+	
+.head
+	font-size: 0
+	.head__cell
+		display: inline-block
+		text-align: center
+		vertical-align: middle
+		&:first-child
+			width: 72px 
+		&:nth-child(2)
+			width: 540px - 72px 
+			padding: 0 20px
+			font-size: 30px
 
+.link
+	display: inline-block
+	padding-bottom: 3px
+	border-bottom: 1px solid rgba(255,255,255,.3)  
+	opacity: .7
+	font-size: 22px
 
+.main
+	padding-top: 270px
+	&.main_login
+		padding-top: 130px
+		.main__logo
+			margin-bottom: 100px
+	.main__logo
+		margin-bottom: 130px	
+		text-align: center
+		img
+			width: 275px
+			height: 337px
 
+.form
+	width: 436px
+	margin: 0 auto
+	.form__links
+		padding-top: 20px
+		+clr
+		.link
+			float: right
+			&:first-child
+				float: left
+	.field, .btn
+		margin-bottom: 20px
 
+.btn
+	width: 436px
+	height: 75px
+	border: 2px solid #fff
+	font-size: 27px
+	&.btn_red
+		background: $red
+	&.btn_orange
+		background: $orange
+	 
+.input
+	width: 436px
+	height: 75px
+	background: #FFF 
+	padding: 0 30px
 
+.complexity
+	margin-top: -18px
+	.complexity__line
+		font-size: 0
+		white-space: nowrap
+		overflow: hidden
+		i
+			display: inline-block
+			width: 25%
+			height: 4px 
+			margin-right: 1px
+			background: $turquoise 
+			vertical-align: top
+	.complexity__status
+		padding: 3px 0
+		text-align: right
+		font-size: 14px
 
+.passreset
+	padding-top: 130px
+	.passreset__ico
+		margin-bottom: 35px
+		text-align: center
+	.passreset__title
+		margin-bottom: 35px
+		text-align: center
+		font-size: 32px
 
+.keyboard
+	margin: 0 -50px
+	text-align: right
+	font-size: 0
+	button
+		width: 33.3333%
+		min-height: 70px
+		margin-bottom: 20px
+		text-align: center
+		font-size: 56px
+		vertical-align: top
+		span
+			display: block
+			padding-bottom: 5px
+			font-size: 22px
+			text-transform: uppercase
 
-
-
-
-
-
+.smscode
+	.smscode__number
+		padding: 90px 0
+		font-size: 0
+		text-align: center
+		li
+			display: inline-block
+			margin: 0 20px
+			vertical-align: top 
+			font-size: 56px
+			&.is-opacity 
+				opacity: .44 
+	.smscode__text,
+	.smscode__phone
+		text-align: center
+	.smscode__text
+		margin-bottom: 10px
+	.smscode__phone
+		margin-bottom: 50px 
+	.smscode__link
+		text-align: center
+		.link
+			font-size: 20px
+	.keyboard
+		margin: 0 -50px 40px
 
 
 

@@ -1,4 +1,4 @@
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video { margin: 0; padding: 0; border: 0; vertical-align: baseline; }
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video { margin: 0; padding: 0; border: 0; vertical-align: baseline; box-sizing: border-box; }
 
 body, html { height: 100%; }
 
@@ -6,6 +6,8 @@ img, fieldset, a img { border: none; }
 
 input[type="submit"], button { cursor: pointer; }
 input[type="submit"]::-moz-focus-inner, button::-moz-focus-inner { padding: 0; border: 0; }
+
+textarea, input { box-sizing: border-box; }
 
 textarea { overflow: auto; }
 
@@ -18,9 +20,66 @@ ul, ol { list-style-type: none; }
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) { * { -webkit-text-size-adjust: none; } }
 table { border-spacing: 0; border-collapse: collapse; width: 100%; }
 
-body { font-family: Arial, sans-serif; font-size: 12px; line-height: 1.4; }
+body { font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; font-weight: 300; font-size: 24px; line-height: 1.3; color: white; }
 
-.l { *zoom: 1; }
-.l:after { content: " "; display: table; clear: both; }
-.l .l-col1 { float: left; width: 20%; }
-.l .l-col2 { float: right; width: 70%; }
+button, input, textarea { font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; font-weight: 300; font-size: 24px; }
+
+button { background: none; color: white; }
+
+a { text-decoration: none; color: white; }
+
+.wrapper, .screen { width: 640px; min-height: 1136px; }
+
+.screen { position: relative; background: url(../img/bg.jpg) no-repeat 0 0; overflow: auto; }
+.screen .screen__in { position: relative; padding: 50px; z-index: 4; }
+
+.bg { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url(../img/bg-picture.png) no-repeat 100% 100%; z-index: 2; }
+
+.head { font-size: 0; }
+.head .head__cell { display: inline-block; text-align: center; vertical-align: middle; }
+.head .head__cell:first-child { width: 72px; }
+.head .head__cell:nth-child(2) { width: 468px; padding: 0 20px; font-size: 30px; }
+
+.link { display: inline-block; padding-bottom: 3px; border-bottom: 1px solid rgba(255, 255, 255, 0.3); opacity: 0.7; font-size: 22px; }
+
+.main { padding-top: 270px; }
+.main.main_login { padding-top: 130px; }
+.main.main_login .main__logo { margin-bottom: 100px; }
+.main .main__logo { margin-bottom: 130px; text-align: center; }
+.main .main__logo img { width: 275px; height: 337px; }
+
+.form { width: 436px; margin: 0 auto; }
+.form .form__links { padding-top: 20px; *zoom: 1; }
+.form .form__links:after { content: " "; display: table; clear: both; }
+.form .form__links .link { float: right; }
+.form .form__links .link:first-child { float: left; }
+.form .field, .form .btn { margin-bottom: 20px; }
+
+.btn { width: 436px; height: 75px; border: 2px solid white; font-size: 27px; }
+.btn.btn_red { background: #ff3e4b; }
+.btn.btn_orange { background: #ff5a00; }
+
+.input { width: 436px; height: 75px; background: white; padding: 0 30px; }
+
+.complexity { margin-top: -18px; }
+.complexity .complexity__line { font-size: 0; white-space: nowrap; overflow: hidden; }
+.complexity .complexity__line i { display: inline-block; width: 25%; height: 4px; margin-right: 1px; background: #40cdc5; vertical-align: top; }
+.complexity .complexity__status { padding: 3px 0; text-align: right; font-size: 14px; }
+
+.passreset { padding-top: 130px; }
+.passreset .passreset__ico { margin-bottom: 35px; text-align: center; }
+.passreset .passreset__title { margin-bottom: 35px; text-align: center; font-size: 32px; }
+
+.keyboard { margin: 0 -50px; text-align: right; font-size: 0; }
+.keyboard button { width: 33.3333%; min-height: 70px; margin-bottom: 20px; text-align: center; font-size: 56px; vertical-align: top; }
+.keyboard button span { display: block; padding-bottom: 5px; font-size: 22px; text-transform: uppercase; }
+
+.smscode .smscode__number { padding: 90px 0; font-size: 0; text-align: center; }
+.smscode .smscode__number li { display: inline-block; margin: 0 20px; vertical-align: top; font-size: 56px; }
+.smscode .smscode__number li.is-opacity { opacity: 0.44; }
+.smscode .smscode__text, .smscode .smscode__phone { text-align: center; }
+.smscode .smscode__text { margin-bottom: 10px; }
+.smscode .smscode__phone { margin-bottom: 50px; }
+.smscode .smscode__link { text-align: center; }
+.smscode .smscode__link .link { font-size: 20px; }
+.smscode .keyboard { margin: 0 -50px 40px; }
