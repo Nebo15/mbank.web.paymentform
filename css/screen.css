@@ -70,7 +70,7 @@ a { text-decoration: none; color: white; }
 .passreset .passreset__ico { margin-bottom: 35px; text-align: center; }
 .passreset .passreset__title { margin-bottom: 35px; text-align: center; font-size: 32px; }
 
-.keyboard { margin: 0 -50px; text-align: right; font-size: 0; }
+.keyboard { margin: 0 -50px 40px; text-align: right; font-size: 0; }
 .keyboard button { width: 33.3333%; min-height: 70px; margin-bottom: 20px; text-align: center; font-size: 56px; vertical-align: top; }
 .keyboard button span { display: block; padding-bottom: 5px; font-size: 22px; text-transform: uppercase; }
 
@@ -82,4 +82,34 @@ a { text-decoration: none; color: white; }
 .smscode .smscode__phone { margin-bottom: 50px; }
 .smscode .smscode__link { text-align: center; }
 .smscode .smscode__link .link { font-size: 20px; }
-.smscode .keyboard { margin: 0 -50px 40px; }
+
+.securitycode .securitycode__number { padding: 110px 0; text-align: center; font-size: 0; }
+.securitycode .securitycode__number li { display: inline-block; width: 22px; height: 22px; margin: 0 30px; border: 3px solid white; border-radius: 50%; vertical-align: top; }
+.securitycode .securitycode__text { margin-bottom: 50px; font-size: 20px; text-align: center; }
+
+.home .home__nav { margin: -10px 0 0 0; overflow: hidden; }
+.home .home__polygon { position: relative; float: left; width: 210px; }
+.home .home__polygon > img { position: relative; vertical-align: top; z-index: 4; }
+.home .home__polygon > span { position: absolute; top: 0; left: 0; right: 0; bottom: 0; text-align: center; line-height: 230px; z-index: 6; }
+.home .home__polygon:before { content: ""; position: absolute; top: 2px; left: 2px; z-index: 2; }
+.home .home__polygon:nth-child(1) { margin-left: 210px; }
+.home .home__polygon:nth-child(2) { margin: -47px 0 0 105px; }
+.home .home__polygon:nth-child(2):before { background: url('../img/icons-sdb7674d4af.png') 0 -968px no-repeat; width: 206px; height: 232px; }
+.home .home__polygon:nth-child(3) { margin: -47px 0 0 0; }
+.home .home__polygon:nth-child(3):before { background: url('../img/icons-sdb7674d4af.png') 0 -484px no-repeat; width: 206px; height: 232px; }
+.home .home__polygon:nth-child(4) { margin: -47px 0 0 0; }
+.home .home__polygon:nth-child(4):before { background: url('../img/icons-sdb7674d4af.png') 0 0 no-repeat; width: 206px; height: 232px; }
+.home .home__polygon:nth-child(5) { margin: -47px 0 0 0; }
+.home .home__polygon:nth-child(5):before { background: url('../img/icons-sdb7674d4af.png') 0 -242px no-repeat; width: 206px; height: 232px; }
+.home .home__polygon:nth-child(6) { margin: -47px 0 0 105px; }
+.home .home__polygon:nth-child(6):before { background: url('../img/icons-sdb7674d4af.png') 0 -726px no-repeat; width: 206px; height: 232px; }
+.home .home__ava { position: absolute; top: 2px; left: 2px; width: 206px; height: 230px; -webkit-clip-path: polygon(50% 0, 100% 20.4%, 100% 79.2%, 50% 100%, 0 79.2%, 0 20.4%); overflow: hidden; }
+
+.balance { position: relative; min-height: 223px; }
+.balance .balance__hexagone { position: absolute; top: 0; left: 0; }
+.balance .balance__hexagone:before, .balance .balance__hexagone:after { content: ""; position: absolute; width: 4px; height: 4px; background: white; border-radius: 50%; }
+.balance .balance__hexagone:before { top: -1px; left: 104px; }
+.balance .balance__hexagone:after { left: 206px; bottom: 54px; }
+.balance .balance__title { font-size: 22px; }
+.balance .balance__value { font-size: 110px; font-weight: 100; }
+.balance .balance__value span { font-size: 50px; }
