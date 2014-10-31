@@ -950,8 +950,57 @@ $dark: #2b2b2b
 	padding-top: 60px
 	margin: 0 -10px 
 
+.support
+	padding: 60px 20px 
+	.support__text
+		margin-bottom: 30px
+	.form
+		text-align: center
+	.field
+		margin: 0 -32px 50px
+	.textarea
+		height: 440px
 
-
+.messages
+	.messages__item
+		display: block
+		padding-bottom: 20px
+		margin-bottom: 25px
+		border-bottom: 1px solid #fff 
+	.messages__head
+		margin-bottom: 10px
+		+clr
+	.messages__date
+		float: right
+		margin-left: 20px
+		font-size: 20px
+		.icon
+			position: relative
+			top: 5px
+			margin-left: 10px
+	.messages__title
+		display: table
+	.messages__text
+		font-size: 20px
+		
+.message
+	padding: 35px 0
+	.message__date
+		margin-bottom: 20px
+		font-size: 20px
+		text-align: center
+	.message__text
+		position: relative
+		padding: 30px
+		background: #FFF 
+		font-size: 20px
+		color: #484848 
+		&:after
+			content: ""
+			position: absolute
+			bottom: -14px
+			left: 0
+			+arr(22,14,#fff,tl)
 
 
 

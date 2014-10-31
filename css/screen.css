@@ -300,3 +300,22 @@ a { text-decoration: none; color: white; }
 .version { font-size: 14px; }
 
 .autolock { padding-top: 60px; margin: 0 -10px; }
+
+.support { padding: 60px 20px; }
+.support .support__text { margin-bottom: 30px; }
+.support .form { text-align: center; }
+.support .field { margin: 0 -32px 50px; }
+.support .textarea { height: 440px; }
+
+.messages .messages__item { display: block; padding-bottom: 20px; margin-bottom: 25px; border-bottom: 1px solid white; }
+.messages .messages__head { margin-bottom: 10px; *zoom: 1; }
+.messages .messages__head:after { content: " "; display: table; clear: both; }
+.messages .messages__date { float: right; margin-left: 20px; font-size: 20px; }
+.messages .messages__date .icon { position: relative; top: 5px; margin-left: 10px; }
+.messages .messages__title { display: table; }
+.messages .messages__text { font-size: 20px; }
+
+.message { padding: 35px 0; }
+.message .message__date { margin-bottom: 20px; font-size: 20px; text-align: center; }
+.message .message__text { position: relative; padding: 30px; background: white; font-size: 20px; color: #484848; }
+.message .message__text:after { content: ""; position: absolute; bottom: -14px; left: 0; width: 0px; height: 0px; border-style: solid; border-width: 14px 22px 0 0; border-color: white transparent transparent transparent; }
