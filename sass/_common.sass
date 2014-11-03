@@ -56,6 +56,7 @@ body
 	font-size: 24px 
 	line-height: 1.3
 	color: #FFF 
+	-webkit-font-smoothing: antialiased
 button, input, textarea
 	+f
 	font-size: 24px
@@ -70,6 +71,7 @@ $red: #ff3e4b
 $orange: #ff5a00
 $turquoise: #40cdc5
 $dark: #2b2b2b
+$viol: #471f44
 
 // common blocks      
 .wrapper, .screen
@@ -460,10 +462,13 @@ $dark: #2b2b2b
 			opacity: .3 
 		&:first-child
 			border-width: 0
-		.icon
+		.icon-arrow-right
 			position: absolute
-			top: 33px
+			top: 50%
+			margin-top: -12px
 			right: 0
+		.icon-ok-simple
+			margin-right: 20px
 
 .view
 	padding: 20px 0 35px
@@ -921,6 +926,18 @@ $dark: #2b2b2b
 
 .settings
 	padding-top: 45px
+	margin-bottom: 20px
+	&.settings_filter
+		padding-top: 30px
+		.list
+			margin-bottom: 30px
+	.settings__date
+		padding: 19px 0
+		margin-bottom: 30px
+		border-bottom: 1px solid #fff 
+		span
+			margin: 0 25px
+			color: $viol 
 	.settings__type
 		margin-bottom: 15px
 		font-size: 30px
@@ -1002,17 +1019,167 @@ $dark: #2b2b2b
 			left: 0
 			+arr(22,14,#fff,tl)
 
+.log
+	display: table
+	width: 640px
+	margin: 45px -50px 20px
+	border-top: 1px solid #fff 
+	.log__table
+		width: 100%
+		table-layout: fixed
+	.log__row
+		position: relative
+		border-bottom: 1px solid #fff 
+		background: rgba(#c22929,.6) 
+		font-size: 0
+		&:after
+			content: ""
+			position: absolute
+			right: 340px
+			top: 45px
+			bottom: 45px
+			width: 1px
+			background: rgba(#fff,.3) 
+	.log__row_out
+		background: rgba(#6a5377,.6) 
+		&:after
+			right: 270px
+		.log__cell
+			width: 270px
+			&:first-child
+				width: 370px
+	.log__cell
+		display: inline-block
+		width: 340px
+		padding: 25px
+		vertical-align: middle
+		line-height: 1.2
+		&:first-child
+			width: 300px
+			.icon-log-arrow
+				right: auto
+				left: 25px
+		.icon-log-arrow
+			position: absolute
+			top: 25px
+			right: 25px
+		.btn
+			position: absolute
+			right: 0
+			bottom: -1px
+			width: 271px
+			border-width: 1px
+	.log__money
+		font-size: 70px
+		span
+			font-size: 50px
+	.log__title
+		margin-bottom: 25px
+		font-size: 20px
+		span
+			display: block
+			font-size: 30px
+	.log__from
+		margin-bottom: 15px
+		font-size: 20px
+		span
+			display: block
+			font-size: 25px
+	.log__status
+		i, ul
+			display: inline-block
+			vertical-align: middle
+		i
+			margin-right: 15px
+		li
+			font-size: 20px
 
+.limits
+	margin: 35px -20px 20px
+	.limits__table
+		margin-bottom: 60px
+		table-layout: fixed
+		font-size: 20px
+		&.is-second-active
+			tbody
+				td
+					&:nth-child(2)
+						background: rgba(#fff,.25) 
+		&.is-third-active
+			tbody
+				td
+					&:nth-child(2)
+						background: rgba(#fff,.25) 
+		thead
+			th
+				padding: 30px 25px
+				background: #FFF
+				border: 1px solid rgba($red,.2)
+				box-shadow: -1px -1px 0 1px rgba(#fff,.2)
+				color: $red
+				vertical-align: middle
+				&:first-child
+					width: 260px
+					text-align: left
+		tbody
+			td
+				padding: 25px
+				border: 1px solid rgba($red,.2)
+				background: rgba(#fff,.15) 
+				box-shadow: 0 0 0 1px rgba(#fff,.2)
+				text-align: center
+				vertical-align: top
+				&.is-center
+					vertical-align: middle
+				&:first-child
+					text-align: left
 
+.range
 
-
-
-
-
-
-
-
-
+.slider
+	position: relative
+	margin: -50px -50px 0
+	.slider__pic
+		height: 750px
+		margin-bottom: 85px
+		padding-top: 55px
+		text-align: center
+		font-size: 0
+		overflow: hidden
+	.slider__bg 
+		position: absolute
+		top: 620px
+		left: 0
+		right: 0
+		height: 1136px - 620px
+		overflow: hidden
+	.slider__bg-in
+		position: relative
+		top: -130px
+		width: 100%
+		height: 260px
+		border-radius: 50% 
+		box-shadow: 0 0 200px 200px #95343b, 0 0 300px 300px #722a3e
+	.slider__text
+		position: relative
+		text-align: center
+		z-index: 2
+	.slider__dots
+		position: absolute
+		top: 775px
+		left: 0
+		right: 0 
+		text-align: center
+		z-index: 2 
+		button
+			width: 13px
+			height: 13px
+			margin: 0 7px
+			background: #FFF
+			border-radius: 50% 
+			vertical-align: top
+			&.is-active
+				background: rgba(#fff,.5) 
 
 
 
