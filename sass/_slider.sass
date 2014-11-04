@@ -1,0 +1,44 @@
+.slider
+	position: relative
+	margin: -50px -50px 0
+	.slider__pic
+		height: 750px
+		margin-bottom: 85px
+		padding-top: 55px
+		text-align: center
+		font-size: 0
+		overflow: hidden
+	.slider__bg 
+		position: absolute
+		top: 620px
+		left: 0
+		right: 0
+		height: 1136px - 620px
+		overflow: hidden
+	.slider__bg-in
+		position: relative
+		top: -130px
+		width: 100%
+		height: 260px
+		border-radius: 50% 
+		box-shadow: 0 0 200px 200px #95343b, 0 0 300px 300px #722a3e
+	.slider__text
+		position: relative
+		text-align: center
+		z-index: 2
+	.slider__dots
+		position: absolute
+		top: 775px
+		left: 0
+		right: 0 
+		text-align: center
+		z-index: 2 
+		button
+			width: 13px
+			height: 13px
+			margin: 0 7px
+			background: #FFF
+			border-radius: 50% 
+			vertical-align: top
+			&.is-active
+				background: rgba(#fff,.5) 
