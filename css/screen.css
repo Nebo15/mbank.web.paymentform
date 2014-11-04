@@ -465,5 +465,5 @@ a { text-decoration: none; color: white; }
 .range { margin-bottom: 40px; }
 .range .range__values { *zoom: 1; }
 .range .range__values:after { content: " "; display: table; clear: both; }
-.range .range__form { float: left; }
+.range .range__from { float: left; }
 .range .range__to { float: right; }
