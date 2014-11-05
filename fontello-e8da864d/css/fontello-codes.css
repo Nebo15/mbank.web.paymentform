@@ -1,4 +1,5 @@
 
+.icon-hexagon-part:before { content: '\e800'; } /* '' */
 .icon-add:before { content: '\e801'; } /* '' */
 .icon-logo:before { content: '\e802'; } /* '' */
 .icon-ok:before { content: '\e803'; } /* '' */
@@ -22,7 +23,7 @@
 .icon-head-grid:before { content: '\e815'; } /* '' */
 .icon-head-mobile:before { content: '\e816'; } /* '' */
 .icon-head-settings:before { content: '\e817'; } /* '' */
-.icon-hexagon-part:before { content: '\e818'; } /* '' */
+.icon-log-arrow-out:before { content: '\e818'; } /* '' */
 .icon-head-user:before { content: '\e819'; } /* '' */
 .icon-hexagon:before { content: '\e81a'; } /* '' */
 .icon-info-error:before { content: '\e81b'; } /* '' */

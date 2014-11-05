@@ -19,7 +19,7 @@
 		</i:pgfRef>
 	</foreignObject>
 	<g i:extraneous="self">
-		<rect x="92.6" y="60.8" fill="#FFFFFF" stroke="#F8F7F7" stroke-width="0.25" stroke-miterlimit="10" width="70" height="40"/>
+		<rect x="92.6" y="60.8" fill="$whiteFFF" stroke="#F8F7F7" stroke-width="0.25" stroke-miterlimit="10" width="70" height="40"/>
 		<g id="SqBd7A.tif">
 			<g>
 				<path fill="#006A72" d="M130,91.9c-0.1,0-0.1,0-0.2,0c0,0-0.1,0-0.1,0c0,0-0.1,0-0.1,0c0,0-0.1,0-0.1,0c0,0,0,0,0,0
@@ -69,7 +69,7 @@
 			</g>
 		</g>
 		
-			<ellipse opacity="0.23" fill="#FFFFFF" stroke="#F8F7F7" stroke-width="0.25" stroke-miterlimit="10" cx="127" cy="71.6" rx="34.5" ry="9.9"/>
+			<ellipse opacity="0.23" fill="$whiteFFF" stroke="#F8F7F7" stroke-width="0.25" stroke-miterlimit="10" cx="127" cy="71.6" rx="34.5" ry="9.9"/>
 	</g>
 </switch>
 <i:pgf  id="adobe_illustrator_pgf">

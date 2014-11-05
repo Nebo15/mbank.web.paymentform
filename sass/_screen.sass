@@ -2,9 +2,18 @@
 	position: relative
 	width: 640px
 	height: 1136px
-	background: url(../img/bg.jpg) no-repeat 0 0
+	-webkit-overflow-scrolling: touch
 	overflow: auto
 	.screen__in
-		position: relative
+		background-image: $bg
+		background-position: 0 0
+		background-repeat: no-repeat 
+		background-size: cover 
+	.screen__in_filter
+		background-image: $bg_filter
+	.screen__in_limits
+		background-image: $bg_limits
+	.screen__bg
+		min-height: 1136px
 		padding: 50px 50px 20px
-		z-index: 4 
+		background: $bg_picture no-repeat 100% 100%

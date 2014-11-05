@@ -1,6 +1,7 @@
 .slider
 	position: relative
-	margin: -50px -50px 0
+	height: 1136px
+	margin: -50px -50px -20px
 	.slider__pic
 		height: 750px
 		margin-bottom: 85px
@@ -18,10 +19,20 @@
 	.slider__bg-in
 		position: relative
 		top: -130px
-		width: 100%
+		left: 0
+		right: 0
 		height: 260px
 		border-radius: 50% 
-		box-shadow: 0 0 200px 200px #95343b, 0 0 300px 300px #722a3e
+		box-shadow: 0 0 300px 300px $viol
+		&:after
+			content: ""
+			position: absolute
+			top: 0
+			left: 0
+			right: 0
+			height: 260px
+			border-radius: 50% 
+			box-shadow: 0 0 500px 500px rgba($red,.5), 0 0 100px 300px rgba($orange,.2)
 	.slider__text
 		position: relative
 		text-align: center
@@ -32,13 +43,13 @@
 		left: 0
 		right: 0 
 		text-align: center
-		z-index: 2 
+		z-index: 2
 		button
 			width: 13px
 			height: 13px
 			margin: 0 7px
-			background: #FFF
+			background: $white
 			border-radius: 50% 
 			vertical-align: top
 			&.is-active
-				background: rgba(#fff,.5) 
+				background: rgba($white,.5) 

@@ -19,7 +19,7 @@
 		</i:pgfRef>
 	</foreignObject>
 	<g i:extraneous="self">
-		<rect x="92.6" y="60.8" fill="#FFFFFF" stroke="#F8F7F7" stroke-width="0.25" stroke-miterlimit="10" width="70" height="40"/>
+		<rect x="92.6" y="60.8" fill="$whiteFFF" stroke="#F8F7F7" stroke-width="0.25" stroke-miterlimit="10" width="70" height="40"/>
 		<g>
 			<g>
 				<polygon fill="#233986" points="120.1,88.3 122.7,73.3 126.7,73.3 124.2,88.3 				"/>
@@ -34,7 +34,7 @@
 			</g>
 		</g>
 		
-			<ellipse opacity="0.23" fill="#FFFFFF" stroke="#F8F7F7" stroke-width="0.25" stroke-miterlimit="10" cx="128.8" cy="72.7" rx="32.8" ry="8.7"/>
+			<ellipse opacity="0.23" fill="$whiteFFF" stroke="#F8F7F7" stroke-width="0.25" stroke-miterlimit="10" cx="128.8" cy="72.7" rx="32.8" ry="8.7"/>
 	</g>
 </switch>
 <i:pgf  id="adobe_illustrator_pgf">

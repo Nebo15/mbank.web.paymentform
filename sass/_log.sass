@@ -2,14 +2,14 @@
 	display: table
 	width: 640px
 	margin: 45px -50px 20px
-	border-top: 1px solid #fff 
+	border-top: 1px solid $white 
 	.log__table
 		width: 100%
 		table-layout: fixed
 	.log__row
 		position: relative
-		border-bottom: 1px solid #fff 
-		background: rgba(#c22929,.6) 
+		border-bottom: 1px solid $white 
+		background: rgba($red,.6) 
 		font-size: 0
 		&:after
 			content: ""
@@ -18,9 +18,9 @@
 			top: 45px
 			bottom: 45px
 			width: 1px
-			background: rgba(#fff,.3) 
+			background: rgba($white,.3) 
 	.log__row_out
-		background: rgba(#6a5377,.6) 
+		background: rgba($viol,.6) 
 		&:after
 			right: 270px
 		.log__cell
@@ -35,13 +35,6 @@
 		line-height: 1.2
 		&:first-child
 			width: 300px
-			.icon-log-arrow
-				right: auto
-				left: 25px
-		.icon-log-arrow
-			position: absolute
-			top: 25px
-			right: 25px
 		.btn
 			position: absolute
 			right: 0
@@ -72,8 +65,14 @@
 			margin-right: 15px
 		li
 			font-size: 20px
-	.icon-log-arrow
+	.icon-log-arrow, .icon-log-arrow-out
+		position: absolute
+		top: 25px
 		font-size: 43px
+	.icon-log-arrow
+		left: 25px
+	.icon-log-arrow-out
+		right: 25px
 	.icon-ok
 		font-size: 42px
 	.icon-info-error

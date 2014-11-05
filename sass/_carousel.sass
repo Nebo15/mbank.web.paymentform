@@ -1,0 +1,61 @@
+.carousel
+	position: relative
+	margin: 90px 0 50px
+	.carousel__list
+		font-size: 0
+		text-align: center
+	.carousel__item
+		position: relative
+		display: inline-block
+		width: 174px
+		height: 194px
+		margin: 0 -40px
+		font-size: 0
+		vertical-align: top
+	.carousel__shadow
+		position: absolute
+		top: 25%
+		left: 1%
+		right: 1%
+		bottom: 25%
+		box-shadow: 0 0 30px rgba($black,.5)
+		z-index: 2 
+		&:before, &:after
+			content: ""
+			position: absolute
+			top: 0
+			left: 0
+			right: 0
+			bottom: 0
+			box-shadow: 0 0 30px rgba($black,.5)
+		&:before
+			transform: rotate(60deg)
+		&:after
+			transform: rotate(-60deg)
+	.carousel__pic
+		position: relative
+		width: 174px
+		height: 194px
+		-webkit-clip-path: polygon(50% 0, 100% 24%, 100% 76%, 50% 100%, 0 76%, 0 24%)
+		overflow: hidden 
+		z-index: 4 
+	.carousel__item_first, .carousel__item_fifth
+		transform: scale(0.9)
+		z-index: 1
+		.carousel__shadow
+			box-shadow: 0 0 30px rgba($black,.1)
+			&:before, &:after
+				box-shadow: 0 0 30px rgba($black,.1)
+	.carousel__item_second, .carousel__item_fourth
+		transform: scale(0.95)
+		z-index: 2
+		.carousel__shadow
+			box-shadow: 0 0 30px rgba($black,.3)
+			&:before, &:after
+				box-shadow: 0 0 30px rgba($black,.3)
+	.carousel__item_third
+		z-index: 3 
+	.carousel__title
+		padding-top: 30px 
+		font-size: 24px
+		text-align: center
