@@ -1,0 +1,21 @@
+.accord
+	font-size: 21px
+	.accord__item
+		padding: 15px 0
+		border-bottom: 1px solid $border
+		&.is-active
+			.accord__content
+				display: block
+			.accord__title
+				img
+					+rotate(180)
+	.accord__title
+		position: relative
+		padding-right: 40px
+		img
+			position: absolute
+			top: 7px
+			right: 0
+	.accord__content
+		display: none
+		padding-top: 10px

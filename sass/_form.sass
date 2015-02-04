@@ -1,6 +1,8 @@
 .form
 	width: 436px
 	margin: 0 auto
+	&.form_mb35
+		margin: 0 auto 35px
 	.form__links
 		padding-top: 20px
 		+clr
@@ -51,6 +53,10 @@
 		background: $red
 	&.btn_orange
 		background: $orange
+	&.btn_w410
+		display: block
+		width: 410px
+		margin: 0 auto
 
 .fieldset
 	+clr
@@ -61,6 +67,17 @@
 		.input, .textarea
 			background: $red-light 
 			box-shadow: 0 0 0 2px $red inset
+	&.field_w440
+		width: 440px
+	&.field_w85,
+	&.field_w120	
+		.input
+			padding: 0 25px
+			text-align: center
+	&.field_w85
+		width: 85px
+	&.field_w120
+		width: 120px
 	&.field_password, &.field_user, &.field_rub
 		.input
 			padding: 0 70px 0 30px
@@ -83,7 +100,13 @@
 			top: 26px
 			right: 31px
 			font-size: 22px
-			color: $red  
+			color: $red
+		&.field_border-gray
+			.icon-rub
+				color: $gray 
+	&.field_border-gray
+		.input
+			border: 1px solid $gray-light 
 	.field__label
 		margin-bottom: 15px 
 		color: $black
