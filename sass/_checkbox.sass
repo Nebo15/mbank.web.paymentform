@@ -1,0 +1,30 @@
+.checkbox
+	position: relative
+	display: block
+	padding: 5px 0 5px 55px
+	input
+		position: absolute
+		top: 0
+		left: 0
+		opacity: 0
+		&:checked + span
+			.icon-checkbox
+				display: block
+	span
+		display: block
+		&:before
+			content: ""
+			position: absolute
+			top: 0
+			left: 0
+			width: 37px
+			height: 37px
+			border: 2px solid $white
+			border-radius: 50% 
+	.icon-checkbox
+		display: none
+		position: absolute
+		top: 12px
+		left: 9px
+		font-size: 17px
+		color: $green

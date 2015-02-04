@@ -1,0 +1,18 @@
+.message
+	padding: 35px 0
+	.message__date
+		margin-bottom: 20px
+		font-size: 20px
+		text-align: center
+	.message__text
+		position: relative
+		padding: 30px
+		background: $white 
+		font-size: 20px
+		color: $black
+		&:after
+			content: ""
+			position: absolute
+			bottom: -14px
+			left: 0
+			+arr(22,14,$white,tl)

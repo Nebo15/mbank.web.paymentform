@@ -1,0 +1,46 @@
+.contacts
+	&.contacts_empty
+		margin: 0 -50px
+		padding: 505px 50px 20px
+		background: $bg_contacts_empty 0 100% no-repeat
+	.contacts__item
+		display: block
+		margin-bottom: 20px
+		+clr
+	.contacts__ava
+		position: relative
+		float: left
+		width: 90px
+		height: 90px
+		margin-right: 25px
+		border: 2px solid $white
+		border-radius: 50% 
+		img
+			position: relative
+			max-width: 100%
+			border-radius: 50%
+			z-index: 4
+		.icon-user
+			position: absolute
+			top: 50%
+			left: 50%
+			margin: -19px 0 0 -19px
+			font-size: 38px 
+	.contacts__name
+		padding: 20px 0
+		font-size: 26px
+		border-bottom: 1px solid $white
+		overflow: hidden
+	.contacts__empty
+		text-align: center
+	.contacts__view
+		.icon-view-empty
+			font-size: 89px 
+	.contacts__text
+		font-size: 28px
+		line-height: 1.2
+	.contacts__text_small
+		width: 260px
+		margin: 10px auto 30px
+		font-size: 24px
+		line-height: 1.3

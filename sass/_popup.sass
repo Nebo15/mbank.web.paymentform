@@ -1,0 +1,22 @@
+.popup
+	position: absolute
+	top: 0
+	left: 0
+	right: 0
+	bottom: 0
+	background: rgba(48,19,19,.8) 
+	z-index: 999 
+	+vertical
+	&.popup_bigger
+		.popup__in
+			width: 510px
+			border-color: $red
+	.popup__in
+		display: inline-block
+		width: 450px
+		padding: 30px 40px
+		border: 1px solid $orange
+		background: $white 
+		vertical-align: middle
+		font-size: 24px
+		color: $dark 

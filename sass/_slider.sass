@@ -1,0 +1,55 @@
+.slider
+	position: relative
+	height: 1136px
+	margin: -50px -50px -20px
+	.slider__pic
+		height: 750px
+		margin-bottom: 85px
+		padding-top: 55px
+		text-align: center
+		font-size: 0
+		overflow: hidden
+	.slider__bg 
+		position: absolute
+		top: 620px
+		left: 0
+		right: 0
+		height: 1136px - 620px
+		overflow: hidden
+	.slider__bg-in
+		position: relative
+		top: -130px
+		left: 0
+		right: 0
+		height: 260px
+		border-radius: 50% 
+		box-shadow: 0 0 300px 300px $viol
+		&:after
+			content: ""
+			position: absolute
+			top: 0
+			left: 0
+			right: 0
+			height: 260px
+			border-radius: 50% 
+			box-shadow: 0 0 500px 500px rgba($red,.5), 0 0 100px 300px rgba($orange,.2)
+	.slider__text
+		position: relative
+		text-align: center
+		z-index: 2
+	.slider__dots
+		position: absolute
+		top: 775px
+		left: 0
+		right: 0 
+		text-align: center
+		z-index: 2
+		button
+			width: 13px
+			height: 13px
+			margin: 0 7px
+			background: $white
+			border-radius: 50% 
+			vertical-align: top
+			&.is-active
+				background: rgba($white,.5) 

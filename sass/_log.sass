@@ -1,0 +1,84 @@
+.log
+	display: table
+	width: 640px
+	margin: 45px -50px 20px
+	border-top: 1px solid $white 
+	.log__table
+		width: 100%
+		table-layout: fixed
+	.log__row
+		position: relative
+		border-bottom: 1px solid $white 
+		background: rgba($red,.6) 
+		font-size: 0
+		&:after
+			content: ""
+			position: absolute
+			right: 340px
+			top: 45px
+			bottom: 45px
+			width: 1px
+			background: rgba($white,.3) 
+	.log__row_out
+		background: rgba($viol,.6) 
+		&:after
+			right: 270px
+		.log__cell
+			width: 270px
+			&:first-child
+				width: 370px
+	.log__cell
+		display: inline-block
+		width: 340px
+		padding: 25px
+		vertical-align: middle
+		line-height: 1.2
+		&:first-child
+			width: 300px
+		.btn
+			position: absolute
+			right: 0
+			bottom: -1px
+			width: 271px
+			border-width: 1px
+	.log__money
+		font-size: 70px
+		span
+			font-size: 50px
+	.log__title
+		margin-bottom: 25px
+		font-size: 20px
+		span
+			display: block
+			font-size: 30px
+	.log__from
+		margin-bottom: 15px
+		font-size: 20px
+		span
+			display: block
+			font-size: 25px
+	.log__status
+		i, ul
+			display: inline-block
+			vertical-align: middle
+		i
+			margin-right: 15px
+		li
+			font-size: 20px
+	.icon-log-arrow, .icon-log-arrow-out
+		position: absolute
+		top: 25px
+		font-size: 43px
+	.icon-log-arrow
+		left: 25px
+	.icon-log-arrow-out
+		right: 25px
+	.icon-ok
+		font-size: 42px
+	.icon-info-error
+		font-size: 42px
+		color: $red 
+	.icon-rub
+		margin-left: 5px
+		font-size: 18px
+		vertical-align: baseline

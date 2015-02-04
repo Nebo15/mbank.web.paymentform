@@ -1,0 +1,86 @@
+.pay
+	padding-top: 30px
+	.pay__confirm
+		margin-bottom: 15px
+		text-align: center
+	.pay__logo
+		margin-bottom: 15px
+	.pay__logo-in
+		position: relative
+		display: inline-block
+		vertical-align: top
+		font-size: 0
+		&:before
+			content: ""
+			position: absolute
+			top: 0
+			left: 2px
+			+s(provider-logo)
+			z-index: 2 
+		.icon-hexagon
+			position: relative
+			font-size: 234px
+			z-index: 4 
+	.pay__logo-pic
+		position: absolute
+		top: 2px
+		left: 3px
+		width: 204px
+		height: 230px
+		-webkit-clip-path: polygon(50% 0, 100% 20.4%, 100% 79.2%, 50% 100%, 0 79.2%, 0 20.4%)
+		overflow: hidden
+		z-index: 6
+	.pay__text
+		p
+			margin-top: 20px
+			&:first-child
+				margin: 0
+	.pay__money
+		font-size: 70px 
+		span
+			font-size: 50px
+		.icon-rub
+			margin-left: 5px
+			font-size: 18px
+			vertical-align: baseline
+	.pay__method
+		margin-bottom: 60px
+	.pay__method-title
+		margin-bottom: 25px
+	.pay__method-item
+		position: relative
+		display: block
+		margin-bottom: 15px
+		padding-left: 60px
+		input
+			display: none
+			&:checked + span
+				&:after
+					top: 14px
+					left: 14px
+					width: 14px
+					height: 14px
+					background: $white
+					border-radius: 50%  
+		span
+			display: block
+			padding: 6px 0 20px
+			border-bottom: 1px solid $white 
+			&:before, &:after
+				content: ""
+				position: absolute
+			&:before
+				top: 0
+				left: 0
+				width: 40px
+				height: 40px
+				border: 1px solid $white
+				border-radius: 50%  
+		a
+			float: right
+			color: $orange-light
+			.icon-arrow-right
+				position: relative
+				top: 3px
+				margin-left: 15px
+				font-size: 23px

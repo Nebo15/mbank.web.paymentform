@@ -1,0 +1,50 @@
+.limits
+	margin: 35px -20px 20px
+	.limits__table
+		margin-bottom: 60px
+		table-layout: fixed
+		font-size: 20px
+		&.is-second-active
+			tbody
+				td
+					&:nth-child(2)
+						background: rgba($white,.25) 
+		&.is-third-active
+			tbody
+				td
+					&:nth-child(2)
+						background: rgba($white,.25) 
+		thead
+			th
+				padding: 30px 25px
+				background: $white
+				border: 1px solid rgba($red,.2)
+				box-shadow: -1px -1px 0 1px rgba($white,.2)
+				color: $red
+				vertical-align: middle
+				&:first-child
+					width: 260px
+					text-align: left
+		tbody
+			td
+				padding: 25px
+				border: 1px solid rgba($red,.2)
+				background: rgba($white,.15) 
+				box-shadow: 0 0 0 1px rgba($white,.2)
+				text-align: center
+				vertical-align: top
+				&.is-center
+					vertical-align: middle
+				&:first-child
+					text-align: left
+		.icon-user-question,
+		.icon-user-ok
+			font-size: 40px
+		.icon-user-question
+			color: $red
+		.icon-user-ok, .icon-ok
+			color: $green
+		.icon-ok, .icon-error
+			font-size: 42px 
+		.icon-error
+			color: $red 

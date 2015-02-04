@@ -1,0 +1,43 @@
+.complexity
+	margin-top: -18px
+	&.is-easy
+		.complexity__line
+			li
+				border-color: $red
+				&:first-child
+					background: $red  
+	&.is-middle
+		.complexity__line
+			li
+				border-color: $orange
+				&:first-child, &:nth-child(2)
+					background: $orange  
+	&.is-good
+		.complexity__line
+			li
+				border-color: $blue
+				&:first-child, &:nth-child(2), &:nth-child(3)
+					background: $blue  
+	&.is-strong
+		.complexity__line
+			li
+				border-color: $turquoise
+				background: $turquoise  
+	.complexity__line
+		font-size: 0
+		white-space: nowrap
+		overflow: hidden
+		li
+			display: inline-block
+			width: 108px
+			height: 4px 
+			border: 1px solid transparent
+			margin-left: 1px
+			vertical-align: top
+			&:first-child
+				width: 109px
+				margin: 0
+	.complexity__status
+		padding: 3px 0
+		text-align: right
+		font-size: 14px

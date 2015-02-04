@@ -1,0 +1,51 @@
+.scan
+	.scan__title
+		padding: 15px 0 50px
+		text-align: center
+		font-size: 30px 
+	.scan__camera
+		position: relative
+		margin: 0 -50px
+		height: 746px
+	.scan__message
+		position: absolute
+		top: 50%
+		left: 50%
+		width: 480px
+		height: 360px
+		margin: -180px 0 0 -240px
+		background: rgba($white,.4)  
+		+vertical
+		.scan__message-in
+			display: inline-block
+			padding: 0 40px
+			vertical-align: middle
+			font-size: 28px
+			color: $black
+			&:before, &:after
+				content: ""
+				position: absolute
+				left: 0
+				width: 120px
+				height: 120px
+				border: 1px solid $orange
+			&:before
+				top: 0
+				border-width: 5px 0 0 5px
+			&:after
+				bottom: 0
+				border-width: 0 0 5px 5px
+			span
+				&:before, &:after
+					content: ""
+					position: absolute
+					right: 0
+					width: 120px
+					height: 120px
+					border: 1px solid $orange
+				&:before
+					top: 0
+					border-width: 5px 5px 0 0
+				&:after
+					bottom: 0
+					border-width: 0 5px 5px 0
