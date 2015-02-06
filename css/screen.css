@@ -32,8 +32,8 @@ a { text-decoration: none; color: white; }
 
 .wrapper { width: 640px; height: 1136px; }
 .wrapper.wrapper_big { width: auto; height: auto; }
-.wrapper.wrapper_big .screen { width: auto; height: auto; min-height: 100vh; min-width: 640px; }
-.wrapper.wrapper_big .screen__in { min-height: 0; }
+.wrapper.wrapper_big .screen { width: auto; height: auto; min-width: 640px; }
+.wrapper.wrapper_big .screen__in { min-height: 100vh; }
 
 .screen { position: relative; width: 640px; height: 1136px; -webkit-overflow-scrolling: touch; overflow: auto; }
 .screen .screen__in { min-height: 1136px; background-image: url(../img/bg.jpg); background-position: 0 0; background-repeat: no-repeat; background-size: cover; }
