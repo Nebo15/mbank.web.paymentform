@@ -170,6 +170,9 @@ a { text-decoration: none; color: white; }
 
 .btn { width: 100%; height: 75px; padding: 0 20px; border: 2px solid white; font-size: 27px; }
 .btn.btn_red { background: #ff3e4b; }
+.btn.btn_red-gradient, .btn.btn_orange-gradient { border: none; background-color: #ec2845; box-shadow: -1.3px 1.6px 2px rgba(75, 24, 80, 0.11), inset 0 1px 0 rgba(255, 255, 255, 0.21); }
+.btn.btn_red-gradient { background-image: linear-gradient(12deg, #ec2845 0%, #f95c73 100%); }
+.btn.btn_orange-gradient { background-image: linear-gradient(12deg, #ff3c00 0%, #ff9138 100%); }
 .btn.btn_orange { background: #ff5a00; }
 .btn.btn_w410 { display: block; width: 410px; margin: 0 auto; }
 .btn.btn_mb35 { margin: 0 auto 35px; }
@@ -566,9 +569,10 @@ a { text-decoration: none; color: white; }
 
 .title-border { position: relative; margin-bottom: 30px; padding-bottom: 30px; text-align: center; font-size: 25px; }
 .title-border.title-border_small { padding-bottom: 25px; font-size: 21px; }
+.title-border.title-border_mb15 { margin-bottom: 15px; }
 .title-border:after { content: ""; position: absolute; left: 50%; bottom: 0; width: 266px; height: 1px; margin-left: -133px; background: #ead6db; }
 
-.access { display: table; width: 100%; font-size: 20px; }
+.access { display: table; width: 100%; margin-bottom: 20px; padding-left: 15px; font-size: 20px; }
 .access .access__row { display: table-row; }
 .access .access__cell { display: table-cell; padding: 30px 0; border-bottom: 1px solid #ead6db; }
 .access .access__cell:nth-child(2) { text-align: right; }
@@ -576,6 +580,7 @@ a { text-decoration: none; color: white; }
 .text { margin-bottom: 25px; font-size: 21px; text-align: center; }
 .text.text_big { font-size: 29px; }
 .text.text_small { font-size: 17px; }
+.text.text_mt40 { margin-top: 40px; }
 .text.text_mb0 { margin-bottom: 0; }
 .text.text_mb10 { margin-bottom: 10px; }
 .text.text_mb50 { margin-bottom: 50px; }
@@ -587,16 +592,16 @@ a { text-decoration: none; color: white; }
 .ava-border .ava-border__pic span { display: block; height: 89px; line-height: 89px; text-align: center; font-size: 49px; color: #471f44; }
 .ava-border .icon { position: absolute; top: -1px; left: 0; font-size: 90px; color: #ead6db; }
 
-.paycard { margin-bottom: 20px; padding: 40px 20px 25px 40px; background: #f5fbfc; border-radius: 10px; }
-.paycard .field, .paycard > img { display: inline-block; margin: 0 15px 15px 0; vertical-align: middle; }
+.paycard { margin-bottom: 15px; padding: 40px 20px 25px 40px; background: #f5fbfc; border-radius: 10px; }
+.paycard .field, .paycard > img { display: inline-block; margin: 0 15px 20px 0; vertical-align: middle; }
 
-.link-center { padding-top: 25px; text-align: center; font-size: 17px; }
+.link-center { padding-top: 30px; text-align: center; font-size: 17px; }
 
 .money { margin-bottom: 20px; text-align: center; font-size: 110px; color: #8f2742; line-height: 1; }
 .money .icon { margin-left: 10px; font-size: 24px; }
 
-.accord { margin-bottom: 40px; font-size: 21px; }
-.accord .accord__item { padding: 15px 0; border-bottom: 1px solid #ead6db; }
+.accord { margin-bottom: 40px; padding: 0 15px; font-size: 21px; }
+.accord .accord__item { padding: 17px 0; border-bottom: 1px solid #ead6db; }
 .accord .accord__item.is-active .accord__content { display: block; }
 .accord .accord__item.is-active .accord__title .icon { -ms-transform: rotate(180deg); -webkit-transform: rotate(180deg); transform: rotate(180deg); }
 .accord .accord__title { position: relative; padding-right: 40px; }
