@@ -551,7 +551,7 @@ a { text-decoration: none; color: white; }
 .carousel .carousel__item_third { z-index: 3; }
 .carousel .carousel__title { padding-top: 30px; font-size: 24px; text-align: center; }
 
-.container { width: 600px; margin: 0 auto; }
+.container { position: relative; top: 13%; width: 600px; margin: 0 auto; -webkit-transform: scale(0.75); -moz-transform: scale(0.75); -ms-transform: scale(0.75); -o-transform: scale(0.75); transform: scale(0.75); }
 .container .container__logo { margin-bottom: 30px; text-align: center; }
 .container .container__logo .icon-logo { font-size: 170px; }
 .container .container__in { padding: 40px; background: white; box-shadow: 0 0 4px rgba(75, 63, 63, 0.89); color: black; }
