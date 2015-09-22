@@ -3,4 +3,4 @@
 *.sublime-workspace
 
 img/icons-*.png
-.idea/
+.idea
