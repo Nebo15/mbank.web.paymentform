@@ -3,46 +3,85 @@ $(document).ready(function () {
     // Masking card number
     $("#card_number").mask("0000 0000 0000 0000", {
         maxlength: true
-    });
+    }).focus();
 
-
+    var $paymentForm = $(".payment__form");
 
     (function () {
-
-        function getPrev (el) {
-            $(el).parent().prev('.field__el').find('.input');
-        }
         var $inputs = $('[data-next-input]');
         function prepare (inputs) {
             var els = {},
               el = null,
-              attrVal = null;
+              attrVal = null,
+              name = null;
             inputs.each(function () {
                 el = $(this);
                 attrVal = el.attr('data-next-input');
+                name = el.attr('name');
                 if (!attrVal) {
                     return;
                 }
-                els[attrVal] = el;
+                els[attrVal] = {
+                    prev: el
+                };
+                els[name] = els[name] || {};
+                els[name].current = el;
             });
+            var cur = null;
+            for (var prop in els) {
+                cur = els[prop];
+                if (cur.current) {
+                    cur.next = els[cur.current.attr('data-next-input')].current;
+                }
+            }
             return els;
         }
         var els = prepare($inputs);
+        var defer = function (cb) {
+            return setTimeout(cb, 0);
+        };
         $inputs.on('keydown', function (e) {
-            var val = $(this).val(),
-              name = $(this).attr('name'),
+            var el = $(this);
+            var val = el.val(),
+              name = el.attr('name'),
               next;
 
-            if (e.keyCode == 8) { //delete
-                if (!!val) return;
-                next = els[name];
+            if (e.keyCode == 8 && val.length == 0) { //delete
+                next = els[name].prev;
             }
             if (!next) {
                 return;
             }
-            console.log('next', next, name, val);
-            next.focus();
+
+            defer(function () {
+                next.focus();
+            });
         });
+        $inputs.on('keyup', function (e) {
+            if (e.keyCode == 8) {
+                return;
+            }
+            var el = $(this);
+            var val = el.val(),
+              name = el.attr('name'),
+              isValid = $paymentForm.validate().check(el),
+              next;
+
+            if (e.keyCode < 46 || e.keyCode > 90) return;
+            if (isValid) {
+                next = els[name].next;
+                console.log('next', els[name]);
+            }
+
+            if (!next) {
+                return;
+            }
+
+            defer(function () {
+                next.focus();
+            });
+        });
+
         //$('.field_issued_at input').on('keydown', function (e) {
         //
 
@@ -105,7 +144,8 @@ $(document).ready(function () {
         });
 
         // Validates with validate plugin
-        $(".payment__form").validate({
+        $paymentForm.validate({
+            onkeyup: false,
             rules: {
                 pan: {
                     required: true,
@@ -277,9 +317,6 @@ $(document).ready(function () {
                     $paysys.attr('class','');
                     return;
                 }
-                //if (oldDetection && oldDetection.card_type.name === result.card_type.name) {
-                //    return;
-                //}
 
                 if (cardDetectionEnabled) {
                     $paysys.addClass(result.card_type.name);
