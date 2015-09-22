@@ -1,32 +1,41 @@
+
 .addcard
-	margin: 0 -10px
-	padding-top: 20px
-	.addcard__in
-		padding: 35px 40px 10px
-		margin-bottom: 20px
-		background: rgba($white,.8)
-		box-shadow: -2px 2px 0 2px rgba($white,.5)
-		.field_double
-			float: left
-			.field__el
-				float: left
-				& + .field__el
-					margin-left: 20px 
-		.field_right
-			float: right
-		.field__el
-			.paysys
-				position: absolute
-				top: 15px
-				right: 30px
-		.fieldset
-			>.icon
-				float: right
-				margin: 56px 10px 0 0
-		.icon-card
-			font-size: 54px
-			color: $red
-	.info
-		margin: 0 0 20px
-	.form
-		text-align: center
+  margin: 0 auto
+  //padding-top: 10px
+  max-width: 320px
+
+  .addcard__in
+    margin-top: 20px
+    padding: 20px 20px 10px
+    margin-bottom: 10px
+    background: rgba($white, .8)
+    box-shadow: -1px 1px 0 1px rgba($white, .5)
+    .field_double
+      float: left
+      .field__el
+        float: left
+        & + .field__el
+          margin-left: 10px
+    .field_right
+      float: right
+    .field__el
+      .paysys
+        position: absolute
+        top: 8px
+        right: 15px
+    .fieldset
+      > .icon
+        float: right
+        margin: 26px 8px 0 0
+    .icon-card
+      font-size: 38px
+      color: $red
+  .info
+    margin: 20px 0
+    font-size: 11px
+
+    &:first-child
+      margin-top: 0
+
+  .form
+    text-align: center

@@ -1,0 +1,28 @@
+var lang = {
+    card_exp_date_required: "Выберите срок действия карты",
+    card_exp_date_expired: "Неверный срок действия карты",
+    card_wrong_length: "Неправильная длина номера карты",
+    card_wrong_number: "Введён неверный номер карты",
+    card_number_required: "Введите номер карты",
+    card_number_length_rule: "Номер карты должен содержать от {0} до {1} цифр",
+    card_number_length_rule_exact: "Номер карты должен содержать {0} цифр",
+    card_number_minlength: "Номер карты должен содержать минимум {0} цифр",
+    card_number_maxlength: "Номер карты не может содержать более {0} цифр",
+    card_cvv2_required: "Введите код",
+    card_cvv2_length: "Неверный код",
+    card_holder_required: "Введите имя на карте",
+    card_holder_minlength: "Имя должно содержать как минимум 3 буквы.",
+    street_address_required: "Введите адрес",
+    street_address_latin: "Введите адрес латиницей",
+    city_address_required: "Введите город",
+    city_address_latin: "Введите город латиницей",
+    country_required: "Выберите страну",
+    state_required: "Введите область/край",
+    state_latin: "Введите область/край латиницей",
+    zip_required: "Введите почтовый индекс",
+    email_required: "Введите Email",
+    email_wrong: "Введите корректный Email",
+    phone_required: "Введите номер телефона",
+    wrong_phone: "Телефон должен быть в международном формате"
+
+};
