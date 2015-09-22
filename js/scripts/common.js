@@ -143,6 +143,12 @@ $(document).ready(function () {
             return (this.optional(element) || value.length <= param);
         });
 
+        // shake it
+        $paymentForm.addClass('shake');
+
+        // animate and disable submit button
+        $('.btn_submit').addClass('active').attr('disabled', 'true');
+
         // Validates with validate plugin
         $paymentForm.validate({
             onkeyup: false,
@@ -199,6 +205,9 @@ $(document).ready(function () {
                     required: true,
                     phone: true
                 }
+            },
+            groups: {
+                exp_date: "exp_date_m exp_date_y"
             },
             messages: {
                 pan: {

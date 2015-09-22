@@ -37,8 +37,8 @@
 						<div class="field">
 							<div class="field__label">Номер карты</div>
 							<div class="field__el">
-								<input class="input input_onlynumber" placeholder="•••• •••• •••• ••••" data-next-input="exp_date_m" name="pan"
-									   id="card_number" type="text">
+								<input class="input input_onlynumber" placeholder="•••• •••• •••• ••••"
+                                       data-next-input="exp_date_m" name="pan" id="card_number" type="text">
 								<!-- paysys -->
 								<div class="paysys">
 									<i></i>
@@ -52,12 +52,17 @@
 							<div class="field field_double field_issued_at">
 								<div class="field__label">Срок действия</div>
 								<div class="field__el">
-									<input class="input" name="exp_date_m" placeholder="MM" data-next-input="exp_date_y"
-										   min="0" type="number" pattern="\d*">
+									<input class="input" name="exp_date_m" placeholder="MM"
+                                           data-next-input="exp_date_y"
+										   min="1" max="12"
+                                           type="number" pattern="\d{1,2}">
 								</div>
 								<div class="field__el">
-									<input class="input" name="exp_date_y" placeholder="ГГ" data-next-input="code_cvv2"
-										   min="0" type="number" pattern="\d*">
+									<input class="input" name="exp_date_y" placeholder="ГГ"
+                                           data-next-input="code_cvv2"
+										   min="15"
+                                           max="2027"
+                                           type="number" pattern="\d{2}|20\d{2}">
 								</div>
 							</div>
 							<!-- field -->
@@ -67,7 +72,7 @@
 								<div class="field__el">
 									<input class="input" name="code_cvv2" id="code_cvv2" placeholder="•••"
 										   data-next-input="cardholder" maxlength="3" type="number"
-										   pattern="\d*" required>
+										   pattern="\d{3}" required>
 								</div>
 							</div>
 							<!--<label class="label_block" for="code_cvv2">-->
@@ -77,10 +82,11 @@
 						<!-- field -->
 						<!-- ${card_holder} -->
 						<div class="field field__cardholder">
-							<div class="field__label">Владелец карты</div>
+							<div class="field__label">Держатель карты</div>
 							<div class="field__el">
 								<input class="input" name="cardholder" data-next-input="test" placeholder="IVAN IVANOV" type="text">
 							</div>
+                            <div class="field__notice">Латинскими буквами как указано на карте</div>
 						</div>
 					</form>
 
@@ -112,13 +118,19 @@
 
 					<!-- form -->
 					<div class="form">
-						<button class="btn btn_red" type="submit">
+						<button class="btn btn_red btn_submit" type="submit">
 							<!--${submit}-->
 							ОПЛАТИТЬ
 						</button>
 						<!--<button class="btn btn_orange">Сканировать карту</button>-->
 						<!--<a class="link" href="#">Политика конфиденциальности</a>-->
 					</div>
+
+                    <ul class="provider-icons">
+                        <li><img src="img/providers/visa.svg"></li>
+                        <li><img src="img/providers/mastercard.svg"></li>
+                        <li><img src="img/providers/pci_dss.svg"></li>
+                    </ul>
 				</div>
 			</div>
 		</div>

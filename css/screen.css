@@ -80,7 +80,8 @@ a { text-decoration: none; color: #fff; }
 
 .field { margin-bottom: 15px; }
 .field.is-error .input, .field.is-error .textarea { background: #febbbb; box-shadow: 0 0 0 1px #ff3e4b inset; }
-.field .field__label { margin-bottom: 10px; color: #000; }
+.field .field__label { margin-bottom: 5px; color: #000; }
+.field .field__notice { color: #000; margin-top: 3px; font-size: 11px; }
 .field .field__el { position: relative; }
 .field .field__placeholder { position: absolute; top: 0; right: 15px; height: 39px; line-height: 39px; color: #bababa; }
 .field.field__cardholder input { text-transform: uppercase; }
@@ -103,6 +104,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-app
 .info { *zoom: 1; }
 .info:after { content: " "; display: table; clear: both; }
 .info .info__in { display: table; }
+.info .info__in p { margin-top: -3px; }
 .info .info__ico { float: left; width: 30px; height: 30px; margin-right: 15px; border: 1px solid #fff; text-align: center; text-align: center; font-size: 0; }
 .info .info__ico:before { content: ""; display: inline-block; vertical-align: middle; width: 0; height: 100%; }
 .info .info__ico .icon { vertical-align: middle; }
@@ -112,27 +114,71 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-app
 .paysys { margin-bottom: 25px; font-size: 0; }
 .paysys.paysys_right { text-align: right; }
 .paysys.paysys_right a { margin: 0 0 0 10px; }
-.paysys i { display: block; background: url('../img/icons-sbd87258741.png') 0 -52px no-repeat; background-position: 0 -26px; width: 18px; height: 11.5px; -moz-background-size: 88px 385px; -webkit-background-size: 88px 385px; background-size: 88px 385px; margin-top: 5px; }
+.paysys i { display: block; background: url('../img/icons-s52234b5728.png') 0 0 no-repeat; background-position: 0 0; width: 18px; height: 11.5px; -moz-background-size: 88px 312px; -webkit-background-size: 88px 312px; background-size: 88px 312px; margin-top: 5px; }
 .paysys i.visa, .paysys i.mastercard { margin-top: 0; }
-.paysys .visa { background: url('../img/icons-sbd87258741.png') 0 -602px no-repeat; background-position: 0 -301px; width: 36px; height: 21px; -moz-background-size: 88px 385px; -webkit-background-size: 88px 385px; background-size: 88px 385px; }
-.paysys .mastercard { background: url('../img/icons-sbd87258741.png') 0 -320px no-repeat; background-position: 0 -160px; width: 36px; height: 21px; -moz-background-size: 88px 385px; -webkit-background-size: 88px 385px; background-size: 88px 385px; }
+.paysys .visa { background: url('../img/icons-s52234b5728.png') 0 -456px no-repeat; background-position: 0 -228px; width: 36px; height: 21px; -moz-background-size: 88px 312px; -webkit-background-size: 88px 312px; background-size: 88px 312px; }
+.paysys .mastercard { background: url('../img/icons-s52234b5728.png') 0 -174px no-repeat; background-position: 0 -87px; width: 36px; height: 21px; -moz-background-size: 88px 312px; -webkit-background-size: 88px 312px; background-size: 88px 312px; }
 .paysys img { border: 1px solid rgba(199, 196, 196, 0.42); height: 100%; }
 
 .addcard { margin: 0 auto; max-width: 320px; }
-.addcard .addcard__in { margin-top: 20px; padding: 20px 20px 10px; margin-bottom: 10px; background: rgba(255, 255, 255, 0.8); box-shadow: -1px 1px 0 1px rgba(255, 255, 255, 0.5); }
+.addcard .addcard__in { margin-top: 20px; padding: 20px 20px 10px; margin-bottom: 10px; background: rgba(255, 255, 255, 0.8); box-shadow: -1px 1px 0 1px rgba(255, 255, 255, 0.5); -webkit-user-select: none; -webkit-transform: translate3d(0, 0, 0); -moz-transform: translate3d(0, 0, 0); -ms-transform: translate3d(0, 0, 0); -o-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); }
 .addcard .addcard__in .field_double { float: left; }
 .addcard .addcard__in .field_double .field__el { float: left; }
 .addcard .addcard__in .field_double .field__el + .field__el { margin-left: 10px; }
 .addcard .addcard__in .field_right { float: right; }
 .addcard .addcard__in .field__el .paysys { position: absolute; top: 9px; right: 8px; }
-.addcard .addcard__in .fieldset > .icon { float: right; margin: 26px 8px 0 0; }
-.addcard .addcard__in .icon-card { font-size: 38px; color: #ff3e4b; }
+.addcard .addcard__in .fieldset > .icon { float: right; margin: 21px 8px 0 0; }
+.addcard .addcard__in .icon-card { font-size: 39px; color: #ff3e4b; }
 .addcard .info { margin: 20px 0; font-size: 11px; }
 .addcard .info:first-child { margin-top: 0; }
 .addcard .form { text-align: center; }
+
+@-moz-keyframes shakeAnimation { 0% { -webkit-transform: translateX(0); -moz-transform: translateX(0); -ms-transform: translateX(0); -o-transform: translateX(0); transform: translateX(0); }
+  12.5% { -webkit-transform: translateX(-6px) rotateY(-5deg); -moz-transform: translateX(-6px) rotateY(-5deg); -ms-transform: translateX(-6px) rotateY(-5deg); -o-transform: translateX(-6px) rotateY(-5deg); transform: translateX(-6px) rotateY(-5deg); }
+  37.5% { -webkit-transform: translateX(5px) rotateY(4deg); -moz-transform: translateX(5px) rotateY(4deg); -ms-transform: translateX(5px) rotateY(4deg); -o-transform: translateX(5px) rotateY(4deg); transform: translateX(5px) rotateY(4deg); }
+  62.5% { -webkit-transform: translateX(-3px) rotateY(-2deg); -moz-transform: translateX(-3px) rotateY(-2deg); -ms-transform: translateX(-3px) rotateY(-2deg); -o-transform: translateX(-3px) rotateY(-2deg); transform: translateX(-3px) rotateY(-2deg); }
+  87.5% { -webkit-transform: translateX(2px) rotateY(1deg); -moz-transform: translateX(2px) rotateY(1deg); -ms-transform: translateX(2px) rotateY(1deg); -o-transform: translateX(2px) rotateY(1deg); transform: translateX(2px) rotateY(1deg); }
+  100% { -webkit-transform: translateX(0); -moz-transform: translateX(0); -ms-transform: translateX(0); -o-transform: translateX(0); transform: translateX(0); } }
+@-webkit-keyframes shakeAnimation { 0% { -webkit-transform: translateX(0); -moz-transform: translateX(0); -ms-transform: translateX(0); -o-transform: translateX(0); transform: translateX(0); }
+  12.5% { -webkit-transform: translateX(-6px) rotateY(-5deg); -moz-transform: translateX(-6px) rotateY(-5deg); -ms-transform: translateX(-6px) rotateY(-5deg); -o-transform: translateX(-6px) rotateY(-5deg); transform: translateX(-6px) rotateY(-5deg); }
+  37.5% { -webkit-transform: translateX(5px) rotateY(4deg); -moz-transform: translateX(5px) rotateY(4deg); -ms-transform: translateX(5px) rotateY(4deg); -o-transform: translateX(5px) rotateY(4deg); transform: translateX(5px) rotateY(4deg); }
+  62.5% { -webkit-transform: translateX(-3px) rotateY(-2deg); -moz-transform: translateX(-3px) rotateY(-2deg); -ms-transform: translateX(-3px) rotateY(-2deg); -o-transform: translateX(-3px) rotateY(-2deg); transform: translateX(-3px) rotateY(-2deg); }
+  87.5% { -webkit-transform: translateX(2px) rotateY(1deg); -moz-transform: translateX(2px) rotateY(1deg); -ms-transform: translateX(2px) rotateY(1deg); -o-transform: translateX(2px) rotateY(1deg); transform: translateX(2px) rotateY(1deg); }
+  100% { -webkit-transform: translateX(0); -moz-transform: translateX(0); -ms-transform: translateX(0); -o-transform: translateX(0); transform: translateX(0); } }
+@-o-keyframes shakeAnimation { 0% { -webkit-transform: translateX(0); -moz-transform: translateX(0); -ms-transform: translateX(0); -o-transform: translateX(0); transform: translateX(0); }
+  12.5% { -webkit-transform: translateX(-6px) rotateY(-5deg); -moz-transform: translateX(-6px) rotateY(-5deg); -ms-transform: translateX(-6px) rotateY(-5deg); -o-transform: translateX(-6px) rotateY(-5deg); transform: translateX(-6px) rotateY(-5deg); }
+  37.5% { -webkit-transform: translateX(5px) rotateY(4deg); -moz-transform: translateX(5px) rotateY(4deg); -ms-transform: translateX(5px) rotateY(4deg); -o-transform: translateX(5px) rotateY(4deg); transform: translateX(5px) rotateY(4deg); }
+  62.5% { -webkit-transform: translateX(-3px) rotateY(-2deg); -moz-transform: translateX(-3px) rotateY(-2deg); -ms-transform: translateX(-3px) rotateY(-2deg); -o-transform: translateX(-3px) rotateY(-2deg); transform: translateX(-3px) rotateY(-2deg); }
+  87.5% { -webkit-transform: translateX(2px) rotateY(1deg); -moz-transform: translateX(2px) rotateY(1deg); -ms-transform: translateX(2px) rotateY(1deg); -o-transform: translateX(2px) rotateY(1deg); transform: translateX(2px) rotateY(1deg); }
+  100% { -webkit-transform: translateX(0); -moz-transform: translateX(0); -ms-transform: translateX(0); -o-transform: translateX(0); transform: translateX(0); } }
+@-ms-keyframes shakeAnimation { 0% { -webkit-transform: translateX(0); -moz-transform: translateX(0); -ms-transform: translateX(0); -o-transform: translateX(0); transform: translateX(0); }
+  12.5% { -webkit-transform: translateX(-6px) rotateY(-5deg); -moz-transform: translateX(-6px) rotateY(-5deg); -ms-transform: translateX(-6px) rotateY(-5deg); -o-transform: translateX(-6px) rotateY(-5deg); transform: translateX(-6px) rotateY(-5deg); }
+  37.5% { -webkit-transform: translateX(5px) rotateY(4deg); -moz-transform: translateX(5px) rotateY(4deg); -ms-transform: translateX(5px) rotateY(4deg); -o-transform: translateX(5px) rotateY(4deg); transform: translateX(5px) rotateY(4deg); }
+  62.5% { -webkit-transform: translateX(-3px) rotateY(-2deg); -moz-transform: translateX(-3px) rotateY(-2deg); -ms-transform: translateX(-3px) rotateY(-2deg); -o-transform: translateX(-3px) rotateY(-2deg); transform: translateX(-3px) rotateY(-2deg); }
+  87.5% { -webkit-transform: translateX(2px) rotateY(1deg); -moz-transform: translateX(2px) rotateY(1deg); -ms-transform: translateX(2px) rotateY(1deg); -o-transform: translateX(2px) rotateY(1deg); transform: translateX(2px) rotateY(1deg); }
+  100% { -webkit-transform: translateX(0); -moz-transform: translateX(0); -ms-transform: translateX(0); -o-transform: translateX(0); transform: translateX(0); } }
+@keyframes shakeAnimation { 0% { -webkit-transform: translateX(0); -moz-transform: translateX(0); -ms-transform: translateX(0); -o-transform: translateX(0); transform: translateX(0); }
+  12.5% { -webkit-transform: translateX(-6px) rotateY(-5deg); -moz-transform: translateX(-6px) rotateY(-5deg); -ms-transform: translateX(-6px) rotateY(-5deg); -o-transform: translateX(-6px) rotateY(-5deg); transform: translateX(-6px) rotateY(-5deg); }
+  37.5% { -webkit-transform: translateX(5px) rotateY(4deg); -moz-transform: translateX(5px) rotateY(4deg); -ms-transform: translateX(5px) rotateY(4deg); -o-transform: translateX(5px) rotateY(4deg); transform: translateX(5px) rotateY(4deg); }
+  62.5% { -webkit-transform: translateX(-3px) rotateY(-2deg); -moz-transform: translateX(-3px) rotateY(-2deg); -ms-transform: translateX(-3px) rotateY(-2deg); -o-transform: translateX(-3px) rotateY(-2deg); transform: translateX(-3px) rotateY(-2deg); }
+  87.5% { -webkit-transform: translateX(2px) rotateY(1deg); -moz-transform: translateX(2px) rotateY(1deg); -ms-transform: translateX(2px) rotateY(1deg); -o-transform: translateX(2px) rotateY(1deg); transform: translateX(2px) rotateY(1deg); }
+  100% { -webkit-transform: translateX(0); -moz-transform: translateX(0); -ms-transform: translateX(0); -o-transform: translateX(0); transform: translateX(0); } }
+.shake { -webkit-animation-duration: 400ms; -webkit-animation-timing-function: ease-in-out; -webkit-animation-name: shakeAnimation; -moz-animation-duration: 400ms; -moz-animation-timing-function: ease-in-out; -moz-animation-name: shakeAnimation; }
+
+@keyframes submitButtonAnimation { 0% { background-position: 0% 0%; }
+  100% { background-position: -300% 0%; } }
+@-webkit-keyframes submitButtonAnimation { 0% { background-position: 0% 0%; }
+  100% { background-position: -300% 0%; } }
+.btn_submit.active { background: -webkit-linear-gradient(13deg, #ff5a00, #ff955c, #fd2e36, #ff3e4b, #ff5a00); background: linear-gradient(77deg, #ff5a00, #ff955c, #fd2e36, #ff3e4b, #ff5a00); background-size: 300% 100%; -webkit-animation: submitButtonAnimation 3.5s linear infinite; animation: submitButtonAnimation 3.5s linear infinite; }
 
 label.error { display: inline-block; margin-top: 5px; color: #ff3e4b; }
 
 .input.error { background-color: rgba(255, 0, 0, 0.1); border: 1px solid rgba(255, 0, 0, 0.3); }
 
 .field_secure label.error { min-width: 300px; text-align: right; position: absolute; top: 40px; right: 0; }
+
+.provider-icons { text-align: center; margin-top: 15px; }
+.provider-icons li { margin-right: 10px; display: inline-block; opacity: 0.5; transition: opacity 0.5s ease; }
+.provider-icons li:hover { opacity: 1; }
+.provider-icons li:last-child { margin-right: 0; }
+.provider-icons li img { width: 50px; }
