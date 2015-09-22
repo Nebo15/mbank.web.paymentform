@@ -5,10 +5,18 @@
     text-align: right
     a
       margin: 0 0 0 10px
-  a
-    display: inline-block
-    margin-right: 10px
-    vertical-align: top
+  i
+    display: block
+    +sr(cardicon)
+    margin-top: 5px
+    &.visa, &.mastercard
+      margin-top: 0
+
+  .visa
+    +sr(visa)
+  .mastercard
+    +sr(mc)
+
   img
     border: 1px solid rgba(199, 196, 196, 0.42)
     height: 100%

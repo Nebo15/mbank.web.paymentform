@@ -37,10 +37,11 @@
 						<div class="field">
 							<div class="field__label">Номер карты</div>
 							<div class="field__el">
-								<input class="input"  name="pan" id="card_number" type="text" value="7876 6754 3216 4876">
+								<input class="input input_onlynumber" placeholder="•••• •••• •••• ••••" data-next-input="exp_date_m" name="pan"
+									   id="card_number" type="text">
 								<!-- paysys -->
 								<div class="paysys">
-									<!--<a href="#"><img src="http://placehold.it/70x40" alt=""/></a>-->
+									<i></i>
 								</div>
 							</div>
 						</div>
@@ -51,10 +52,12 @@
 							<div class="field field_double field_issued_at">
 								<div class="field__label">Срок действия</div>
 								<div class="field__el">
-									<input class="input" type="text">
+									<input class="input" name="exp_date_m" placeholder="MM" data-next-input="exp_date_y"
+										   min="0" type="number" pattern="\d*">
 								</div>
 								<div class="field__el">
-									<input class="input" type="text">
+									<input class="input" name="exp_date_y" placeholder="ГГ" data-next-input="code_cvv_2"
+										   min="0" type="number" pattern="\d*">
 								</div>
 							</div>
 							<!-- field -->
@@ -62,17 +65,20 @@
 							<div class="field field_right field_secure">
 								<div class="field__label">Код CVV</div>
 								<div class="field__el">
-									<input class="input" type="text" maxlength="3" required>
+									<input class="input" name="code_cvv2" id="code_cvv2" placeholder="CVC" data-next-input="cardholder"
+										   maxlength="3" type="number" pattern="\d*" required>
 								</div>
 							</div>
-							<i class="icon icon-card"></i>
+							<!--<label class="label_block" for="code_cvv2">-->
+							<label for="code_cvv2" class="icon icon-card"></label>
+							<!--</label>-->
 						</div>
 						<!-- field -->
 						<!-- ${card_holder} -->
-						<div class="field">
+						<div class="field field__cardholder">
 							<div class="field__label">Владелец карты</div>
 							<div class="field__el">
-								<input class="input" type="text">
+								<input class="input" name="cardholder" placeholder="IVAN IVANOV" type="text">
 							</div>
 						</div>
 					</form>

@@ -1,62 +1,63 @@
 $(document).ready(function () {
 
     // Masking card number
-    $("#card_number").mask("0000-0000-0000-0000-999", {
-        maxlength: false
+    $("#card_number").mask("0000 0000 0000 0000", {
+        maxlength: true
     });
 
-    // jQuery SelectBox usage
-    //(function () {
-    //    var selects = $("select");
-    //    selects.selectBox();
-    //    //selects.css("position", "absolute");
-    //    //selects.css("display", "inherit");
-    //    //selects.css("visibility", "hidden");
-    //
-    //    $(document).click(function () {
-    //        $(".js-drop ul").hide();
-    //        $(".js-select-list").hide();
-    //        $(".js-select").removeClass("is-active");
-    //    });
-    //
-    //    $(".js-select").each(function () {
-    //        var select_list = $(this).parent().find(".js-select-list");
-    //        var text = select_list.find("li").first().text();
-    //        $(this).find(".js-select-text").text(text);
-    //        $(this).click(function (event) {
-    //            if ($(this).hasClass("is-active")) {
-    //                $(this).removeClass("is-active");
-    //                select_list.slideUp("fast");
-    //            }
-    //            else {
-    //                $(".js-select").removeClass("is-active");
-    //                $(".js-select-list").hide();
-    //                select_list.slideDown("fast");
-    //                $(this).addClass("is-active");
-    //            }
-    //            event.stopPropagation();
-    //        });
-    //
-    //        select_list.find("li").click(function (event) {
-    //            var id = $(this).attr("data-id");
-    //            var text = $(this).text();
-    //            $(this).parent().parent().find(".js-select-text").text(text);
-    //            $(this).parent().parent().find(".js-select-input").val(id);
-    //            $(this).parent().hide();
-    //            $(this).parents(".js-select").removeClass("is-active");
-    //            event.stopPropagation();
-    //        });
-    //    });
-    //
-    //    $('.js-select').click(function (event) {
-    //        event.stopPropagation();
-    //    });
-    //})();
 
+
+    (function () {
+
+        function getPrev (el) {
+            $(el).parent().prev('.field__el').find('.input');
+        }
+        var $inputs = $('[data-next-input]');
+        function prepare (inputs) {
+            var els = {},
+              el = null,
+              attrVal = null;
+            inputs.each(function () {
+                el = $(this);
+                attrVal = el.attr('data-next-input');
+                if (!attrVal) {
+                    return;
+                }
+                els[attrVal] = el;
+            });
+            return els;
+        }
+        var els = prepare($inputs);
+        $inputs.on('keydown', function (e) {
+            var val = $(this).val(),
+              name = $(this).attr('name'),
+              next;
+
+            if (e.keyCode == 8) { //delete
+                if (!!val) return;
+                next = els[name];
+            }
+            if (!next) {
+                return;
+            }
+            console.log('next', next, name, val);
+            next.focus();
+        });
+        //$('.field_issued_at input').on('keydown', function (e) {
+        //
+
+        //    if (['3','4','5','6','7','8','9'].indexOf(String.fromCharCode(e.keyCode)) < 0 && val < 9) return;
+        //    var next = $(this).parent().next('.field__el').find('.input');
+        //    if (!next) {
+        //        return;
+        //    }
+        //    next.focus();
+        //});
+    })();
     // Validators
     (function () {
         var card_number_regexp = /[^0-9]/g;
-        var card_number_visible_regexp = /[^0-9\-]/g;
+        var card_number_visible_regexp = /[^0-9\s]/g;
         var cardholder_regexp = /[^ A-z]/g;
         var phone_regexp = /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/;
 
@@ -113,14 +114,21 @@ $(document).ready(function () {
                     creditcard_minlength: 12,
                     creditcard_maxlength: 19
                 },
-                /*exp_date_m: {
+                exp_date_m: {
                     required: true,
-                    exp_date: true
+                    //exp_date: true,
+                    maxlength: 2
+                },
+                code_cvv2: {
+                    required: true,
+                    minlength: 3,
+                    maxlength: 3
                 },
                 exp_date_y: {
                     required: true,
-                    exp_date: true
-                },*/
+                    //exp_date: true,
+                    maxlength: 2
+                },
                 cardholder: {
                     required: true,
                     minlength: 3
@@ -168,22 +176,23 @@ $(document).ready(function () {
                     creditcard_minlength: lang.card_number_minlength,
                     creditcard_maxlength: lang.card_number_maxlength
                 },
-                cvv: {
+                code_cvv2: {
                     required: lang.card_cvv2_required,
-                    minlength: lang.card_cvv2_length
+                    minlength: lang.card_cvv2_length,
+                    maxlength: lang.card_cvv2_length
                 },
                 cardholder: {
                     required: lang.card_holder_required,
                     minlength: lang.card_holder_minlength
                 },
-                /*exp_date_m: {
+                exp_date_m: {
                     required: lang.card_exp_date_required,
                     exp_date: lang.card_exp_date_expired
                 },
                 exp_date_y: {
                     required: lang.card_exp_date_required,
                     exp_date: lang.card_exp_date_expired
-                },*/
+                },
                 street_address: {
                     required: lang.street_address_required,
                     latin: lang.street_address_latin
@@ -253,34 +262,46 @@ $(document).ready(function () {
         });
 
         // Detect card type
-        $('#card_number').on('keypress keyup', function (event) {
+        var oldDetection = null;
+        var $cardNumber = $('#card_number');
+        $cardNumber.on('keypress keyup', function () {
             var $this = $(this);
+            var $paysys = $this.siblings('.paysys').find('i');
 
-            $('#card_number').validateCreditCard(function (result) {
-                if (result.card_type) {
-
-                    if (cardDetectionEnabled) {
-                        $('.card').html('<i class="' + result.card_type.name + '"></i>');
-                    }
-
-                    var max_length = result.card_type.valid_length[result.card_type.valid_length.length - 1];
-
-                    $this.rules('add', {
-                        rangelength_stripped: [result.card_type.valid_length[0], max_length]
-                    });
-
-                    if (result.card_type.name == "china_unionpay") {
-                        $this.rules('remove', "creditcard_stripped");
-                    } else {
-                        $this.rules('add', {
-                            creditcard_stripped: true
-                        });
-                    }
-
-                    // Here we can change mask dynamically
+            $this.validateCreditCard(function (result) {
+                console.log('validate', result.card_type, oldDetection);
+                if (result == oldDetection) {
+                    return;
                 }
+                if (!result.card_type || !result.card_type.name) { // clear
+                    $paysys.attr('class','');
+                    return;
+                }
+                //if (oldDetection && oldDetection.card_type.name === result.card_type.name) {
+                //    return;
+                //}
+
+                if (cardDetectionEnabled) {
+                    $paysys.addClass(result.card_type.name);
+
+                }
+                var max_length = result.card_type.valid_length[result.card_type.valid_length.length - 1];
+                $this.rules('add', {
+                    rangelength_stripped: [result.card_type.valid_length[0], max_length]
+                });
+
+                if (result.card_type.name == "china_unionpay") {
+                    $this.rules('remove', "creditcard_stripped");
+                } else {
+                    $this.rules('add', {
+                        creditcard_stripped: true
+                    });
+                }
+
+                oldDetection = result;
             });
         });
+        $cardNumber.trigger('keyup');
     })();
 
 	/*$("select").change(function(){

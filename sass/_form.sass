@@ -103,7 +103,13 @@
     height: 39px
     line-height: 39px
     color: $gray
+  &.field__cardholder
+    input
+      text-transform: uppercase
   &.field_issued_at
+    .input
+      +placeholder
+        letter-spacing: 1px
     .field__el
       width: 50px
       .input
@@ -119,3 +125,11 @@
   height: 39px
   background: $white
   padding: 0 8px
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button
+  -webkit-appearance: none
+  margin: 0
+
+.label_block
+  display: inline-block

@@ -24,7 +24,7 @@ table { border-spacing: 0; border-collapse: collapse; width: 100%; }
 @font-face { font-family: HelveticaNeue-Light; src: url("fonts/helveticaneue-ultralight.eot"); src: url("fonts/helveticaneue-ultralight.eot?#iefix") format("embedded-opentype"), url("fonts/helveticaneue-ultralight.woff") format("woff"), url("fonts/helveticaneue-ultralight.ttf") format("truetype"); font-weight: normal; font-style: normal; }
 body { font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; font-size: 13px; line-height: 1.3; color: #fff; }
 
-button, input, textarea { font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; font-size: 13px; }
+button, input, textarea { font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; font-size: 13px; appearance: none; -webkit-appearance: none; border-radius: 0; }
 
 button { background: none; color: #fff; }
 
@@ -83,6 +83,12 @@ a { text-decoration: none; color: #fff; }
 .field .field__label { margin-bottom: 10px; color: #000; }
 .field .field__el { position: relative; }
 .field .field__placeholder { position: absolute; top: 0; right: 15px; height: 39px; line-height: 39px; color: #bababa; }
+.field.field__cardholder input { text-transform: uppercase; }
+.field.field_issued_at .input:-ms-input-placeholder { letter-spacing: 1px; }
+.field.field_issued_at .input:-moz-placeholder { letter-spacing: 1px; }
+.field.field_issued_at .input::-moz-placeholder { letter-spacing: 1px; }
+.field.field_issued_at .input::-webkit-input-placeholder { letter-spacing: 1px; }
+.field.field_issued_at .input::placeholder { letter-spacing: 1px; }
 .field.field_issued_at .field__el { width: 50px; }
 .field.field_issued_at .field__el .input { text-align: center; }
 .field.field_secure .field__el { width: 50px; }
@@ -90,10 +96,14 @@ a { text-decoration: none; color: #fff; }
 
 .input { width: 100%; height: 39px; background: #fff; padding: 0 8px; }
 
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+
+.label_block { display: inline-block; }
+
 .info { *zoom: 1; }
 .info:after { content: " "; display: table; clear: both; }
 .info .info__in { display: table; }
-.info .info__ico { float: left; width: 40px; height: 40px; margin-right: 15px; border: 1px solid #fff; text-align: center; text-align: center; font-size: 0; }
+.info .info__ico { float: left; width: 30px; height: 30px; margin-right: 15px; border: 1px solid #fff; text-align: center; text-align: center; font-size: 0; }
 .info .info__ico:before { content: ""; display: inline-block; vertical-align: middle; width: 0; height: 100%; }
 .info .info__ico .icon { vertical-align: middle; }
 .info .info__ico .icon-info, .info .info__ico .icon-locked { font-size: 16px; }
@@ -102,7 +112,10 @@ a { text-decoration: none; color: #fff; }
 .paysys { margin-bottom: 25px; font-size: 0; }
 .paysys.paysys_right { text-align: right; }
 .paysys.paysys_right a { margin: 0 0 0 10px; }
-.paysys a { display: inline-block; margin-right: 10px; vertical-align: top; }
+.paysys i { display: block; background: url('../img/icons-sbd87258741.png') 0 -52px no-repeat; background-position: 0 -26px; width: 18px; height: 11.5px; -moz-background-size: 88px 385px; -webkit-background-size: 88px 385px; background-size: 88px 385px; margin-top: 5px; }
+.paysys i.visa, .paysys i.mastercard { margin-top: 0; }
+.paysys .visa { background: url('../img/icons-sbd87258741.png') 0 -602px no-repeat; background-position: 0 -301px; width: 36px; height: 21px; -moz-background-size: 88px 385px; -webkit-background-size: 88px 385px; background-size: 88px 385px; }
+.paysys .mastercard { background: url('../img/icons-sbd87258741.png') 0 -320px no-repeat; background-position: 0 -160px; width: 36px; height: 21px; -moz-background-size: 88px 385px; -webkit-background-size: 88px 385px; background-size: 88px 385px; }
 .paysys img { border: 1px solid rgba(199, 196, 196, 0.42); height: 100%; }
 
 .addcard { margin: 0 auto; max-width: 320px; }
@@ -111,9 +124,15 @@ a { text-decoration: none; color: #fff; }
 .addcard .addcard__in .field_double .field__el { float: left; }
 .addcard .addcard__in .field_double .field__el + .field__el { margin-left: 10px; }
 .addcard .addcard__in .field_right { float: right; }
-.addcard .addcard__in .field__el .paysys { position: absolute; top: 8px; right: 15px; }
+.addcard .addcard__in .field__el .paysys { position: absolute; top: 9px; right: 8px; }
 .addcard .addcard__in .fieldset > .icon { float: right; margin: 26px 8px 0 0; }
 .addcard .addcard__in .icon-card { font-size: 38px; color: #ff3e4b; }
 .addcard .info { margin: 20px 0; font-size: 11px; }
 .addcard .info:first-child { margin-top: 0; }
 .addcard .form { text-align: center; }
+
+label.error { display: inline-block; margin-top: 5px; color: #ff3e4b; }
+
+.input.error { background-color: rgba(255, 0, 0, 0.1); border: 1px solid rgba(255, 0, 0, 0.3); }
+
+.field_secure label.error { min-width: 300px; text-align: right; position: absolute; top: 40px; right: 0; }
