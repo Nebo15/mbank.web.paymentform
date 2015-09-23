@@ -366,7 +366,7 @@ $(document).ready(function () {
         // Detect card type
         var oldDetection = null;
         var $cardNumber = $('#cardNumber');
-        $cardNumber.on('keypress keyup', function () {
+        $cardNumber.on('keyup', function () {
             var $this = $(this);
             var $paysys = $this.siblings('.paysys').find('i');
 
@@ -375,11 +375,11 @@ $(document).ready(function () {
                     return;
                 }
                 if (!result.card_type || !result.card_type.name) { // clear
-                    $paysys.attr('class','');
+                    $paysys.attr('class', ''); // TODO add default class 'icon-card-front'
                     return;
                 }
 
-                $paysys.addClass(result.card_type.name);
+                $paysys.addClass('icon-provider-' + result.card_type.name);
 
                 var max_length = result.card_type.valid_length[result.card_type.valid_length.length - 1];
                 $this.rules('add', {
