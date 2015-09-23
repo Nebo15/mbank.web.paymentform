@@ -2,199 +2,144 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Template</title>
-	<meta name="viewport" content="maximum-scale=1.0,width=device-width,user-scalable=no, minimal-ui"/>
-	<link rel="stylesheet" media="all" href="css/screen.css">
+	<title>Best Wallet - форма оплаты</title>
+	<meta name="viewport" content="maximum-scale=1,width=device-width,user-scalable=no,minimal-ui">
+    <!-- inject:css -->
+    <!-- endinject -->
 </head>
 <body>
-<!-- wrapper, screen, head, addcard, info, paysy, field, , input, fieldset, form, icon, btn, link -->
-<!-- wrapper -->
-<div class="wrapper">
-	<!-- screen -->
-	<div class="screen">
-		<div class="screen__in">
-			<div class="screen__bg">
-				<!-- addcard -->
-				<div class="addcard">
-					<!-- info -->
-					<div class="info">
-						<div class="info__ico"><span>$</span></div>
-						<div class="info__in">
-                            <!-- Привязка карты -->
-                            <!-- <p>
-                                После нажатия кнопки «Продолжить» мы снимем с указанной карты <b>1,00 RUR</b> или эквивалентную сумму, чтобы убедиться, что она принадлежит вам. Мы возместим эти средства на ваш счет в течение 24 часов.
-                            </p> -->
-                            <!-- Оплата услуги -->
-                            <p>
-                                После нажатия кнопки «Продолжить» мы снимем с указанной карты <b>1,00 RUR</b> для оплаты выбранной услуги. После этого Вы будете перенаправлены на страницу 3D Secure вашего банка для прохождения дополнительной проверки.
-                            </p>
-						</div>
-					</div>
-					<!-- paysys -->
-					<!--<div class="paysys">-->
-						<!--<a href="#"><img src="http://placehold.it/70x40" alt=""/></a>-->
-						<!--<a href="#"><img src="http://placehold.it/70x40" alt=""/></a>-->
-						<!--<a href="#"><img src="http://placehold.it/70x40" alt=""/></a>-->
-						<!--<a href="#"><img src="http://placehold.it/70x40" alt=""/></a>-->
-						<!--<a href="#"><img src="http://placehold.it/70x40" alt=""/></a>-->
-					<!--</div>-->
-					<form class="payment__form">
-						<div class="addcard__in">
-							<!-- field -->
-							<!--  ${card_number} -->
-							<div class="field">
-								<div class="field__label">Номер карты</div>
-								<div class="field__el">
-									<input class="input input_onlynumber"
-                                           placeholder="•••• •••• •••• ••••"
-										   data-next-input="exp_date_m"
-                                           name="pan"
-                                           id="cardNumber"
-                                           type="text"
-                                           required
-                                           pattern="\d*"
-                                           autocomplete="cc-number"
-                                           x-autocompletetype="cc-number">
-									<!-- paysys -->
-									<div class="paysys">
-										<i></i>
-									</div>
-								</div>
-							</div>
-							<!-- fieldset -->
-							<div class="fieldset">
-								<!-- field -->
-								<!--  ${card_expiration_date} -->
-								<div class="field field_double field_issued_at">
-									<div class="field__label">Срок действия</div>
-									<div class="field__el">
-										<input class="input"
-                                               id="card_exp_date_m"
-                                               name="exp_date_m"
-                                               placeholder="MM"
-											   data-next-input="exp_date_y"
-                                               data-next-input-direction="prev"
-											   min="1"
-                                               max="12"
-											   type="number"
-                                               required
-                                               pattern="\d*"
-                                               autocomplete="cc-exp-month"
-                                               x-autocompletetype="cc-exp-month">
-									</div>
-									<div class="field__el ">
-										<input class="input"
-                                               id="card_exp_date_y"
-                                               name="exp_date_y"
-                                               placeholder="ГГ"
-											   data-next-input="code_cvv2"
-											   min="15"
-                                               max="27"
-											   type="number"
-                                               required
-                                               pattern="\d*"
-                                               autocomplete="cc-exp-year"
-                                               x-autocompletetype="cc-exp-year">
-									</div>
-								</div>
-								<!-- field -->
-								<!-- ${card_verification_code} -->
-								<div class="field field_right field_secure">
-									<div class="field__label">Код CVV</div>
-									<div class="field__el">
-										<input class="input"
-                                               name="code_cvv2"
-                                               id="code_cvv2"
-                                               placeholder="•••"
-											   data-next-input="cardholder"
-                                               min="0"
-                                               max="9999"
-                                               maxlength="4"
-                                               type="number"
-                                               required
-                                               pattern="\d*"
-                                               autocomplete="cc-csc"
-                                               x-autocompletetype="cc-csc">
-									</div>
-								</div>
-								<!--<label class="label_block" for="code_cvv2">-->
-								<label for="code_cvv2" class="icon icon-card"></label>
-								<!--</label>-->
-							</div>
-							<!-- field -->
-							<!-- ${card_holder} -->
-							<div class="field field__cardholder">
-								<div class="field__label">Держатель карты</div>
-								<div class="field__el">
-									<input class="input"
-                                           id="card_holder"
-                                           name="cardholder"
-                                           data-next-input="test"
-										   placeholder="IVAN IVANOV"
-                                           type="text"
-                                           required
-                                           minlength="3"
-                                           autocomplete="cc-name"
-                                           x-autocompletetype="cc-name">
-								</div>
-								<div class="field__notice">Латинскими буквами как указано на карте</div>
-							</div>
-						</div>
+    <!-- wrapper, screen, head, addcard, info, paysy, field, , input, fieldset, form, icon, btn, link -->
+    <!-- wrapper -->
+    <div class="wrapper">
+    	<!-- screen -->
+    	<div class="screen">
+    		<div class="screen__in">
+    			<div class="screen__bg">
+    				<!-- addcard -->
+    				<div class="addcard">
+    					<!-- info -->
+    					<div class="info">
+    						<div class="info__ico"><span>$</span></div>
+    						<div class="info__in">
+                                <!-- Привязка карты -->
+                                <!-- <p>
+                                    После нажатия кнопки «Продолжить» мы снимем с указанной карты <b>1,00 RUR</b> или эквивалентную сумму, чтобы убедиться, что она принадлежит вам. Мы возместим эти средства на ваш счет в течение 24 часов.
+                                </p> -->
+                                <!-- Оплата услуги -->
+                                <p>
+                                    После нажатия кнопки «Продолжить» мы снимем с указанной карты <b>1,00 RUR</b> для оплаты выбранной услуги. После этого Вы будете перенаправлены на страницу 3D Secure вашего банка для прохождения дополнительной проверки.
+                                </p>
+    						</div>
+    					</div>
+    					<!-- paysys -->
+    					<!--<div class="paysys">-->
+    						<!--<a href="#"><img src="http://placehold.it/70x40" alt=""/></a>-->
+    						<!--<a href="#"><img src="http://placehold.it/70x40" alt=""/></a>-->
+    						<!--<a href="#"><img src="http://placehold.it/70x40" alt=""/></a>-->
+    						<!--<a href="#"><img src="http://placehold.it/70x40" alt=""/></a>-->
+    						<!--<a href="#"><img src="http://placehold.it/70x40" alt=""/></a>-->
+    					<!--</div>-->
+    					<form class="payment__form">
+    						<div class="addcard__in">
+    							<!-- field -->
+    							<!--  ${card_number} -->
+    							<div class="field">
+    								<div class="field__label">Номер карты</div>
+    								<div class="field__el">
+    									<input class="input input_onlynumber" placeholder="•••• •••• •••• ••••" data-next-input="exp_date_m" name="pan" id="cardNumber" type="text" required pattern="\d*" autocomplete="cc-number" x-autocompletetype="cc-number">
+    									<!-- paysys -->
+    									<div class="paysys">
+    										<i></i>
+    									</div>
+    								</div>
+    							</div>
+    							<!-- fieldset -->
+    							<div class="fieldset">
+    								<!-- field -->
+    								<!--  ${card_expiration_date} -->
+    								<div class="field field_double field_issued_at">
+    									<div class="field__label">Срок действия</div>
+    									<div class="field__el">
+    										<input class="input" id="card_exp_date_m" name="exp_date_m" placeholder="MM" data-next-input="exp_date_y" data-next-input-direction="prev" min="1" max="12" type="number" required pattern="\d*" autocomplete="cc-exp-month" x-autocompletetype="cc-exp-month">
+    									</div>
+    									<div class="field__el">
+    										<input class="input" id="card_exp_date_y" name="exp_date_y" placeholder="ГГ" data-next-input="code_cvv2" min="15" max="27" type="number" required pattern="\d*" autocomplete="cc-exp-year" x-autocompletetype="cc-exp-year">
+    									</div>
+    								</div>
+    								<!-- field -->
+    								<!-- ${card_verification_code} -->
+    								<div class="field field_right field_secure">
+    									<div class="field__label">Код CVV</div>
+    									<div class="field__el">
+    										<input class="input" name="code_cvv2" id="code_cvv2" placeholder="•••" data-next-input="cardholder" min="0" max="9999" maxlength="4" type="number" required pattern="\d*" autocomplete="cc-csc" x-autocompletetype="cc-csc">
+    									</div>
+    								</div>
+    								<!--<label class="label_block" for="code_cvv2">-->
+    								<label for="code_cvv2" class="icon icon-card"></label>
+    								<!--</label>-->
+    							</div>
+    							<!-- field -->
+    							<!-- ${card_holder} -->
+    							<div class="field field__cardholder">
+    								<div class="field__label">Держатель карты</div>
+    								<div class="field__el">
+    									<input class="input" id="card_holder" name="cardholder" data-next-input="test" placeholder="IVAN IVANOV" type="text" required minlength="3" autocomplete="cc-name" x-autocompletetype="cc-name">
+    								</div>
+    								<div class="field__notice">Латинскими буквами как указано на карте</div>
+    							</div>
+    						</div>
 
-						<!--<div class="iframe_inputs">-->
-							<!--&lt;!&ndash; ${billing_address_input} &ndash;&gt;-->
-							<!--&lt;!&ndash; ${billing_city_input} &ndash;&gt;-->
-							<!--&lt;!&ndash; ${billing_country_input} &ndash;&gt;-->
-							<!--<br>-->
-							<!--&lt;!&ndash; ${billing_state_province_input} &ndash;&gt;-->
-							<!--&lt;!&ndash; ${billing_zip_input} &ndash;&gt;-->
-							<!--&lt;!&ndash; ${billing_email_input} &ndash;&gt;-->
-							<!--&lt;!&ndash; ${billing_phone_input} &ndash;&gt;-->
-						<!--</div>-->
+    						<!--<div class="iframe_inputs">-->
+    							<!--&lt;!&ndash; ${billing_address_input} &ndash;&gt;-->
+    							<!--&lt;!&ndash; ${billing_city_input} &ndash;&gt;-->
+    							<!--&lt;!&ndash; ${billing_country_input} &ndash;&gt;-->
+    							<!--<br>-->
+    							<!--&lt;!&ndash; ${billing_state_province_input} &ndash;&gt;-->
+    							<!--&lt;!&ndash; ${billing_zip_input} &ndash;&gt;-->
+    							<!--&lt;!&ndash; ${billing_email_input} &ndash;&gt;-->
+    							<!--&lt;!&ndash; ${billing_phone_input} &ndash;&gt;-->
+    						<!--</div>-->
 
-						<!-- info -->
-						<div class="info">
-							<div class="info__ico">
-								<i class="icon icon-locked"></i>
-							</div>
-							<div class="info__in">
-								<p>
-									<!-- ${secure} -->
-									Передача данных шифруется высоконадежным 256-битным алгоритмом и осуществляется посредством SSL протокола
-								</p>
-							</div>
-						</div>
+    						<!-- info -->
+    						<div class="info">
+    							<div class="info__ico">
+    								<i class="icon icon-locked"></i>
+    							</div>
+    							<div class="info__in">
+    								<p>
+    									<!-- ${secure} -->
+    									Передача данных шифруется высоконадежным 256-битным алгоритмом и осуществляется посредством SSL протокола
+    								</p>
+    							</div>
+    						</div>
 
-						<!-- ${hidden_inputs} -->
+    						<!-- ${hidden_inputs} -->
 
-						<!-- form -->
-						<div class="form">
-							<button class="btn btn_red btn_submit" type="submit">
-								<!--${submit}-->
-								Продолжить
-							</button>
-							<!--<button class="btn btn_orange">Сканировать карту</button>-->
-							<!--<a class="link" href="#">Политика конфиденциальности</a>-->
-						</div>
+    						<!-- form -->
+    						<div class="form">
+    							<button class="btn btn_red btn_submit" type="submit">
+    								<!--${submit}-->
+    								Продолжить
+    							</button>
+    							<!--<button class="btn btn_orange">Сканировать карту</button>-->
+    							<!--<a class="link" href="#">Политика конфиденциальности</a>-->
+    						</div>
 
-						<ul class="provider-icons">
-                            <li><img src="img/icons/providers/visa.svg"></li>
-                            <li><img src="img/icons/providers/mastercard.svg"></li>
-                            <li><img src="img/icons/providers/visa_verified.svg"></li>
-                            <li><img src="img/icons/providers/pci_dss.svg"></li>
-                        </ul>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<script type="text/javascript">
-
-	var cardDetectionEnabled = true;
-
-</script>
-<!-- load scripts -->
-<script src="js/lib/head.js" data-headjs-load="js/init.js"></script>
+    						<ul class="provider-icons">
+                                <li><img src="img/icons/providers/visa.svg"></li>
+                                <li><img src="img/icons/providers/mastercard.svg"></li>
+                                <li><img src="img/icons/providers/visa_verified.svg"></li>
+                                <li><img src="img/icons/providers/pci_dss.svg"></li>
+                            </ul>
+    					</form>
+    				</div>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+    <!-- inject language files -->
+    <script src="/js/lang/RU/strings.js"></script>
+    <!-- inject:js -->
+    <!-- endinject -->
 </body>
 </html>

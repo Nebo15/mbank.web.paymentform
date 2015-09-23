@@ -1,8 +1,10 @@
 var gulp         = require('gulp'),
+    debug        = require('gulp-debug');
     path         = require('path'),
     argv         = require('yargs').argv,
     clean        = require('gulp-clean'),
     browserSync  = require('browser-sync'),
+    inject       = require('gulp-inject'),
     gulpif       = require('gulp-if'),
     compass      = require('gulp-compass'),
     autoprefixer = require('gulp-autoprefixer'),
@@ -63,12 +65,15 @@ gulp.task('build-images', function() {
 });
 
 // HTML minify
-gulp.task('build-html', function() {
-  return gulp.src('./src/html/*.html')
+gulp.task('build-html', ['build-styles', 'build-scripts'], function() {
+  var injected = gulp.src(['./www/js/{lib,scripts}/{jquery,*}.js', './www/css/*.css'], {read: false, base: '/www'});
+
+  return gulp.src('./src/html/**/*.html')
     .pipe(htmlmin({
         collapseWhitespace: argv.production ? true : false,
         removeComments: argv.production ? true : false,
     }))
+    .pipe(inject(injected, {ignorePath: '/www'}))
     .pipe(gulp.dest('./www'))
 });
 
@@ -79,8 +84,8 @@ gulp.task('build-fonts', function() {
 });
 
 // Build javascript
-gulp.task('build-scripts', ['build-html'], function() {
-    return gulp.src('src/js/**/*.js', {base: './src'})
+gulp.task('build-scripts', function() {
+    return gulp.src('./src/js/**/*.js', {base: './src'})
         .pipe(gulpif(argv.production, uglify()))
         .pipe(gulp.dest('./www'));
 });
@@ -95,4 +100,4 @@ gulp.task('watch', function() {
 });
 
 gulp.task('default', ['build', 'server', 'watch'], function() {});
-gulp.task('build', ['clean', 'build-html', 'build-styles', 'build-images', 'build-fonts', 'build-scripts'], function() {});
+gulp.task('build', ['build-images', 'build-fonts', 'build-styles', 'build-scripts', 'build-html'], function() {});
