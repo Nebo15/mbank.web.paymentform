@@ -33,8 +33,8 @@ a { text-decoration: none; color: #fff; }
 .wrapper { width: 100%; height: 100%; }
 
 .screen { height: 100%; -webkit-overflow-scrolling: touch; overflow: auto; }
-.screen .screen__in { min-height: 100%; height: 100%; overflow: auto; background-image: url(../img/background.jpg); background-position: 0 0; background-repeat: no-repeat; background-size: cover; }
-.screen .screen__bg { overflow: auto; margin: 0 auto; min-height: 100%; padding: 20px; background: url(../img/bg-picture.png) no-repeat 100% 100%; }
+.screen .screen__in { min-height: 100%; height: 100%; overflow: auto; background-image: url(../img/background/main.jpg); background-position: 0 0; background-repeat: no-repeat; background-size: cover; }
+.screen .screen__bg { overflow: auto; margin: 0 auto; min-height: 100%; padding: 20px; background: url(../img/backgroun/polygon.png) no-repeat 100% 100%; }
 
 .link { display: inline-block; padding-bottom: 3px; border-bottom: 1px solid rgba(255, 255, 255, 0.3); opacity: 0.7; font-size: 22px; }
 
@@ -114,10 +114,10 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-app
 .paysys { margin-bottom: 25px; font-size: 0; }
 .paysys.paysys_right { text-align: right; }
 .paysys.paysys_right a { margin: 0 0 0 10px; }
-.paysys i { display: block; background: url('../img/icons-s52234b5728.png') 0 0 no-repeat; background-position: 0 0; width: 18px; height: 11.5px; -moz-background-size: 88px 312px; -webkit-background-size: 88px 312px; background-size: 88px 312px; margin-top: 5px; }
+.paysys i { display: block; background: url('../img/icons-s2947daaa21.png') 0 0 no-repeat; background-position: 0 0; width: 18px; height: 11.5px; -moz-background-size: 36px 64px; -webkit-background-size: 36px 64px; background-size: 36px 64px; margin-top: 5px; }
 .paysys i.visa, .paysys i.mastercard { margin-top: 0; }
-.paysys .visa { background: url('../img/icons-s52234b5728.png') 0 -456px no-repeat; background-position: 0 -228px; width: 36px; height: 21px; -moz-background-size: 88px 312px; -webkit-background-size: 88px 312px; background-size: 88px 312px; }
-.paysys .mastercard { background: url('../img/icons-s52234b5728.png') 0 -174px no-repeat; background-position: 0 -87px; width: 36px; height: 21px; -moz-background-size: 88px 312px; -webkit-background-size: 88px 312px; background-size: 88px 312px; }
+.paysys .visa { background: url('../img/icons-s2947daaa21.png') 0 -85px no-repeat; background-position: 0 -43px; width: 36px; height: 21px; -moz-background-size: 36px 64px; -webkit-background-size: 36px 64px; background-size: 36px 64px; }
+.paysys .mastercard { background: url('../img/icons-s2947daaa21.png') 0 -33px no-repeat; background-position: 0 -17px; width: 36px; height: 21px; -moz-background-size: 36px 64px; -webkit-background-size: 36px 64px; background-size: 36px 64px; }
 .paysys img { border: 1px solid rgba(199, 196, 196, 0.42); height: 100%; }
 
 .addcard { margin: 0 auto; max-width: 320px; }
@@ -179,7 +179,7 @@ label.error { display: inline-block; margin-top: 5px; color: #ff3e4b; }
 .field_secure label.error { min-width: 300px; text-align: right; position: absolute; top: 40px; right: 0; }
 
 .provider-icons { text-align: center; margin-top: 15px; }
-.provider-icons li { margin-right: 10px; display: inline-block; opacity: 0.5; transition: opacity 0.5s ease; }
+.provider-icons li { margin-right: 10px; display: inline-block; opacity: 0.5; transition: opacity 0.5s ease; vertical-align: middle; }
 .provider-icons li:hover { opacity: 1; }
 .provider-icons li:last-child { margin-right: 0; }
 .provider-icons li img { width: 50px; }
