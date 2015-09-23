@@ -129,7 +129,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-app
 .addcard .addcard__in .field__el .paysys { position: absolute; top: 9px; right: 8px; }
 .addcard .addcard__in .fieldset > .icon { float: right; margin: 21px 8px 0 0; }
 .addcard .addcard__in .icon-card { font-size: 39px; color: #ff3e4b; }
-.addcard .info { margin: 20px 0; font-size: 11px; }
+.addcard .info { margin: 20px 0; font-size: 11px; -webkit-user-select: none; }
 .addcard .info:first-child { margin-top: 0; }
 .addcard .form { text-align: center; }
 

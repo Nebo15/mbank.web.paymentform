@@ -20,8 +20,13 @@
 					<div class="info">
 						<div class="info__ico"><span>$</span></div>
 						<div class="info__in">
-                            <p>
+                            <!-- Привязка карты -->
+                            <!-- <p>
                                 После нажатия кнопки «Продолжить» мы снимем с указанной карты <b>1,00 RUR</b> или эквивалентную сумму, чтобы убедиться, что она принадлежит вам. Мы возместим эти средства на ваш счет в течение 24 часов.
+                            </p> -->
+                            <!-- Оплата услуги -->
+                            <p>
+                                После нажатия кнопки «Продолжить» мы снимем с указанной карты <b>1,00 RUR</b> для оплаты выбранной услуги. Вы будете перенаправлены на страницу 3D Secure вашего банка для подтверждения оплаты.
                             </p>
 						</div>
 					</div>
@@ -57,6 +62,7 @@
 									<input class="input" name="exp_date_m" placeholder="MM"
                                            data-next-input="exp_date_y"
 										   min="1" max="12"
+                                           maxlength="2"
                                            type="number" pattern="\d{1,2}">
 								</div>
 								<div class="field__el">
@@ -64,6 +70,7 @@
                                            data-next-input="code_cvv2"
 										   min="15"
                                            max="2027"
+                                           maxlength="4"
                                            type="number" pattern="\d{2}|20\d{2}">
 								</div>
 							</div>
