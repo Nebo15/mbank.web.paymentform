@@ -3,9 +3,6 @@ head.load(
 	"js/lib/jquery.creditCardValidator.js",
 	"js/lib/jquery.mask.min.js",
 	"js/lib/jquery.validate.js",
-	//"js/lib/jquery.scrollTo.js",
-	//"js/lib/jquery.selectBox.js",
-	//"js/lib/jquery.tools.min.js",
-	"js/RU/lang.js",
+	"js/lang/RU/strings.js",
 	"js/scripts/common.js"
 );
