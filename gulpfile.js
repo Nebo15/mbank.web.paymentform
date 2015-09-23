@@ -9,14 +9,14 @@ var gulp         = require('gulp'),
     compass      = require('gulp-compass'),
     autoprefixer = require('gulp-autoprefixer'),
     svgmin       = require('gulp-svgmin'),
-    svgmin       = require('gulp-concat'),
     svgSprite    = require('gulp-svg-sprite'),
     browserSync  = require('browser-sync'),
     htmlmin      = require('gulp-htmlmin'),
+    concat       = require('gulp-concat'),
     uglify       = require('gulp-uglify');
 
 // Web Server
-gulp.task('server', function() {
+gulp.task('server', ['build-html'], function() {
     browserSync({
         server: {
             baseDir: './www',
@@ -37,7 +37,7 @@ gulp.task('clean', function () {
 });
 
 // SASS to CSS
-gulp.task('build-styles', function() {
+gulp.task('build-styles', ['clean'], function() {
     return gulp.src('./src/sass/**/*.sass')
         .pipe(compass({
             project: path.join(__dirname, ''),
@@ -59,34 +59,41 @@ gulp.task('build-styles', function() {
 });
 
 // SVG to SVG sprites
-gulp.task('build-images', function() {
+gulp.task('build-images', ['clean'], function() {
     return gulp.src('src/img/**/*', {base: './src'})
         .pipe(gulp.dest('./www'));
 });
 
 // HTML minify
-gulp.task('build-html', ['build-styles', 'build-scripts'], function() {
-  var injected = gulp.src(['./www/js/{lib,scripts}/{jquery,*}.js', './www/css/*.css'], {read: false, base: '/www'});
+gulp.task('build-html', ['clean', 'build-styles', 'build-scripts'], function() {
+  var injected = gulp.src(['./www/js/{lib,*}/{jquery,*}.js', './www/js/*.js', './www/css/*.css'], {read: false, base: '/www'});
 
   return gulp.src('./src/html/**/*.html')
+    .pipe(inject(injected, {ignorePath: '/www'}))
     .pipe(htmlmin({
         collapseWhitespace: argv.production ? true : false,
         removeComments: argv.production ? true : false,
     }))
-    .pipe(inject(injected, {ignorePath: '/www'}))
     .pipe(gulp.dest('./www'))
 });
 
 // Move fonts to www
-gulp.task('build-fonts', function() {
+gulp.task('build-fonts', ['clean'], function() {
     return gulp.src('src/fonts/**/*', {base: './src'})
         .pipe(gulp.dest('./www'));
 });
 
-// Build javascript
-gulp.task('build-scripts', function() {
-    return gulp.src('./src/js/**/*.js', {base: './src'})
+// Build and move javascript
+gulp.task('build-scripts-lagpack', ['clean'], function() {
+    return gulp.src('./src/js/lang/**/*.js', {base: './src'})
         .pipe(gulpif(argv.production, uglify()))
+        .pipe(gulp.dest('./www'));
+});
+
+gulp.task('build-scripts', ['clean', 'build-scripts-lagpack'], function() {
+    return gulp.src(['./src/js/lib/{jquery,*}.js', './src/js/*.js'], {base: './src'})
+        .pipe(gulpif(argv.production, uglify()))
+        .pipe(gulpif(argv.production, concat('js/all.js')))
         .pipe(gulp.dest('./www'));
 });
 
@@ -99,5 +106,6 @@ gulp.task('watch', function() {
     gulp.watch('./src/js/**/*', ['build-scripts']);
 });
 
+// Base tasks
 gulp.task('default', ['build', 'server', 'watch'], function() {});
 gulp.task('build', ['build-images', 'build-fonts', 'build-styles', 'build-scripts', 'build-html'], function() {});
