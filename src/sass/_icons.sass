@@ -1,23 +1,40 @@
-@font-face
-  font-family: 'icomoon'
-  src: url('../fonts/icomoon.eot?-w2r1bz')
-  src: url('../fonts/icomoon.eot?#iefix-w2r1bz') format("embedded-opentype"), url('../fonts/icomoon.woff?-w2r1bz') format("woff"), url('../fonts/icomoon.ttf?-w2r1bz') format("truetype"), url('../fonts/icomoon.svg?-w2r1bz#icomoon') format("svg")
-  font-weight: normal
-  font-style: normal
+=inline-svg($file, $width, $height)
+  background-image: inline-image($file, 'image/svg+xml')
+  background-size: #{$width}px #{$height}px
+  background-repeat: no-repeat
+  background-position: top left
+  width: #{$width}px
+  height: #{$height}px
+  display: inline-block
 
-[class^="icon-"], [class*=" icon-"]
-  font-family: 'icomoon'
-  speak: none
-  font-style: normal
-  font-weight: normal
-  font-variant: normal
-  text-transform: none
-  line-height: 1
-  -webkit-font-smoothing: antialiased
-  -moz-osx-font-smoothing: grayscale
+// Partner icons
+.icon-partner-visa
+  +inline-svg('icons/partners/visa.svg', 50, 15)
 
-.icon-card:before
-  content: "\e607"
+.icon-partner-mastercard
+  +inline-svg('icons/partners/mastercard.svg', 50, 31)
 
-.icon-locked:before
-  content: "\e618"
+.icon-partner-visa-verified
+  +inline-svg('icons/partners/visa_verified.svg', 50, 28)
+
+.icon-partner-pci-dss
+  +inline-svg('icons/partners/pci_dss.svg', 50, 33)
+
+// Suggested providers
+.icon-provider-visa
+  +inline-svg('icons/providers/visa.svg', 36, 21)
+
+.icon-provider-mastercard
+  +inline-svg('icons/providers/mastercard.svg', 36, 21)
+
+// General icons
+.icon-card-back
+  +inline-svg('icons/card_back.svg', 62, 39)
+  color: #ff3e4b
+  fill: currentColor
+
+.icon-card-front
+  +inline-svg('icons/card_front.svg', 36, 21)
+
+.icon-lock
+  +inline-svg('icons/lock.svg', 13, 16)
