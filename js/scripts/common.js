@@ -82,16 +82,6 @@ $(document).ready(function () {
             });
         });
 
-        //$('.field_issued_at input').on('keydown', function (e) {
-        //
-
-        //    if (['3','4','5','6','7','8','9'].indexOf(String.fromCharCode(e.keyCode)) < 0 && val < 9) return;
-        //    var next = $(this).parent().next('.field__el').find('.input');
-        //    if (!next) {
-        //        return;
-        //    }
-        //    next.focus();
-        //});
     })();
     // Validators
     (function () {
