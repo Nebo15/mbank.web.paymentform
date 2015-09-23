@@ -71,7 +71,7 @@ gulp.task('build-styles', function() {
 
 // SVG to SVG sprites
 gulp.task('build-images', function() {
-    return gulp.src('src/img/**/*', {base: './src'})
+    return gulp.src('./src/img/**/*', {base: './src'})
         .pipe(gulp.dest('./www'));
 });
 
