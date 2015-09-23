@@ -118,11 +118,10 @@ $(document).ready(function () {
     })();
 
     (function () {
-        var validator = $paymentForm.validate();
         $card_exp_month.on('keyup', function (e) {
             if (e.keyCode < 46 || e.keyCode > 90) return;
             var val = $(this).val();
-            if (val < 2 && val.length !== 2) {
+            if (val < 2 && val.length !== 2 || !$paymentForm.validate().check(this)) {
                 return;
             }
             $card_exp_year.focus();

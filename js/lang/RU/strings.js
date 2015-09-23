@@ -1,5 +1,5 @@
 var lang = {
-    card_exp_date_required: "Выберите срок действия карты",
+    card_exp_date_required: "Введите срок действия карты",
     card_exp_date_expired: "Неверный срок действия карты",
     card_wrong_length: "Неправильная длина номера карты",
     card_wrong_number: "Введён неверный номер карты",
