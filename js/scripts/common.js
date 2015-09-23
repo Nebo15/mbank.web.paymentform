@@ -226,7 +226,7 @@ $(document).ready(function () {
                 code_cvv2: {
                     required: true,
                     minlength: 3,
-                    maxlength: 3
+                    maxlength: 4
                 },
                 cardholder: {
                     required: true,
@@ -260,7 +260,7 @@ $(document).ready(function () {
                 //}
             },
             groups: {
-                exp_date: "exp_date_m exp_date_y"
+                card_exp_date_m: "exp_date_m exp_date_y"
             },
             messages: {
                 pan: {
@@ -289,11 +289,13 @@ $(document).ready(function () {
                 },
                 exp_date_m: {
                     required: lang.card_exp_date_required,
-                    exp_date: lang.card_exp_date_expired
+                    min: lang.card_exp_date_expired,
+                    max: lang.card_exp_date_expired
                 },
                 exp_date_y: {
                     required: lang.card_exp_date_required,
-                    exp_date: lang.card_exp_date_expired
+                    min: lang.card_exp_date_expired,
+                    max: lang.card_exp_date_expired
                 },
                 street_address: {
                     required: lang.street_address_required,
@@ -333,6 +335,9 @@ $(document).ready(function () {
                 if (element.attr("name") == "zip") error.insertAfter($("input[name=zip]"));
                 if (element.attr("name") == "email") error.insertAfter($("input[name=email]"));
                 if (element.attr("name") == "phone") error.insertAfter($("input[name=phone]"));
+                if (element.attr("name") == "phone") error.insertAfter($("input[name=phone]"));
+                if (element.attr("name") == "exp_date_m") error.insertAfter($("input[name=exp_date_m]"));
+                if (element.attr("name") == "exp_date_y") error.insertAfter($("input[name=exp_date_y]"));
             }
         });
 
