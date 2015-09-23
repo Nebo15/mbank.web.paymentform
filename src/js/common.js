@@ -267,7 +267,7 @@ $(document).ready(function () {
                             text = lang.card_number_length_rule_exact;
                         }
 
-                        return jQuery.format(text, data)
+                        return jQuery.validator.format(text, data)
                     },
                     creditcard_stripped: lang.card_wrong_number,
                     creditcard_minlength: lang.card_number_minlength,
