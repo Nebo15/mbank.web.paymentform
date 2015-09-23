@@ -26,7 +26,6 @@ var additinal_scripts = [
 ];
 var additinal_styles = [];
 
-
 // Web Server
 gulp.task('server', function() {
     browserSync({
