@@ -1,11 +1,40 @@
 $(document).ready(function () {
 
     // Masking card number
-    $("#cardNumber").mask("0000 0000 0000 0000", {
-        maxlength: true
-    }).focus();
+    var $cardNumber = $("#cardNumber");
+    var $card_exp_year = $('#card_exp_date_y');
+    var $card_exp_month = $('#card_exp_date_m');
+    var $card_code_cvv = $('#code_cvv2');
+    var $card_holder = $('#card_holder');
+
+
 
     var $paymentForm = $(".payment__form");
+    var $paymentFormSubmit = $paymentForm.find('.btn_submit');
+
+    var $fields = [
+        $cardNumber, $card_exp_month, $card_exp_year, $card_code_cvv, $card_holder
+    ];
+
+    $cardNumber.mask("0000 0000 0000 0000", {
+        maxlength: true,
+        onComplete: function () {
+            $cardNumber.valid();
+        }
+    }).focus();
+
+    $paymentForm.on('change', function () {
+        var valid = true;
+        var validator = $paymentForm.validate();
+        $fields.forEach(function (el) {
+            valid &= validator.check(el);
+        });
+        if (valid) {
+            $paymentFormSubmit.addClass('active').attr('disabled', 'false');
+        } else {
+            $paymentFormSubmit.removeClass('active').attr('disabled', 'true');
+        }
+    });
 
     (function () {
         var $inputs = $('[data-next-input]');
@@ -42,41 +71,35 @@ $(document).ready(function () {
         };
         $inputs.on('keydown', function (e) {
             var el = $(this);
-            var val = el.val(),
-              name = el.attr('name'),
-              next;
+            var val = el.val();
 
-            if (e.keyCode == 8 && val.length == 0) { //delete
-                next = els[name].prev;
-            }
-            if (!next) {
+            if (!(e.keyCode == 8 && val.length == 0)) {
                 return;
             }
 
+            var name = el.attr('name'), next;
+
+            next = els[name].prev;
             defer(function () {
                 next.focus();
             });
         });
         $inputs.on('keyup', function (e) {
-            if (e.keyCode == 8) {
-                return;
-            }
+
+            if (e.keyCode < 46 || e.keyCode > 90) return;
             var el = $(this);
             if (el.attr('data-next-input-direction') == 'prev') {
                 return;
             }
 
-            var val = el.val(),
-              name = el.attr('name'),
-              isValid = $paymentForm.validate().check(el),
-              next;
+            var name = el.attr('name'),
+                next;
 
-            if (e.keyCode < 46 || e.keyCode > 90) return;
-            if (isValid) {
-                next = els[name].next;
-                console.log('next', els[name]);
+            if (!$paymentForm.validate().check(el)) {
+                return;
             }
 
+            next = els[name].next;
             if (!next) {
                 return;
             }
@@ -89,20 +112,19 @@ $(document).ready(function () {
     })();
 
     (function () {
-        var exp_year = $('#card_exp_date_y');
-        $('#card_exp_date_m').on('keyup', function (e) {
+        $card_exp_month.on('keyup', function (e) {
             if (e.keyCode < 46 || e.keyCode > 90) return;
             var val = $(this).val();
             if (val < 2 && val.length !== 2) {
                 return;
             }
-            exp_year.focus();
+            $card_exp_year.focus();
         });
         var now = new Date();
         var min_year = now.getFullYear().toString().substr(2,2);
-        var max_year = now.getFullYear() + 12;
-        exp_year.attr('min', min_year);
-        exp_year.attr('max', max_year);
+        var max_year = 1*min_year + 12;
+        $card_exp_year.attr('min', min_year);
+        $card_exp_year.attr('max', max_year);
     })();
     // Validators
     (function () {
@@ -154,13 +176,17 @@ $(document).ready(function () {
             return (this.optional(element) || value.length <= param);
         });
 
+        $.fn.isValid = function(){
+            return this[0].checkValidity()
+        };
+
         // shake it
         $paymentForm.addClass('shake');
 
         // animate and disable submit button
-        $('.btn_submit').addClass('active').attr('disabled', 'true');
 
         // Validates with validate plugin
+
         $paymentForm.validate({
             onkeyup: false,
             rules: {
@@ -190,32 +216,32 @@ $(document).ready(function () {
                     required: true,
                     minlength: 3
                 },
-                street_address: {
-                    required: true,
-                    latin: true
-                },
-                city_address: {
-                    required: true,
-                    latin: true
-                },
-                country: {
-                    required: true
-                },
-                state: {
-                    required: true,
-                    latin_without_characters: true
-                },
-                zip: {
-                    required: true
-                },
-                email: {
-                    required: true,
-                    email: true
-                },
-                phone: {
-                    required: true,
-                    phone: true
-                }
+                //street_address: {
+                //    required: true,
+                //    latin: true
+                //},
+                //city_address: {
+                //    required: true,
+                //    latin: true
+                //},
+                //country: {
+                //    required: true
+                //},
+                //state: {
+                //    required: true,
+                //    latin_without_characters: true
+                //},
+                //zip: {
+                //    required: true
+                //},
+                //email: {
+                //    required: true,
+                //    email: true
+                //},
+                //phone: {
+                //    required: true,
+                //    phone: true
+                //}
             },
             groups: {
                 exp_date: "exp_date_m exp_date_y"

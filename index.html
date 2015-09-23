@@ -38,108 +38,107 @@
 						<!--<a href="#"><img src="http://placehold.it/70x40" alt=""/></a>-->
 						<!--<a href="#"><img src="http://placehold.it/70x40" alt=""/></a>-->
 					<!--</div>-->
-					<form class="addcard__in payment__form">
-						<!-- field -->
-						<!--  ${card_number} -->
-						<div class="field">
-							<div class="field__label">Номер карты</div>
-							<div class="field__el">
-								<input class="input input_onlynumber" placeholder="•••• •••• •••• ••••"
-                                       data-next-input="exp_date_m" name="pan" id="cardNumber" type="text" pattern="\d*">
-								<!-- paysys -->
-								<div class="paysys">
-									<i></i>
-								</div>
-							</div>
-						</div>
-						<!-- fieldset -->
-						<div class="fieldset">
+					<form class="payment__form">
+						<div class="addcard__in">
 							<!-- field -->
-							<!--  ${card_expiration_date} -->
-							<div class="field field_double field_issued_at">
-								<div class="field__label">Срок действия</div>
+							<!--  ${card_number} -->
+							<div class="field">
+								<div class="field__label">Номер карты</div>
 								<div class="field__el">
-									<input class="input" id="card_exp_date_m" name="exp_date_m" placeholder="MM"
-                                           data-next-input="exp_date_y" data-next-input-direction="prev"
-										   min="1" max="12"
-                                           maxlength="2"
-                                           type="number" pattern="\d{1,2}">
+									<input class="input input_onlynumber" placeholder="•••• •••• •••• ••••"
+										   data-next-input="exp_date_m" name="pan" id="cardNumber" type="text" pattern="\d*">
+									<!-- paysys -->
+									<div class="paysys">
+										<i></i>
+									</div>
 								</div>
-								<div class="field__el">
-									<input class="input" id="card_exp_date_y" name="exp_date_y" placeholder="ГГ"
-                                           data-next-input="code_cvv2"
-										   min="15"
-                                           max="2027"
-                                           maxlength="4"
-                                           type="number" pattern="\d{2}|20\d{2}">
+							</div>
+							<!-- fieldset -->
+							<div class="fieldset">
+								<!-- field -->
+								<!--  ${card_expiration_date} -->
+								<div class="field field_double field_issued_at">
+									<div class="field__label">Срок действия</div>
+									<div class="field__el">
+										<input class="input" id="card_exp_date_m" name="exp_date_m" placeholder="MM"
+											   data-next-input="exp_date_y" data-next-input-direction="prev"
+											   min="1" max="12"
+											   type="number" pattern="\d*">
+									</div>
+									<div class="field__el">
+										<input class="input" id="card_exp_date_y" name="exp_date_y" placeholder="ГГ"
+											   data-next-input="code_cvv2"
+											   min="15" max="27"
+											   type="number" pattern="\d*">
+									</div>
 								</div>
+								<!-- field -->
+								<!-- ${card_verification_code} -->
+								<div class="field field_right field_secure">
+									<div class="field__label">Код CVV</div>
+									<div class="field__el">
+										<input class="input" name="code_cvv2" id="code_cvv2" placeholder="•••"
+											   data-next-input="cardholder" maxlength="3"
+											   type="number" pattern="\d*" required>
+									</div>
+								</div>
+								<!--<label class="label_block" for="code_cvv2">-->
+								<label for="code_cvv2" class="icon icon-card"></label>
+								<!--</label>-->
 							</div>
 							<!-- field -->
-							<!-- ${card_verification_code} -->
-							<div class="field field_right field_secure">
-								<div class="field__label">Код CVV</div>
+							<!-- ${card_holder} -->
+							<div class="field field__cardholder">
+								<div class="field__label">Держатель карты</div>
 								<div class="field__el">
-									<input class="input" name="code_cvv2" id="code_cvv2" placeholder="•••"
-										   data-next-input="cardholder" maxlength="3" type="number"
-										   pattern="\d{3}" required>
+									<input class="input" id="card_holder" name="cardholder" data-next-input="test" placeholder="IVAN IVANOV" type="text">
 								</div>
+								<div class="field__notice">Латинскими буквами как указано на карте</div>
 							</div>
-							<!--<label class="label_block" for="code_cvv2">-->
-							<label for="code_cvv2" class="icon icon-card"></label>
-							<!--</label>-->
 						</div>
-						<!-- field -->
-						<!-- ${card_holder} -->
-						<div class="field field__cardholder">
-							<div class="field__label">Держатель карты</div>
-							<div class="field__el">
-								<input class="input" name="cardholder" data-next-input="test" placeholder="IVAN IVANOV" type="text">
+
+						<!--<div class="iframe_inputs">-->
+							<!--&lt;!&ndash; ${billing_address_input} &ndash;&gt;-->
+							<!--&lt;!&ndash; ${billing_city_input} &ndash;&gt;-->
+							<!--&lt;!&ndash; ${billing_country_input} &ndash;&gt;-->
+							<!--<br>-->
+							<!--&lt;!&ndash; ${billing_state_province_input} &ndash;&gt;-->
+							<!--&lt;!&ndash; ${billing_zip_input} &ndash;&gt;-->
+							<!--&lt;!&ndash; ${billing_email_input} &ndash;&gt;-->
+							<!--&lt;!&ndash; ${billing_phone_input} &ndash;&gt;-->
+						<!--</div>-->
+
+						<!-- info -->
+						<div class="info">
+							<div class="info__ico">
+								<i class="icon icon-locked"></i>
 							</div>
-                            <div class="field__notice">Латинскими буквами как указано на карте</div>
+							<div class="info__in">
+								<p>
+									<!-- ${secure} -->
+									Передача данных шифруется высоконадежным 256-битным алгоритмом и осуществляется посредством SSL протокола
+								</p>
+							</div>
 						</div>
+
+						<!-- ${hidden_inputs} -->
+
+						<!-- form -->
+						<div class="form">
+							<button class="btn btn_red btn_submit" type="submit">
+								<!--${submit}-->
+								Продолжить
+							</button>
+							<!--<button class="btn btn_orange">Сканировать карту</button>-->
+							<!--<a class="link" href="#">Политика конфиденциальности</a>-->
+						</div>
+
+						<ul class="provider-icons">
+							<li><img src="img/providers/visa.svg"></li>
+							<li><img src="img/providers/mastercard.svg"></li>
+							<li><img src="img/providers/pci_dss.svg"></li>
+						</ul>
 					</form>
-
-					<!--<div class="iframe_inputs">-->
-						<!--&lt;!&ndash; ${billing_address_input} &ndash;&gt;-->
-						<!--&lt;!&ndash; ${billing_city_input} &ndash;&gt;-->
-						<!--&lt;!&ndash; ${billing_country_input} &ndash;&gt;-->
-						<!--<br>-->
-						<!--&lt;!&ndash; ${billing_state_province_input} &ndash;&gt;-->
-						<!--&lt;!&ndash; ${billing_zip_input} &ndash;&gt;-->
-						<!--&lt;!&ndash; ${billing_email_input} &ndash;&gt;-->
-						<!--&lt;!&ndash; ${billing_phone_input} &ndash;&gt;-->
-					<!--</div>-->
-
-					<!-- info -->
-					<div class="info">
-						<div class="info__ico">
-							<i class="icon icon-locked"></i>
-						</div>
-						<div class="info__in">
-							<p>
-								<!-- ${secure} -->
-								Передача данных шифруется высоконадежным 256-битным алгоритмом и осуществляется посредством SSL протокола
-							</p>
-						</div>
-					</div>
-
-					<!-- ${hidden_inputs} -->
-
-					<!-- form -->
-					<div class="form">
-						<button class="btn btn_red btn_submit" type="submit">
-							<!--${submit}-->
-							Продолжить
-						</button>
-						<!--<button class="btn btn_orange">Сканировать карту</button>-->
-						<!--<a class="link" href="#">Политика конфиденциальности</a>-->
-					</div>
-
-                    <ul class="provider-icons">
-                        <li><img src="img/providers/visa.svg"></li>
-                        <li><img src="img/providers/mastercard.svg"></li>
-                        <li><img src="img/providers/pci_dss.svg"></li>
-                    </ul>
 				</div>
 			</div>
 		</div>
