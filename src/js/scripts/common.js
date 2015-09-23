@@ -379,10 +379,8 @@ $(document).ready(function () {
                     return;
                 }
 
-                if (cardDetectionEnabled) {
-                    $paysys.addClass(result.card_type.name);
+                $paysys.addClass(result.card_type.name);
 
-                }
                 var max_length = result.card_type.valid_length[result.card_type.valid_length.length - 1];
                 $this.rules('add', {
                     rangelength_stripped: [result.card_type.valid_length[0], max_length]
