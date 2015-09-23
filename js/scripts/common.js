@@ -36,9 +36,9 @@ $(document).ready(function () {
             valid &= validator.check(el);
         });
         if (valid) {
-            $paymentFormSubmit.addClass('active').attr('disabled', 'false');
+            $paymentFormSubmit.addClass('active');
         } else {
-            $paymentFormSubmit.removeClass('active').attr('disabled', 'true');
+            $paymentFormSubmit.removeClass('active');
         }
     });
 
@@ -179,7 +179,7 @@ $(document).ready(function () {
         jQuery.validator.addMethod("latin_without_characters", function (value, element, param) {
             var rep = /^([A-Za-z ]+)$/gi;
             return (this.optional(element) || rep.test(value));
-        });
+        }, lang.latin_without_characters);
 
         jQuery.validator.addMethod('creditcard_minlength', function (value, element, param) {
             value = value.replace(/-/g, "");
@@ -224,7 +224,8 @@ $(document).ready(function () {
                 },
                 cardholder: {
                     required: true,
-                    minlength: 3
+                    minlength: 3,
+                    latin_without_characters: true
                 }
                 //street_address: {
                 //    required: true,

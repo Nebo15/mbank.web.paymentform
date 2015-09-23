@@ -23,6 +23,7 @@ var lang = {
     email_required: "Введите Email",
     email_wrong: "Введите корректный Email",
     phone_required: "Введите номер телефона",
-    wrong_phone: "Телефон должен быть в международном формате"
+    wrong_phone: "Телефон должен быть в международном формате",
+    latin_without_characters: "Заполните поле только латинскими буквами"
 
 };

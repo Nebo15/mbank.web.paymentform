@@ -24,6 +24,7 @@ var lang = {
     email_wrong: "Wrong email format",
     phone_required: "Phone is required",
     phone_wrong: "Wrong phone format",
-    wrong_phone: "Phone number should be in the international format (ITU-T E.164)"
+    wrong_phone: "Phone number should be in the international format (ITU-T E.164)",
+    latin_without_characters: "Enter value with only latin letters"
 
 };
