@@ -7,8 +7,6 @@ $(document).ready(function () {
     var $card_code_cvv = $('#code_cvv2');
     var $card_holder = $('#card_holder');
 
-
-
     var $paymentForm = $(".payment__form");
     var $paymentFormCard = $paymentForm.find('.addcard__in');
     var $paymentFormSubmit = $paymentForm.find('.btn_submit');
@@ -124,7 +122,7 @@ $(document).ready(function () {
         $card_exp_month.on('keyup', function (e) {
             if (e.keyCode < 46 || e.keyCode > 90) return;
             var val = $(this).val();
-            if (val < 2 && val.length !== 2 || !validator.check(this)) {
+            if (val < 2 && val.length !== 2) {
                 return;
             }
             $card_exp_year.focus();
@@ -194,10 +192,6 @@ $(document).ready(function () {
 
             return (this.optional(element) || value.length <= param);
         });
-
-        $.fn.isValid = function(){
-            return this[0].checkValidity()
-        };
 
 
         // animate and disable submit button
