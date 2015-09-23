@@ -20,7 +20,7 @@ gulp.task('server', function() {
             baseDir: './www',
             index: 'index.html'
         },
-        files: ["www/css/*.css", "www/*.html", "www/js/**/*.js"],
+        files: ["./www/css/*.css", "./www/*.html", "./www/js/**/*.js"],
         port: 8080,
         open: true,
         notify: false,
@@ -36,7 +36,7 @@ gulp.task('clean', function () {
 
 // SASS to CSS
 gulp.task('build-styles', function() {
-    return gulp.src('src/sass/**/*.sass')
+    return gulp.src('./src/sass/**/*.sass')
         .pipe(compass({
             project: path.join(__dirname, ''),
             http_images_path: '/img',
@@ -87,11 +87,11 @@ gulp.task('build-scripts', ['build-html'], function() {
 
 // Watch for for changes
 gulp.task('watch', function() {
-    gulp.watch('src/sass/**/*', ['build-styles']);
-    gulp.watch('src/images/**/*', ['build-images']);
-    gulp.watch('src/html/**/*', ['build-html']);
-    gulp.watch('src/fonts/**/*', ['build-fonts']);
-    gulp.watch('src/js/**/*', ['build-scripts']);
+    gulp.watch('./src/sass/**/*', ['build-styles']);
+    gulp.watch('./src/images/**/*', ['build-images']);
+    gulp.watch('./src/html/**/*', ['build-html']);
+    gulp.watch('./src/fonts/**/*', ['build-fonts']);
+    gulp.watch('./src/js/**/*', ['build-scripts']);
 });
 
 gulp.task('default', ['build', 'server', 'watch'], function() {});
