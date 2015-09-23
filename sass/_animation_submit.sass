@@ -1,0 +1,19 @@
+@keyframes submitButtonAnimation
+  0%
+    background-position: 0% 0%
+  100%
+    background-position: -300% 0%
+
+@-webkit-keyframes submitButtonAnimation
+  0%
+    background-position: 0% 0%
+  100%
+    background-position: -300% 0%
+
+.btn_submit
+  &.active
+    background: -webkit-linear-gradient(13deg,#ff5a00,#ff955c,#fd2e36,#ff3e4b,#ff5a00)
+    background: linear-gradient(77deg,#ff5a00,#ff955c,#fd2e36,#ff3e4b,#ff5a00)
+    background-size: 300% 100%
+    -webkit-animation: submitButtonAnimation 3.5s linear infinite
+    animation: submitButtonAnimation 3.5s linear infinite
