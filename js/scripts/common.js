@@ -10,7 +10,15 @@ $(document).ready(function () {
 
 
     var $paymentForm = $(".payment__form");
+    var $paymentFormCard = $paymentForm.find('.addcard__in');
     var $paymentFormSubmit = $paymentForm.find('.btn_submit');
+
+    function shake (el, dur) {
+        el.addClass('shake');
+        setTimeout(function () {
+            el.removeClass('shake');
+        }, dur || 600);
+    }
 
     var $fields = [
         $cardNumber, $card_exp_month, $card_exp_year, $card_code_cvv, $card_holder
@@ -122,7 +130,17 @@ $(document).ready(function () {
         });
         var now = new Date();
         var min_year = now.getFullYear().toString().substr(2,2);
+        var now_month = now.getMonth() + 1;
         var max_year = 1*min_year + 12;
+
+        $card_exp_year.on('change', function (e) {
+           //if ($(this).val())
+            var el = $(this),
+              val = el.val();
+            $card_exp_month.attr('min', val == min_year ? now_month : '1');
+            $card_exp_month.valid();
+        });
+
         $card_exp_year.attr('min', min_year);
         $card_exp_year.attr('max', max_year);
     })();
@@ -180,15 +198,15 @@ $(document).ready(function () {
             return this[0].checkValidity()
         };
 
-        // shake it
-        $paymentForm.addClass('shake');
 
         // animate and disable submit button
 
         // Validates with validate plugin
-
         $paymentForm.validate({
             onkeyup: false,
+            invalidHandler: function () {
+                shake($paymentFormCard);
+            },
             rules: {
                 pan: {
                     required: true,
@@ -199,18 +217,16 @@ $(document).ready(function () {
                 },
                 exp_date_m: {
                     required: true,
-                    //exp_date: true,
+                    maxlength: 2
+                },
+                exp_date_y: {
+                    required: true,
                     maxlength: 2
                 },
                 code_cvv2: {
                     required: true,
                     minlength: 3,
                     maxlength: 3
-                },
-                exp_date_y: {
-                    required: true,
-                    //exp_date: true,
-                    maxlength: 2
                 },
                 cardholder: {
                     required: true,
