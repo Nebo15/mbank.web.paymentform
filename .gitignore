@@ -4,7 +4,8 @@
 .idea
 
 node_modules
+src/bower
+src/js/lib
 icomoon
-bower_components
 
 www

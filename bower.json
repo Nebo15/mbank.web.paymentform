@@ -1,0 +1,28 @@
+{
+  "name": "mbank.web.paymentform",
+  "version": "1.0.0",
+  "homepage": "https://github.com/Nebo15/mbank.web.paymentform",
+  "authors": [
+    "Nebo #15 <support@wallet.best>"
+  ],
+  "description": "Best Wallet card payment form",
+  "main": "www/index.html",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "src/bower",
+    "test",
+    "tests",
+    ".tmp",
+    ".sass-cache",
+    "www"
+  ],
+  "dependencies": {
+    "jquery-creditcardvalidator": "~1.0.0",
+    "jquery-mask-plugin": "~1.13.4",
+    "jquery-validation": "~1.14.0",
+    "jquery": "~2.1.4"
+  }
+}
