@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     // Masking card number
-    $("#card_number").mask("0000 0000 0000 0000", {
+    $("#cardNumber").mask("0000 0000 0000 0000", {
         maxlength: true
     }).focus();
 
@@ -62,6 +62,10 @@ $(document).ready(function () {
                 return;
             }
             var el = $(this);
+            if (el.attr('data-next-input-direction') == 'prev') {
+                return;
+            }
+
             var val = el.val(),
               name = el.attr('name'),
               isValid = $paymentForm.validate().check(el),
@@ -82,6 +86,23 @@ $(document).ready(function () {
             });
         });
 
+    })();
+
+    (function () {
+        var exp_year = $('#card_exp_date_y');
+        $('#card_exp_date_m').on('keyup', function (e) {
+            if (e.keyCode < 46 || e.keyCode > 90) return;
+            var val = $(this).val();
+            if (val < 2 && val.length !== 2) {
+                return;
+            }
+            exp_year.focus();
+        });
+        var now = new Date();
+        var min_year = now.getFullYear().toString().substr(2,2);
+        var max_year = now.getFullYear() + 12;
+        exp_year.attr('min', min_year);
+        exp_year.attr('max', max_year);
     })();
     // Validators
     (function () {
@@ -302,13 +323,12 @@ $(document).ready(function () {
 
         // Detect card type
         var oldDetection = null;
-        var $cardNumber = $('#card_number');
+        var $cardNumber = $('#cardNumber');
         $cardNumber.on('keypress keyup', function () {
             var $this = $(this);
             var $paysys = $this.siblings('.paysys').find('i');
 
             $this.validateCreditCard(function (result) {
-                console.log('validate', result.card_type, oldDetection);
                 if (result == oldDetection) {
                     return;
                 }
@@ -339,15 +359,4 @@ $(document).ready(function () {
         });
         $cardNumber.trigger('keyup');
     })();
-
-	/*$("select").change(function(){
-        var name = $(this).attr('name');
-        var form = $(".payment__form");
-        if (name.indexOf("exp_date_") != 0) {
-            form.validate().element('[name='+name+']');
-        } else if (payment_page.exp_date_m.value && payment_page.exp_date_y.value) {
-            form.validate().element('[name=exp_date_m]');
-            form.validate().element('[name=exp_date_y]');
-        }
-    })*/
 });
