@@ -117,7 +117,7 @@ gulp.task('build-scripts', ['build-scripts-lagpack', 'bower-install-scripts'], f
 // Watch for for changes
 gulp.task('watch', function() {
     gulp.watch('./src/sass/**/*', ['build-styles']);
-    gulp.watch('./src/images/**/*', ['build-images']);
+    gulp.watch('./src/img/**/*', ['build-images', 'build-styles']);
     gulp.watch('./src/html/**/*', ['build-html']);
     gulp.watch('./src/fonts/**/*', ['build-fonts']);
     gulp.watch('./src/js/**/*', ['build-scripts']);
