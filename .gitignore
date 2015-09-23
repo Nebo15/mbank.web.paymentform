@@ -1,6 +1,7 @@
 .sass-cache/
 *.sublime-project
 *.sublime-workspace
+.idea
 
 img/icons-*.png
-.idea
+css/
