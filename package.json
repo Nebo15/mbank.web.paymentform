@@ -16,6 +16,7 @@
     "gulp-if": "^1.2.5",
     "gulp-inject": "^2.2.0",
     "gulp-rename": "^1.2.2",
+    "gulp-sequence": "^0.4.1",
     "gulp-svg-sprite": "^1.2.10",
     "gulp-svgmin": "^1.2.0",
     "gulp-uglify": "^1.4.1",

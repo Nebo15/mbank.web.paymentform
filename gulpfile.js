@@ -1,4 +1,5 @@
 var gulp         = require('gulp'),
+    sequence     = require('gulp-sequence');
     debug        = require('gulp-debug');
     path         = require('path'),
     argv         = require('yargs').argv,
@@ -27,7 +28,7 @@ var additinal_styles = [];
 
 
 // Web Server
-gulp.task('server', ['build-html'], function() {
+gulp.task('server', function() {
     browserSync({
         server: {
             baseDir: './www',
@@ -125,5 +126,5 @@ gulp.task('watch', function() {
 });
 
 // Base tasks
-gulp.task('default', ['build', 'server', 'watch'], function() {});
-gulp.task('build', ['build-images', 'build-fonts', 'build-styles', 'build-scripts', 'build-html'], function() {});
+gulp.task('default', sequence('build', ['server', 'watch']));
+gulp.task('build', sequence('clean', ['build-images', 'build-fonts', 'build-styles', 'build-scripts'], 'build-html'));
