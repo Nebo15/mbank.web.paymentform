@@ -3,5 +3,10 @@
 *.sublime-workspace
 .idea
 
+node_modules
+icomoon
+bower
+
 img/icons-*.png
-css/
+css
+
