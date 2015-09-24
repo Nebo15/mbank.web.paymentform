@@ -21,8 +21,7 @@ var additinal_scripts = [
     './src/bower/jquery/dist/jquery.js',
     './src/bower/jquery-creditcardvalidator/jquery.creditCardValidator.js',
     './src/bower/jquery-mask-plugin/dist/jquery.mask.js',
-    './src/bower/jquery-validation/dist/jquery.validate.js',
-
+    './src/bower/jquery-validation/dist/jquery.validate.js'
 ];
 var additinal_styles = [];
 
