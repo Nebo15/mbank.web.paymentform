@@ -1,11 +1,4 @@
 $(document).ready(function () {
-
-    // adding css classes to the body
-
-    (function () {
-        document.documentElement.classList.add(Platform.isMobile ? 'mobile' : 'no-mobile');
-    })();
-
     // Masking card number
     var $cardNumber = $("#cardNumber");
     var $card_exp_year = $('#card_exp_date_y');
