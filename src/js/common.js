@@ -23,6 +23,8 @@ $(document).ready(function () {
     var $paymentFormCard = $paymentForm.find('.addcard__in');
     var $paymentFormSubmit = $paymentForm.find('.btn_submit');
 
+    var formSubmitted = false;
+
     function shake (el, dur) {
         el.addClass('shake');
         setTimeout(function () {
@@ -31,7 +33,11 @@ $(document).ready(function () {
     }
 
     var $fields = [
-        $cardNumber, $card_exp_month, $card_exp_year, $card_code_cvv, $card_holder
+        $cardNumber,
+        $card_exp_month,
+        $card_exp_year,
+        $card_code_cvv,
+        $card_holder
     ];
 
     $cardNumber.mask("0000 0000 0000 0000", {
@@ -42,6 +48,9 @@ $(document).ready(function () {
     }).focus();
 
     $paymentForm.on('change', function () {
+        if (formSubmitted) {
+            return;
+        }
         var valid = true;
         var validator = $paymentForm.validate();
         $fields.forEach(function (el) {
@@ -53,6 +62,9 @@ $(document).ready(function () {
             $paymentFormSubmit.removeClass('active');
         }
     });
+    $card_holder.on('change', function () {
+        $(this).valid();
+    });
 
     (function () {
         var $inputs = $('[data-next-input]');
@@ -63,7 +75,7 @@ $(document).ready(function () {
               name = null;
             inputs.each(function () {
                 el = $(this);
-                attrVal = el.attr('data-next-input');
+                attrVal = el.data('nextInput');
                 name = el.attr('name');
                 if (!attrVal) {
                     return;
@@ -78,7 +90,7 @@ $(document).ready(function () {
             for (var prop in els) {
                 cur = els[prop];
                 if (cur.current) {
-                    cur.next = els[cur.current.attr('data-next-input')].current;
+                    cur.next = els[cur.current.data('nextInput')].current;
                 }
             }
             return els;
@@ -109,7 +121,7 @@ $(document).ready(function () {
 
             if (e.keyCode < 46 || e.keyCode > 90) return;
             var el = $(this);
-            if (el.attr('data-next-input-direction') == 'prev') {
+            if (el.data('nextInputDirection') == 'prev') {
                 return;
             }
 
@@ -207,14 +219,34 @@ $(document).ready(function () {
             return (this.optional(element) || value.length <= param);
         });
 
-
+        function postMessage (msg, target) {
+            return (parent || window).postMessage(msg, target || '*');
+        }
         // animate and disable submit button
+        function onFormSubmit () {
+            if (formSubmitted) { return; }
+            formSubmitted = true;
+            $paymentFormSubmit.attr('disabled', formSubmitted);
+            $paymentFormSubmit.addClass('submitted');
+            $paymentFormSubmit.removeClass('active');
 
+            $card_holder.val($card_holder.val().toUpperCase());
+            postMessage('ipsp:cardForm:submitted');
+
+            // disable form fields on submit
+            $fields.forEach(function (el){
+                el.attr('disabled', 'disabled');
+            });
+        }
         // Validates with validate plugin
         $paymentForm.validate({
             onkeyup: false,
             invalidHandler: function () {
+                postMessage('ipsp:cardForm:invalidFormHandled');
                 shake($paymentFormCard);
+            },
+            submitHandler: function () {
+                onFormSubmit();
             },
             rules: {
                 pan: {
@@ -333,6 +365,14 @@ $(document).ready(function () {
                     required: lang.phone_required,
                     phone: lang.phone_wrong
                 }
+            },
+            showErrors: function (errorsMap, errorList) {
+
+                if (!errorList.length) {
+                    return;
+                }
+                postMessage('ipsp:cardForm:error:' + JSON.stringify(errorsMap));
+                this.defaultShowErrors();
             },
             errorPlacement: function (error, element) {
                 if (element.attr("name") == "pan") error.insertAfter($("input[name=pan]"));
