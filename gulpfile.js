@@ -77,9 +77,19 @@ gulp.task('build-images', function() {
 
 // HTML minify
 gulp.task('build-html', ['build-styles', 'build-scripts'], function() {
-  var injected = gulp.src(['./www/js/{lib,*}/{jquery,*}.js', './www/js/*.js', './www/css/*.css'], {read: false, base: '/www'});
+  var injected_head = gulp.src([
+    './www/css/screen.css'
+  ], {read: false, base: '/www'});
+
+  var injected = gulp.src([
+    './www/js/{lib,*}/{jquery,*}.js',
+    './www/js/*.js',
+    './www/css/*.css',
+    '!./www/css/screen.css'
+  ], {read: false, base: '/www'});
 
   return gulp.src('./src/html/**/*.html')
+    .pipe(inject(injected_head, {ignorePath: '/www', name: 'head'}))
     .pipe(inject(injected, {ignorePath: '/www'}))
     .pipe(htmlmin({
         collapseWhitespace: argv.production ? true : false,
