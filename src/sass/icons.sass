@@ -7,6 +7,15 @@
   height: #{$height}px
   display: inline-block
 
+=inline-png($file, $width, $height)
+  background-image: inline-image($file)
+  background-size: #{$width}px #{$height}px
+  background-repeat: no-repeat
+  background-position: top left
+  width: #{$width}px
+  height: #{$height}px
+  display: inline-block
+
 // Partner icons
 .icon-partner-visa
   +inline-svg('icons/partners/visa.svg', 50, 15)
@@ -22,10 +31,10 @@
 
 // Suggested providers
 .icon-provider-visa
-  +inline-svg('icons/providers/visa.svg', 36, 21)
+  +inline-png('icons/providers/visa.png', 36, 21)
 
 .icon-provider-mastercard
-  +inline-svg('icons/providers/mastercard.svg', 36, 21)
+  +inline-png('icons/providers/mastercard.png', 36, 21)
 
 // General icons
 .icon-card-back
