@@ -66,6 +66,12 @@ $(document).ready(function () {
         $(this).valid();
     });
 
+    var $toast = $('#toast');
+    function showToast (msg) {
+        $toast.find('.toast__content').text(msg);
+        $toast.addClass('is-active');
+    }
+
     (function () {
         var $inputs = $('[data-next-input]');
         function prepare (inputs) {
@@ -223,7 +229,7 @@ $(document).ready(function () {
             return (parent || window).postMessage(msg, target || '*');
         }
         // animate and disable submit button
-        function onFormSubmit () {
+        function onFormSubmit (form) {
             if (formSubmitted) { return; }
             formSubmitted = true;
             $paymentFormSubmit.attr('disabled', formSubmitted);
@@ -237,6 +243,13 @@ $(document).ready(function () {
             $fields.forEach(function (el){
                 el.attr('disabled', 'disabled');
             });
+            showToast ('Через 2 секунды вы будете перенаправлены на страницу 3DS вашего банка.');
+            setTimeout(function () {
+                showToast ('Через 1 секунду вы будете перенаправлены на страницу 3DS вашего банка.');
+            }, 1000);
+            setTimeout(function () {
+                form.submit();
+            }, 2000);
         }
         // Validates with validate plugin
         $paymentForm.validate({
@@ -245,8 +258,8 @@ $(document).ready(function () {
                 postMessage('ipsp:cardForm:invalidFormHandled');
                 shake($paymentFormCard);
             },
-            submitHandler: function () {
-                onFormSubmit();
+            submitHandler: function (form) {
+                onFormSubmit(form);
             },
             rules: {
                 pan: {
