@@ -179,7 +179,6 @@ gulp.task('build-dist', function() {
 
 gulp.task('dist-clone-html', function() {
   return gulp.src(['./dist/frontend/design/best_wallet/**/{page,form}.html'])
-    // .pipe(convertEncoding({to: 'iso-8859-15'}))
     .pipe(rename({
         suffix: '_iframe'
     }))
@@ -189,12 +188,12 @@ gulp.task('dist-clone-html', function() {
 
 gulp.task('dist-change-encoding', function() {
   return gulp.src(['./dist/frontend/design/best_wallet/**/*.html'])
-    // .pipe(convertEncoding({to: 'utf16'}))
+    .pipe(convertEncoding({to: argv.encoding}))
     .pipe(gulp.dest('./dist/frontend/design/best_wallet/'));
 });
 
 // Export shortcut
-gulp.task('export', sequence('build', 'html-split', 'html-remove', 'build-dist', 'dist-clone-html', 'dist-change-encoding'));
+gulp.task('export', sequence('build', 'html-split', 'html-remove', 'build-dist', 'dist-clone-html'));
 
 // Base tasks
 gulp.task('default', sequence('build', ['server', 'watch']));
