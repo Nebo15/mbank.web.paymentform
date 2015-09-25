@@ -187,8 +187,14 @@ gulp.task('dist-clone-html', function() {
     .pipe(gulp.dest('./dist/frontend/design/best_wallet/'));
 });
 
+gulp.task('dist-change-encoding', function() {
+  return gulp.src(['./dist/frontend/design/best_wallet/**/*.html'])
+    .pipe(convertEncoding({to: 'iso-8859-15'}))
+    .pipe(gulp.dest('./dist/frontend/design/best_wallet/'));
+});
+
 // Export shortcut
-gulp.task('export', sequence('build', 'html-split', 'html-remove', 'build-dist', 'dist-clone-html'));
+gulp.task('export', sequence('build', 'html-split', 'html-remove', 'build-dist', 'dist-clone-html', 'dist-change-encoding'));
 
 // Base tasks
 gulp.task('default', sequence('build', ['server', 'watch']));
