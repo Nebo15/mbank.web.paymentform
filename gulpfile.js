@@ -18,9 +18,10 @@ var gulp         = require('gulp'),
     htmlmin      = require('gulp-htmlmin'),
     concat       = require('gulp-concat'),
     uglify       = require('gulp-uglify'),
-    htmlsplit = require('gulp-htmlsplit'),
-    gulpRemoveHtml = require('gulp-remove-html'),
-    htmlReplace = require('gulp-html-replace');
+    htmlsplit    = require('gulp-htmlsplit'),
+    gulpRemoveHtml  = require('gulp-remove-html'),
+    convertEncoding = require('gulp-convert-encoding'),
+    htmlReplace  = require('gulp-html-replace');
 
 
 var additinal_scripts = [
@@ -183,6 +184,7 @@ gulp.task('dist-clone-html', function() {
     .pipe(rename({
       suffix: '_iframe'
     }))
+    .pipe(convertEncoding({to: 'iso-8859-15'}))
     .pipe(gulp.dest('./dist/frontend/design/best_wallet/'));
 });
 
