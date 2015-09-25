@@ -1,6 +1,7 @@
 var gulp         = require('gulp'),
-    sequence     = require('gulp-sequence');
-    debug        = require('gulp-debug');
+    sequence     = require('gulp-sequence'),
+    debug        = require('gulp-debug'),
+    merge        = require('merge-stream'),
     path         = require('path'),
     argv         = require('yargs').argv,
     clean        = require('gulp-clean'),
@@ -46,7 +47,7 @@ gulp.task('server', function() {
 
 // Clean temporary folders
 gulp.task('clean', function () {
-    return gulp.src(['./www','./.sass-cache', './.tmp', './src/js/lib'], {read: false})
+    return gulp.src(['./www', './dist', './.sass-cache', './.tmp', './src/js/lib'], {read: false})
         .pipe(clean());
 });
 
@@ -75,6 +76,12 @@ gulp.task('build-styles', function() {
 // SVG to SVG sprites
 gulp.task('build-images', function() {
     return gulp.src(['./src/img/**/*', '!./src/img/icons/**/*'], {base: './src'})
+        .pipe(gulp.dest('./www'));
+});
+
+// Static files
+gulp.task('build-statics', function() {
+    return gulp.src(['./src/static/**/*'], {base: './src'})
         .pipe(gulp.dest('./www'));
 });
 
@@ -137,10 +144,7 @@ gulp.task('watch', function() {
     gulp.watch('./bower/**/*.js', ['build-scripts']);
 });
 
-// Base tasks
-gulp.task('default', sequence('build', ['server', 'watch']));
-gulp.task('build', sequence('clean', ['build-images', 'build-fonts', 'build-styles', 'build-scripts'], 'build-html','html-split','html-remove'));
-
+// Prepare IPSP template
 gulp.task('html-split', function () {
     return gulp.src('www/*.html')
       .pipe(htmlsplit())
@@ -158,7 +162,20 @@ gulp.task('html-remove', function () {
       .pipe(gulp.dest('www/html'));
 });
 
-gulp.task('export', ['build'], function() {
-    return gulp.src('./www/{css,img,js}/**/*', {base: './www'})
-        .pipe(gulp.dest('./dist/stat/frontend/design/best_wallet/'));
+// Export everything for IPSP
+gulp.task('build-dist', function() {
+    var assets = gulp.src('./www/{css,img,js}/**/*', {base: './www'})
+        .pipe(gulp.dest('./dist/ROOT/stat/frontend/design/best_wallet/'));
+
+    var html = gulp.src(['./www/**/*.html', './www/**/*.properties'], {base: './www'})
+        .pipe(gulp.dest('./dist/frontend/design/best_wallet/'));
+
+    return merge(assets, html);
 });
+
+// Export shortcut
+gulp.task('export', sequence('build', 'html-split', 'html-remove', 'build-dist'));
+
+// Base tasks
+gulp.task('default', sequence('build', ['server', 'watch']));
+gulp.task('build', sequence('clean', ['build-images', 'build-fonts', 'build-styles', 'build-scripts', 'build-statics'], 'build-html'));
