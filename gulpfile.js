@@ -189,7 +189,7 @@ gulp.task('dist-clone-html', function() {
 
 gulp.task('dist-change-encoding', function() {
   return gulp.src(['./dist/frontend/design/best_wallet/**/*.html'])
-    .pipe(convertEncoding({to: 'iso-8859-15'}))
+    // .pipe(convertEncoding({to: 'utf16'}))
     .pipe(gulp.dest('./dist/frontend/design/best_wallet/'));
 });
 
