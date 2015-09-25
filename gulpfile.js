@@ -18,11 +18,10 @@ var gulp         = require('gulp'),
     htmlmin      = require('gulp-htmlmin'),
     concat       = require('gulp-concat'),
     uglify       = require('gulp-uglify'),
+    htmlReplace  = require('gulp-html-replace'),
     htmlsplit    = require('gulp-htmlsplit'),
-    gulpRemoveHtml  = require('gulp-remove-html'),
-    convertEncoding = require('gulp-convert-encoding'),
-    htmlReplace  = require('gulp-html-replace');
-
+    replace      = require('gulp-replace'),
+    convertEncoding = require('gulp-convert-encoding');
 
 var additinal_scripts = [
     './src/bower/jquery/dist/jquery.js',
@@ -150,21 +149,20 @@ gulp.task('watch', function() {
 // Prepare IPSP template
 gulp.task('html-split', function () {
     return gulp.src('www/**/*.html')
-      .pipe(htmlsplit())
-      .pipe(gulp.dest('www'));
+        .pipe(htmlsplit())
+        .pipe(gulp.dest('www'));
 });
 
 gulp.task('html-remove', function () {
     return gulp.src('www/index.html')
-      .pipe(htmlReplace({
-        form: '${form}'
-      }))
-      .pipe(rename({
-          basename: 'page'
-      }))
-      .pipe(gulp.dest('www'));
+        .pipe(htmlReplace({
+            form: '${form}'
+        }))
+        .pipe(rename({
+            basename: 'page'
+        }))
+        .pipe(gulp.dest('www'));
 });
-
 
 // Export everything for IPSP
 gulp.task('build-dist', function() {
@@ -181,10 +179,11 @@ gulp.task('build-dist', function() {
 
 gulp.task('dist-clone-html', function() {
   return gulp.src(['./dist/frontend/design/best_wallet/**/{page,form}.html'])
+    // .pipe(convertEncoding({to: 'iso-8859-15'}))
     .pipe(rename({
-      suffix: '_iframe'
+        suffix: '_iframe'
     }))
-    .pipe(convertEncoding({to: 'iso-8859-15'}))
+    .pipe(gulpif('**/page_iframe.html', replace(/<body/g, '<body class="iframe"')))
     .pipe(gulp.dest('./dist/frontend/design/best_wallet/'));
 });
 
