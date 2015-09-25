@@ -42,6 +42,13 @@
             valid_length: [12, 13, 14, 15, 16, 17, 18, 19],
             cvv_length: 3,
             mask: "0000 0000 0000 0000 000"
+        }, {
+            brand: 'unionpay',
+            name: 'unionpay',
+            pattern: /^62/,
+            valid_length: [16, 17, 18, 19],
+            cvv_length: 3,
+            mask: "0000 0000 0000 0000 000"
         }
     ];
 

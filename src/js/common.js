@@ -213,6 +213,9 @@ $(function() {
 
         $card_icon.attr('class', '');
         if(card_data) {
+            console.log(card_data.brand);
+            $card_icon.addClass('icon-provider-' + card_data.brand);
+
             if($.inArray(card_data.brand, supported_card_brands) !== -1) {
                 $card_cvc.attr('maxlength', card_data.cvv_length);
                 $card_cvc.attr('max', lengthToMaxNumber(card_data.cvv_length));
@@ -226,14 +229,13 @@ $(function() {
                 $card_pan.attr('pattern', '\\d{' + pan_minlen + ',' + pan_maxlen + '}');
 
                 // $card_pan.unmask().mask(card_data.mask); // TODO change mask
-
-                $card_icon.addClass('icon-provider-' + card_data.brand);
                 return;
             }
 
             $card_pan.showError('unsupportedCardVendor');
+        } else {
+            $card_icon.addClass('icon-card-front');
         }
-        $card_icon.addClass('icon-card-front');
     });
 
     // Guesters for cardholder field
