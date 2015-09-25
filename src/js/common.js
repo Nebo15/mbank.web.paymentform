@@ -174,7 +174,6 @@ $(function() {
         // Jump to next input when data is valid
         $(this).on('valid', function() {
             var $this = $(this);
-
             $this.removeError();
 
             for(var i = index+1; inputs[i] && inputs[i].length > 0; i++) {
@@ -183,13 +182,16 @@ $(function() {
                     break;
                 }
             }
+
+            postMessage({event: 'Form Field Filled', metadata: {parameter_name: $this.attr('name'), valid: true, invalid_fields: []}});
         });
 
         // Validation errors
         $(this).on('invalid', function(event, rules_failed) {
             var $this = $(this);
-            var first_rule = rules_failed.shift() || 'default';
+            var first_rule = rules_failed.slice(0).shift() || 'default';
             $this.showError(first_rule);
+            postMessage({event: 'Form Validation Error', metadata: {parameter_name: $this.attr('name'), valid: false, invalid_fields: rules_failed}});
         });
     });
 
@@ -297,6 +299,7 @@ $(function() {
     var form_submit_ready = false;
     $form.on('submit', function(event) {
         if(form_submit_ready === true) {
+            postMessage({event: 'Form Submit'});
             // Send HTTP POST
             return true;
         }
@@ -313,14 +316,19 @@ $(function() {
             setTimeout(function() {
                 $form.submit();
             }, 5000);
+            postMessage({event: 'Form Submit Tap', metadata: {valid: true}});
         } else {
             $('.addcard__in').shake();
             $form.validate();
             $form.getFirstInvalid().focus();
+            postMessage({event: 'Form Submit Tap', metadata: {valid: false}});
         }
         return false;
     });
 
     // Focus on first field
     $card_pan.focus();
+
+    // Form ready
+    postMessage({event: 'Card Add Screen Open'});
 });
