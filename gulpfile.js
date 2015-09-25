@@ -136,3 +136,8 @@ gulp.task('watch', function() {
 // Base tasks
 gulp.task('default', sequence('build', ['server', 'watch']));
 gulp.task('build', sequence('clean', ['build-images', 'build-fonts', 'build-styles', 'build-scripts'], 'build-html'));
+
+gulp.task('export', ['build'], function() {
+    return gulp.src('./www/{css,img,js}/**/*', {base: './www'})
+        .pipe(gulp.dest('./dist/stat/frontend/design/best_wallet/'));
+});
