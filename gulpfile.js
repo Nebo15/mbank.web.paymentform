@@ -142,6 +142,7 @@ gulp.task('watch', function() {
     gulp.watch('./src/fonts/**/*', ['build-fonts']);
     gulp.watch('./src/js/**/*', ['build-scripts']);
     gulp.watch('./bower/**/*.js', ['build-scripts']);
+    gulp.watch('./static/**/*', ['build-statics']);
 });
 
 // Prepare IPSP template
