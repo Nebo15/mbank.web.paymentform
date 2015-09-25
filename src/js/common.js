@@ -56,11 +56,13 @@ $(function() {
         }
     });
 
+
     $.mergeErrorGroups({
         'exp_date_m': 'exp_date',
         'exp_date_y': 'exp_date'
     });
 
+    var formTimeoutMessage = "Время ожидания истекло. Пожалуйста, попробуйте еще раз. Форма должна быть заполнена в течении 15 минут.";
     var toast_message = "Через 5 секунд вы будете перенаправлены на страницу 3D Secure вашего банка.";
 
     // Post message to parent window (if we in iFrame)
@@ -70,7 +72,7 @@ $(function() {
 
     // Show temporary alert
     var showToast = function(msg) {
-        $toast.find('.toast__content').text(msg);
+        $toast.find('.toast__content').html(msg);
         $toast.addClass('is-active');
     };
 
@@ -331,4 +333,13 @@ $(function() {
 
     // Form ready
     postMessage({event: 'Card Add Screen Open'});
+
+    // Show timeout toast
+    setTimeout(function() {
+        $form_submit_btn.attr('disabled', true).removeClass('active');
+        $(inputs).each(function() {
+            $(this).attr('disabled', 'disabled');
+        });
+        showToast(formTimeoutMessage);
+    }, 900000);
 });
