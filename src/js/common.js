@@ -328,7 +328,6 @@ $(function() {
 
     // Focus on first field
     $('input:not(:disabled):not(:hidden):first').focus();
-    //$card_pan.focus();
 
     // Form ready
     postMessage({event: 'Card Add Screen Open'});

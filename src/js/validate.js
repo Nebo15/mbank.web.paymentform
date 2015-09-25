@@ -34,6 +34,10 @@
         var rules_failed = [];
         var valid = true;
 
+        if($el.attr('disabled') == true || $el.attr('disabled') == 'disabled' || $el.hasClass('hidden') || $el.attr('type') == 'hidden') {
+            return {result: valid, rules_failed: rules_failed};
+        }
+
         // Filter input
         var filter = $el.data('validate-filter');
         if(filter) {
@@ -176,6 +180,7 @@
         } else if($this.is('input')) {
             var $form = $(this).closest('form');
             $form.attr('novalidate', true);
+
             events = events || 'change'
 
             if($this.data('validation-active') == true) {
