@@ -39,23 +39,23 @@ $(function() {
         },
         'exp_date_m': {
             'required': lang.card_exp_date_required,
-            'min': lang.card_exp_date_expired,
-            'max': lang.card_exp_date_expired
+            'minValue': lang.card_exp_date_expired,
+            'maxValue': lang.card_exp_date_expired
         },
         'exp_date_y': {
             'required': lang.card_exp_date_required,
-            'min': lang.card_exp_date_expired,
-            'max': lang.card_exp_date_expired
+            'minValue': lang.card_exp_date_expired,
+            'maxValue': lang.card_exp_date_expired
         },
         'default': {
             'default': "Вы ввели неверные данные",
             'required': "Это поле обязательно к заполнению",
             'pattern': "Вы ввели неверные данные",
-            'minlength': "Длинна поля меньше максимальной",
-            'maxlength': "Длинна поля больше максимальной",
+            'minLength': "Длинна поля меньше максимальной",
+            'maxLength': "Длинна поля больше максимальной",
             'fixLength': "Длинна поля не соответствует заданой",
-            'min': "Значение меньше минимального",
-            'max': "Превышено максимальное значение",
+            'minValue': "Значение меньше минимального",
+            'maxValue': "Превышено максимальное значение",
             'unsupportedCardVendor': "К оплате принимаются только карты Visa и MasterCard"
         }
     };
@@ -115,6 +115,19 @@ $(function() {
             // Add leading zero to exp month
             if($this.val() != 0 && $this.val() != 1 && $this.val() != 2 && $this.val().substring(0,1) != '0') {
                 $this.val('0' + $this.val());
+            }
+        }
+    });
+
+    $card_exp_month.focusout(function() {
+        var $this = $(this);
+        var len = $this.val().length;
+        if(len == 1) {
+            // Add leading zero to exp month
+            if($this.val() != 0 && $this.val().substring(0,1) != '0') {
+                $this.val('0' + $this.val());
+                // Trigger validation to remove error message
+                $this.validate();
             }
         }
     });
