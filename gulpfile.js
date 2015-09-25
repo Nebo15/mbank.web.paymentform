@@ -4,6 +4,7 @@ var gulp         = require('gulp'),
     merge        = require('merge-stream'),
     path         = require('path'),
     argv         = require('yargs').argv,
+    prefix       = require('gulp-prefix'),
     clean        = require('gulp-clean'),
     browserSync  = require('browser-sync'),
     inject       = require('gulp-inject'),
@@ -166,26 +167,27 @@ gulp.task('html-remove', function () {
 
 // Export everything for IPSP
 gulp.task('build-dist', function() {
-    var assets = gulp.src('./www/{css,img,js}/**/*', {base: './www'})
+    var assets = gulp.src('./www/{css,img,js,fonts}/**/*', {base: './www'})
         .pipe(gulp.dest('./dist/ROOT/stat/frontend/design/best_wallet/'));
 
+    var prefixUrl = "/stat/frontend/design/best_wallet";
     var html = gulp.src(['./www/**/*.html', '!./www/index.html', './www/**/*.properties'], {base: './www'})
+        .pipe(prefix(prefixUrl))
         .pipe(gulp.dest('./dist/frontend/design/best_wallet/'));
-
 
     return merge(assets, html);
 });
 
-gulp.task('build-dist-copy', function() {
-  return gulp.src(['./dist/frontend/design/best_wallet/**/page.html'])
+gulp.task('dist-clone-html', function() {
+  return gulp.src(['./dist/frontend/design/best_wallet/**/{page,form}.html'])
     .pipe(rename({
-      basename: 'page_iframe'
+      suffix: '_iframe'
     }))
     .pipe(gulp.dest('./dist/frontend/design/best_wallet/'));
 });
 
 // Export shortcut
-gulp.task('export', sequence('build', 'html-split', 'html-remove', 'build-dist', 'build-dist-copy'));
+gulp.task('export', sequence('build', 'html-split', 'html-remove', 'build-dist', 'dist-clone-html'));
 
 // Base tasks
 gulp.task('default', sequence('build', ['server', 'watch']));
