@@ -78,7 +78,7 @@ gulp.task('build-images', function() {
 });
 
 // Static files
-gulp.task('build-static', function() {
+gulp.task('build-statics', function() {
     return gulp.src(['./src/static/**/*'], {base: './src'})
         .pipe(gulp.dest('./www'));
 });
@@ -159,7 +159,7 @@ gulp.task('html-remove', function () {
 });
 
 // Export everything for IPSP
-gulp.task('export', ['build', 'html-split', 'html-remove'], function() {
+gulp.task('build-dist', function() {
     var assets = gulp.src('./www/{css,img,js}/**/*', {base: './www'})
         .pipe(gulp.dest('./dist/ROOT/stat/frontend/design/best_wallet/'));
 
@@ -168,6 +168,9 @@ gulp.task('export', ['build', 'html-split', 'html-remove'], function() {
 
     return merge(assets, html);
 });
+
+// Export shortcut
+gulp.task('export', sequence('build', 'html-split', 'html-remove', 'build-dist'));
 
 // Base tasks
 gulp.task('default', sequence('build', ['server', 'watch']));
