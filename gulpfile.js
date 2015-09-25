@@ -17,7 +17,9 @@ var gulp         = require('gulp'),
     concat       = require('gulp-concat'),
     uglify       = require('gulp-uglify'),
     htmlsplit = require('gulp-htmlsplit'),
-    gulpRemoveHtml = require('gulp-remove-html');
+    gulpRemoveHtml = require('gulp-remove-html'),
+    htmlReplace = require('gulp-html-replace');
+
 
 var additinal_scripts = [
     './src/bower/jquery/dist/jquery.js',
@@ -147,7 +149,9 @@ gulp.task('html-split', function () {
 
 gulp.task('html-remove', function () {
     return gulp.src('www/index.html')
-      .pipe(gulpRemoveHtml())
+      .pipe(htmlReplace({
+        form: '${form}'
+      }))
       .pipe(rename({
           basename: 'page'
       }))
