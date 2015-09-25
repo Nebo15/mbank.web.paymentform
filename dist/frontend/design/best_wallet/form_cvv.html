@@ -1,24 +1,4 @@
-<!doctype html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<title>Best Wallet - форма оплаты</title>
-	<meta name="viewport" content="maximum-scale=1,width=device-width,user-scalable=no,minimal-ui">
-    <!-- head:css -->
-    <!-- endinject -->
-</head>
-<body>
-    <!-- wrapper, screen, head, addcard, info, paysy, field, , input, fieldset, form, icon, btn, link -->
-    <!-- wrapper -->
-    <div class="wrapper">
-    	<!-- screen -->
-    	<div class="screen">
-    		<div class="screen__in">
-    			<div class="screen__bg">
-					<!--<Deject>-->
-					<!-- split form.html -->
-
-    				<div class="addcard">
+<div class="addcard">
     					<!-- info -->
     					<div class="info">
     						<div class="info__ico"><span>$</span></div>
@@ -41,7 +21,7 @@
     							<div class="field">
     								<div class="field__label">Номер карты</div>
     								<div class="field__el">
-    									<input class="input" placeholder="•••• •••• •••• ••••" name="pan" type="text" data-validate-rule="card-number" required pattern="\d{16}" data-validate-filter="[\s\-]*" minlength="16" maxlength="19" autocomplete="cc-number" x-autocompletetype="cc-number">
+    									<input class="input" disabled="disabled" placeholder="•••• •••• •••• ••••" type="text" value="•••• •••• •••• 1234">
     									<!-- paysys -->
     									<div class="paysys">
     										<i class="icon-card-front"></i>
@@ -55,10 +35,10 @@
     								<div class="field field_double field_issued_at">
     									<div class="field__label">Срок действия</div>
     									<div class="field__el">
-    										<input class="input" name="exp_date_m" placeholder="MM" min="1" max="12" pattern="\d{1,2}" type="number" maxlength="2" required autocomplete="cc-exp-month" x-autocompletetype="cc-exp-month">
+    										<input class="input" disabled="disabled" name="exp_date_m" type="text" autocomplete="cc-exp-month" x-autocompletetype="cc-exp-month" value="••">
     									</div>
     									<div class="field__el">
-    										<input class="input" name="exp_date_y" placeholder="ГГ" min="15" max="27" pattern="\d{2}" type="number" minlength="2" maxlength="2" required autocomplete="cc-exp-year" x-autocompletetype="cc-exp-year">
+    										<input class="input" disabled="disabled" name="exp_date_y" type="text" value="••">
     									</div>
     								</div>
     								<!-- field -->
@@ -74,14 +54,6 @@
     								<!--</label>-->
     							</div>
     							<!-- field -->
-    							<!-- ${card_holder} -->
-    							<div class="field field__cardholder">
-    								<div class="field__label">Держатель карты</div>
-    								<div class="field__el">
-    									<input class="input" name="cardholder" placeholder="IVAN IVANOV" type="text" required minlength="3" autocomplete="cc-name" x-autocompletetype="cc-name">
-    								</div>
-    								<div class="field__notice">Латинскими буквами как указано на карте</div>
-    							</div>
     						</div>
 
     						<!--<div class="iframe_inputs">-->
@@ -108,7 +80,7 @@
     							</div>
     						</div>
 
-    						<!-- ${hidden_inputs} -->
+    						 ${hidden_inputs}
 
     						<!-- form -->
     						<div class="form">
@@ -128,27 +100,3 @@
                             </ul>
     					</form>
     				</div>
-					<!-- split stop -->
-					<!--</Deject>-->
-    			</div>
-    		</div>
-    	</div>
-    </div>
-	<div class="toast">
-		<div class="toast__in">
-			<div class="toast__icon">
-				<div class="toast__icon__in">
-					<i class="icon icon-ok"></i>
-				</div>
-			</div>
-			<div class="toast__content"></div>
-		</div>
-	</div>
-    <!-- inject:css -->
-    <!-- endinject -->
-    <!-- inject language files -->
-    <script src="/js/lang/RU/strings.js"></script>
-    <!-- inject:js -->
-    <!-- endinject -->
-</body>
-</html>

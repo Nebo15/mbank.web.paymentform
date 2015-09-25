@@ -16,7 +16,9 @@ var gulp         = require('gulp'),
     browserSync  = require('browser-sync'),
     htmlmin      = require('gulp-htmlmin'),
     concat       = require('gulp-concat'),
-    uglify       = require('gulp-uglify');
+    uglify       = require('gulp-uglify'),
+    htmlsplit = require('gulp-htmlsplit'),
+    gulpRemoveHtml = require('gulp-remove-html');
 
 var additinal_scripts = [
     './src/bower/jquery/dist/jquery.js',
@@ -140,11 +142,21 @@ gulp.task('watch', function() {
     gulp.watch('./bower/**/*.js', ['build-scripts']);
 });
 
-// Base tasks
-gulp.task('default', sequence('build', ['server', 'watch']));
-gulp.task('build', sequence('clean', ['build-images', 'build-fonts', 'build-styles', 'build-scripts', 'build-statics'], 'build-html'));
+// Prepare IPSP template
+gulp.task('html-split', function () {
+    return gulp.src('www/*.html')
+      .pipe(htmlsplit())
+      .pipe(gulp.dest('www/html'));
+});
 
-gulp.task('export', ['build'], function() {
+gulp.task('html-remove', function () {
+    return gulp.src('www/index.html')
+      .pipe(gulpRemoveHtml())
+      .pipe(gulp.dest('www/html'));
+});
+
+// Export everything for IPSP
+gulp.task('export', ['build', 'html-split', 'html-remove'], function() {
     var assets = gulp.src('./www/{css,img,js}/**/*', {base: './www'})
         .pipe(gulp.dest('./dist/ROOT/stat/frontend/design/best_wallet/'));
 
@@ -153,3 +165,7 @@ gulp.task('export', ['build'], function() {
 
     return merge(assets, html);
 });
+
+// Base tasks
+gulp.task('default', sequence('build', ['server', 'watch']));
+gulp.task('build', sequence('clean', ['build-images', 'build-fonts', 'build-styles', 'build-scripts', 'build-statics'], 'build-html'));
