@@ -17,6 +17,7 @@
     "gulp-htmlsplit": "^1.1.0",
     "gulp-if": "^1.2.5",
     "gulp-inject": "^3.0.0",
+    "gulp-prefix": "0.0.14",
     "gulp-remove-html": "^1.1.2",
     "gulp-rename": "^1.2.2",
     "gulp-sequence": "^0.4.1",
