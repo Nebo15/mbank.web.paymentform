@@ -148,6 +148,9 @@ gulp.task('html-split', function () {
 gulp.task('html-remove', function () {
     return gulp.src('www/index.html')
       .pipe(gulpRemoveHtml())
+      .pipe(rename({
+          basename: 'page'
+      }))
       .pipe(gulp.dest('www/html'));
 });
 
