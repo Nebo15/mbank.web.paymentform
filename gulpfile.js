@@ -20,7 +20,8 @@ var gulp         = require('gulp'),
     uglify       = require('gulp-uglify'),
     htmlsplit = require('gulp-htmlsplit'),
     gulpRemoveHtml = require('gulp-remove-html'),
-    htmlReplace = require('gulp-html-replace');
+    htmlReplace = require('gulp-html-replace'),
+    dom  = require('gulp-dom');
 
 
 var additinal_scripts = [
@@ -183,6 +184,10 @@ gulp.task('dist-clone-html', function() {
     .pipe(rename({
       suffix: '_iframe'
     }))
+    .pipe(gulpif('**/page_iframe.html', dom(function(){
+      this.querySelectorAll('body')[0].className += ' iframe';
+      return this;
+    })))
     .pipe(gulp.dest('./dist/frontend/design/best_wallet/'));
 });
 
