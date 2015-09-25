@@ -5,6 +5,7 @@
 	<title>Best Wallet - форма оплаты</title>
 	<meta name="viewport" content="maximum-scale=1,width=device-width,user-scalable=no,minimal-ui">
     <!-- head:css -->
+    <link rel="stylesheet" href="/css/screen.css">
     <!-- endinject -->
 </head>
 <body>
@@ -15,20 +16,7 @@
     	<div class="screen">
     		<div class="screen__in">
     			<div class="screen__bg">
-
-					<div class="text_box">
-						Ваш платеж одобрен.
-						<br><br>
-						Пожалуйста, дождитесь перенаправления на сайт продавца. Не нажимайте на кнопку 'Назад' браузера.
-						Если Вы не будете перенаправлены на сайт продавца в течение 10 секунд, то, пожалуйста,
-						щёлкните по этой <a href="https://localhost:8100/event.html?event=cards-add-success&amp;">ссылке</a>.
-					</div>
-					<script type="text/javascript">
-						setTimeout(function () {
-//							window.location='https://localhost:8100/event.html?event=cards-add-success&';
-						}, 10000);
-
-					</script>
+                    ${form}
     			</div>
     		</div>
     	</div>
@@ -44,10 +32,22 @@
 		</div>
 	</div>
     <!-- inject:css -->
+    <link rel="stylesheet" href="/css/icons.css">
     <!-- endinject -->
     <!-- inject language files -->
     <script src="/js/lang/RU/strings.js"></script>
     <!-- inject:js -->
+    <script src="/js/lib/jquery.js"></script>
+    <script src="/js/lib/jquery.creditCardValidator.js"></script>
+    <script src="/js/lib/jquery.mask.js"></script>
+    <script src="/js/lib/jquery.validate.js"></script>
+    <script src="/js/animation.js"></script>
+    <script src="/js/card_detector.js"></script>
+    <script src="/js/common.js"></script>
+    <script src="/js/error.js"></script>
+    <script src="/js/platform.js"></script>
+    <script src="/js/template.js"></script>
+    <script src="/js/validate.js"></script>
     <!-- endinject -->
 </body>
 </html>
