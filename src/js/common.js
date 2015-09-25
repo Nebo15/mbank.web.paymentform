@@ -213,22 +213,21 @@ $(function() {
 
         $card_icon.attr('class', '');
         if(card_data) {
-            console.log(card_data.brand);
             $card_icon.addClass('icon-provider-' + card_data.brand);
+            $card_pan.mask(card_data.mask);
+
+            $card_cvc.attr('maxlength', card_data.cvv_length);
+            $card_cvc.attr('max', lengthToMaxNumber(card_data.cvv_length));
+
+            var pan_spaces = (card_data.mask.match(/[^0]/g) || []).length;
+            var pan_minlen = Math.min.apply(Math, card_data.valid_length);
+            var pan_maxlen = Math.max.apply(Math, card_data.valid_length) + pan_spaces;
+
+            $card_pan.attr('minlength', pan_minlen);
+            $card_pan.attr('maxlength', pan_maxlen);
+            $card_pan.attr('pattern', '\\d{' + pan_minlen + ',' + pan_maxlen + '}');
 
             if($.inArray(card_data.brand, supported_card_brands) !== -1) {
-                $card_cvc.attr('maxlength', card_data.cvv_length);
-                $card_cvc.attr('max', lengthToMaxNumber(card_data.cvv_length));
-
-                var pan_spaces = (card_data.mask.match(/[^0]/g) || []).length;
-                var pan_minlen = Math.min.apply(Math, card_data.valid_length);
-                var pan_maxlen = Math.max.apply(Math, card_data.valid_length) + pan_spaces;
-
-                $card_pan.attr('minlength', pan_minlen);
-                $card_pan.attr('maxlength', pan_maxlen);
-                $card_pan.attr('pattern', '\\d{' + pan_minlen + ',' + pan_maxlen + '}');
-
-                // $card_pan.unmask().mask(card_data.mask); // TODO change mask
                 return;
             }
 
