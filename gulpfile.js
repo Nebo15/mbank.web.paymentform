@@ -81,7 +81,7 @@ gulp.task('build-images', function() {
 
 // Static files
 gulp.task('build-statics', function() {
-    return gulp.src(['./src/static/**/*'], {base: './src'})
+    return gulp.src(['./src/static/**/*'], {base: './src/static'})
         .pipe(gulp.dest('./www'));
 });
 
@@ -98,7 +98,7 @@ gulp.task('build-html', ['build-styles', 'build-scripts'], function() {
     '!./www/css/screen.css'
   ], {read: false, base: '/www'});
 
-  return gulp.src('./src/html/**/*.html')
+  return gulp.src(['./src/html/**/*.html', '!./src/html/success.html'])
     .pipe(inject(injected_head, {ignorePath: '/www', name: 'head'}))
     .pipe(inject(injected, {ignorePath: '/www'}))
     .pipe(htmlmin({
@@ -147,9 +147,9 @@ gulp.task('watch', function() {
 
 // Prepare IPSP template
 gulp.task('html-split', function () {
-    return gulp.src('www/*.html')
+    return gulp.src('www/**/*.html')
       .pipe(htmlsplit())
-      .pipe(gulp.dest('www/html'));
+      .pipe(gulp.dest('www'));
 });
 
 gulp.task('html-remove', function () {
@@ -160,22 +160,32 @@ gulp.task('html-remove', function () {
       .pipe(rename({
           basename: 'page'
       }))
-      .pipe(gulp.dest('www/html'));
+      .pipe(gulp.dest('www'));
 });
+
 
 // Export everything for IPSP
 gulp.task('build-dist', function() {
     var assets = gulp.src('./www/{css,img,js}/**/*', {base: './www'})
         .pipe(gulp.dest('./dist/ROOT/stat/frontend/design/best_wallet/'));
 
-    var html = gulp.src(['./www/**/*.html', './www/**/*.properties'], {base: './www'})
+    var html = gulp.src(['./www/**/*.html', '!./www/index.html', './www/**/*.properties'], {base: './www'})
         .pipe(gulp.dest('./dist/frontend/design/best_wallet/'));
+
 
     return merge(assets, html);
 });
 
+gulp.task('build-dist-copy', function() {
+  return gulp.src(['./dist/frontend/design/best_wallet/**/page.html'])
+    .pipe(rename({
+      basename: 'page_iframe'
+    }))
+    .pipe(gulp.dest('./dist/frontend/design/best_wallet/'));
+});
+
 // Export shortcut
-gulp.task('export', sequence('build', 'html-split', 'html-remove', 'build-dist'));
+gulp.task('export', sequence('build', 'html-split', 'html-remove', 'build-dist', 'build-dist-copy'));
 
 // Base tasks
 gulp.task('default', sequence('build', ['server', 'watch']));
