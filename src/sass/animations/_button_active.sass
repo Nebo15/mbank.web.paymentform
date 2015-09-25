@@ -8,9 +8,7 @@
   &.active
     +background(linear-gradient(77deg,#ff5a00,#ff955c,#fd2e36,#ff3e4b,#ff5a00))
     &:hover
-      +background(none)
-      background: darken(#fd2e36, .2)
+      animation-play-state: paused
 
     background-size: 300% 100%
-    -webkit-animation: submitButtonAnimation 3.5s linear infinite
     animation: submitButtonAnimation 3.5s linear infinite

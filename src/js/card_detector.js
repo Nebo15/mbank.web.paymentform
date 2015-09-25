@@ -5,37 +5,43 @@
             name: 'amex',
             pattern: /^3[47]/,
             valid_length: [15],
-            cvv_length: 4
+            cvv_length: 4,
+            mask: "0000 000000 00000"
         }, {
             brand: 'jcb',
             name: 'jcb',
             pattern: /^35(2[89]|[3-8][0-9])/,
             valid_length: [16],
-            cvv_length: 3
+            cvv_length: 3,
+            mask: "0000 0000 0000 0000"
         }, {
             brand: 'visa',
             name: 'visa_electron',
             pattern: /^(4026|417500|4508|4844|491(3|7))/,
             valid_length: [16],
-            cvv_length: 3
+            cvv_length: 3,
+            mask: "0000 0000 0000 0000"
         }, {
             brand: 'visa',
             name: 'visa',
             pattern: /^4/,
             valid_length: [16],
-            cvv_length: 3
+            cvv_length: 3,
+            mask: "0000 0000 0000 0000"
         }, {
             brand: 'mastercard',
             name: 'mastercard',
             pattern: /^5[1-5]/,
             valid_length: [16],
-            cvv_length: 3
+            cvv_length: 3,
+            mask: "0000 0000 0000 0000"
         }, {
             brand: 'maestro',
             name: 'maestro',
             pattern: /^(5018|5020|5038|6304|6759|676[1-3])/,
             valid_length: [12, 13, 14, 15, 16, 17, 18, 19],
-            cvv_length: 3
+            cvv_length: 3,
+            mask: "0000 0000 0000 0000 000"
         }
     ];
 
