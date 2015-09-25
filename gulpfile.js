@@ -144,8 +144,14 @@ gulp.task('html-split', function () {
       .pipe(htmlsplit())
       .pipe(gulp.dest('www/html'));
 });
+
 gulp.task('html-remove', function () {
     return gulp.src('www/index.html')
       .pipe(gulpRemoveHtml())
       .pipe(gulp.dest('www/html'));
+});
+
+gulp.task('export', ['build'], function() {
+    return gulp.src('./www/{css,img,js}/**/*', {base: './www'})
+        .pipe(gulp.dest('./dist/stat/frontend/design/best_wallet/'));
 });
