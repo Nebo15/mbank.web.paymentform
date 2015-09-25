@@ -41,7 +41,7 @@
             value = value.replace(filter_regexp, '');
         }
 
-        // Valudate
+        // Validate
         if(rules.required == true) {
             if(!value) {
                 rules_failed.push('required');
@@ -119,7 +119,6 @@
                 valid = false;
             }
         }
-
         return {result: valid, rules_failed: rules_failed};
     }
 
@@ -190,17 +189,19 @@
             $form.data('validation-inputs', inputs);
 
             $this.on(events + ' validate', function(event) {
-                $this.trigger('validating');
+                $validated_element = $(this);
+                $validated_element.trigger('validating');
 
-                var validation_result = isValid($this);
-
+                var validation_result = isValid($validated_element);
                 if(validation_result.result == true) {
-                    $this.trigger('valid');
+                    $validated_element.trigger('valid');
+                    $form.trigger('field_valid');
                 } else {
-                    $this.trigger('invalid', [validation_result.rules_failed]);
+                    $form.trigger('field_invalid');
+                    $validated_element.trigger('invalid', [validation_result.rules_failed.slice(0)]);
                 }
 
-                $form.trigger('change', [this, validation_result]);
+                $form.trigger('change', [this, $.extend(validation_result)]);
             });
 
             return $this;

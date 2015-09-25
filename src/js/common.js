@@ -20,13 +20,13 @@ $(function() {
 
     var supported_card_brands = ['visa', 'mastercard', 'maestro'];
 
-    var error_messages = {
+    $.mergeErrorMessages({
         'pan': {
-            'required': lang.card_number_required,
-            'pattern': lang.card_wrong_number,
-            'cardNumber': lang.card_wrong_number,
-            'minLength': lang.card_number_minlength,
-            'maxLength': lang.card_number_maxlength
+            'required': "Введите номер карты",
+            'pattern': "Введен неверный номер карты",
+            'cardNumber': "Введен неверный номер карты",
+            'minLength': "Номер карты слишком короткий",
+            'maxLength': "Номер карты слишком длинный"
         },
         'code_cvv2': {
             'required': lang.card_cvv2_required,
@@ -37,15 +37,10 @@ $(function() {
             'required': lang.card_holder_required,
             'minLength': lang.card_holder_minlength
         },
-        'exp_date_m': {
-            'required': lang.card_exp_date_required,
-            'minValue': lang.card_exp_date_expired,
-            'maxValue': lang.card_exp_date_expired
-        },
-        'exp_date_y': {
-            'required': lang.card_exp_date_required,
-            'minValue': lang.card_exp_date_expired,
-            'maxValue': lang.card_exp_date_expired
+        'exp_date': {
+            'required': "Неверный срок действия карты",
+            'minValue': "Срок действия карты истек",
+            'maxValue': "Срок действия карты слишком большой"
         },
         'default': {
             'default': "Вы ввели неверные данные",
@@ -56,9 +51,15 @@ $(function() {
             'fixLength': "Длинна поля не соответствует заданой",
             'minValue': "Значение меньше минимального",
             'maxValue': "Превышено максимальное значение",
+            'cardNumber': lang.card_wrong_number,
             'unsupportedCardVendor': "К оплате принимаются только карты Visa и MasterCard"
         }
-    };
+    });
+
+    $.mergeErrorGroups({
+        'exp_date_m': 'exp_date',
+        'exp_date_y': 'exp_date'
+    });
 
     var toast_message = "Через 5 секунд вы будете перенаправлены на страницу 3D Secure вашего банка.";
 
@@ -71,12 +72,6 @@ $(function() {
     var showToast = function(msg) {
         $toast.find('.toast__content').text(msg);
         $toast.addClass('is-active');
-    };
-
-    // Error message
-    var errorMessageElement = function(text, for_el) {
-        var $el = $(for_el);
-        return $('<label class="error ' + $el.attr('name') + '-error" for="' + $el.attr('name') + '">' + text + '</label>');
     };
 
     // Number max value
@@ -152,15 +147,26 @@ $(function() {
             }
         });
 
+        $(this).on('focusout', function(event) {
+            var $this = $(this);
+            if($this.val()) {
+                $(this).trigger('validate');
+            }
+        });
+
         // Jump to previous field
-        $(this).on('keydown', function(event) {
+        $(this).on('keyup', function(event) {
             var $this = $(this);
 
             if($this.val() == "") {
                 if(event.keyCode == 8 || event.keyCode == 37) {
-                    inputs[index-1].focus();
+                    if(inputs[index-1]) {
+                        inputs[index-1].focus().select();
+                    }
                 } else if(event.keyCode == 39) {
-                    inputs[index+1].focus();
+                    if(inputs[index+1]) {
+                        inputs[index+1].focus().select();
+                    }
                 }
             }
         });
@@ -168,8 +174,8 @@ $(function() {
         // Jump to next input when data is valid
         $(this).on('valid', function() {
             var $this = $(this);
-            $this.removeClass('error');
-            $('.' + $this.attr('name') + '-error').remove();
+
+            $this.removeError();
 
             for(var i = index+1; inputs[i] && inputs[i].length > 0; i++) {
                 if(inputs[i].isValid() == false) {
@@ -182,18 +188,19 @@ $(function() {
         // Validation errors
         $(this).on('invalid', function(event, rules_failed) {
             var $this = $(this);
-            $this.addClass('error');
-            $('.' + $this.attr('name') + '-error').remove();
-
             var first_rule = rules_failed.shift() || 'default';
-            var error_message = error_messages[$this.attr('name')][first_rule] || error_messages['default'][first_rule];
-            $this.after(errorMessageElement(error_message, $this));
+            $this.showError(first_rule);
         });
     });
 
     // Card PAN mask
     $card_pan.mask("0000 0000 0000 0000", {
         maxlength: true
+    });
+
+    // Validate exp month when year is valid
+    $card_exp_year.on('valid', function() {
+        $card_exp_month.validate();
     });
 
     // Suggest card type
@@ -220,8 +227,7 @@ $(function() {
                 return;
             }
 
-            $('.' + $card_pan.attr('name') + '-error').remove();
-            $card_pan.after(errorMessageElement(error_messages.default.unsupportedCardVendor, $card_pan));
+            $card_pan.showError('unsupportedCardVendor');
         }
         $card_icon.addClass('icon-card-front');
     });
@@ -275,12 +281,16 @@ $(function() {
     });
 
     // Catch form validation result and activate/deactivate button
-    $form.on('change', function(event) {
+    $form.on('field_valid', function(event) {
         if($form.isValid() == true) {
             $form_submit_btn.removeAttr('disabled').addClass('btn_red active');
         } else {
             $form_submit_btn.removeClass('btn_red active');
         }
+    });
+
+    $form.on('field_invalid', function(event) {
+        $form_submit_btn.removeClass('btn_red active');
     });
 
     // Submit form if valid, but show toast first
