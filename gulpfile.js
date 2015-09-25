@@ -1,6 +1,7 @@
 var gulp         = require('gulp'),
-    sequence     = require('gulp-sequence');
-    debug        = require('gulp-debug');
+    sequence     = require('gulp-sequence'),
+    debug        = require('gulp-debug'),
+    merge        = require('merge-stream'),
     path         = require('path'),
     argv         = require('yargs').argv,
     clean        = require('gulp-clean'),
@@ -74,6 +75,12 @@ gulp.task('build-images', function() {
         .pipe(gulp.dest('./www'));
 });
 
+// Static files
+gulp.task('build-static', function() {
+    return gulp.src(['./src/static/**/*'], {base: './src'})
+        .pipe(gulp.dest('./www'));
+});
+
 // HTML minify
 gulp.task('build-html', ['build-styles', 'build-scripts'], function() {
   var injected_head = gulp.src([
@@ -135,9 +142,14 @@ gulp.task('watch', function() {
 
 // Base tasks
 gulp.task('default', sequence('build', ['server', 'watch']));
-gulp.task('build', sequence('clean', ['build-images', 'build-fonts', 'build-styles', 'build-scripts'], 'build-html'));
+gulp.task('build', sequence('clean', ['build-images', 'build-fonts', 'build-styles', 'build-scripts', 'build-statics'], 'build-html'));
 
 gulp.task('export', ['build'], function() {
-    return gulp.src('./www/{css,img,js}/**/*', {base: './www'})
-        .pipe(gulp.dest('./dist/stat/frontend/design/best_wallet/'));
+    var assets = gulp.src('./www/{css,img,js}/**/*', {base: './www'})
+        .pipe(gulp.dest('./dist/ROOT/stat/frontend/design/best_wallet/'));
+
+    var html = gulp.src(['./www/**/*.html', './www/**/*.properties'], {base: './www'})
+        .pipe(gulp.dest('./dist/frontend/design/best_wallet/'));
+
+    return merge(assets, html);
 });
