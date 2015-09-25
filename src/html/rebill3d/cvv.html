@@ -15,19 +15,13 @@
     	<div class="screen">
     		<div class="screen__in">
     			<div class="screen__bg">
-					<!-- split form_cvv.html -->
 					<div class="addcard">
     					<!-- info -->
     					<div class="info">
     						<div class="info__ico"><span>$</span></div>
     						<div class="info__in">
-                                <!-- Привязка карты -->
-                                <!-- <p>
-                                    После нажатия кнопки «Продолжить» мы снимем с указанной карты <b>1,00 RUR</b> или эквивалентную сумму, чтобы убедиться, что она принадлежит вам. Мы возместим эти средства на ваш счет в течение 24 часов.
-                                </p> -->
-                                <!-- Оплата услуги -->
                                 <p>
-                                    После нажатия кнопки «Продолжить» мы снимем с указанной карты <b>1,00 RUR</b> для оплаты выбранной услуги. <!-- После этого Вы будете перенаправлены на страницу 3D Secure вашего банка для прохождения дополнительной проверки. -->
+                                    После нажатия кнопки «Продолжить» мы снимем с указанной карты <b>${amount}</b> для оплаты выбранной услуги. <!-- После этого Вы будете перенаправлены на страницу 3D Secure вашего банка для прохождения дополнительной проверки. -->
                                 </p>
     						</div>
     					</div>
@@ -35,12 +29,11 @@
     					<form class="payment__form" method="post" action="endpoint" name="payment_page">
     						<div class="addcard__in">
     							<!-- field -->
-    							<!--  ${card_number} -->
     							<div class="field">
     								<div class="field__label">Номер карты</div>
     								<div class="field__el">
     									<input class="input" disabled="disabled" placeholder="•••• •••• •••• ••••"
-											   type="text" value="•••• •••• •••• 1234">
+											   type="text" value="•••• •••• •••• ${card_number_last_four_digits}">
     									<!-- paysys -->
     									<div class="paysys">
     										<i class="icon-card-front"></i>
@@ -49,8 +42,7 @@
     							</div>
     							<!-- fieldset -->
     							<div class="fieldset">
-    								<!-- field -->
-    								<!--  ${card_expiration_date} -->
+									<!-- field -->
     								<div class="field field_double field_issued_at">
     									<div class="field__label">Срок действия</div>
     									<div class="field__el">
@@ -64,7 +56,6 @@
     									</div>
     								</div>
     								<!-- field -->
-    								<!-- ${card_verification_code} -->
     								<div class="field field_right field_secure">
     									<div class="field__label">Код CVV</div>
     									<div class="field__el">
@@ -73,23 +64,10 @@
 												   x-autocompletetype="cc-csc">
     									</div>
     								</div>
-    								<!--<label class="label_block" for="cvv">-->
-    								<label for="cvv" class="icon icon-card-back"></label>
-    								<!--</label>-->
+    								<label class="icon icon-card-back"></label>
     							</div>
     							<!-- field -->
     						</div>
-
-    						<!--<div class="iframe_inputs">-->
-    							<!--&lt;!&ndash; ${billing_address_input} &ndash;&gt;-->
-    							<!--&lt;!&ndash; ${billing_city_input} &ndash;&gt;-->
-    							<!--&lt;!&ndash; ${billing_country_input} &ndash;&gt;-->
-    							<!--<br>-->
-    							<!--&lt;!&ndash; ${billing_state_province_input} &ndash;&gt;-->
-    							<!--&lt;!&ndash; ${billing_zip_input} &ndash;&gt;-->
-    							<!--&lt;!&ndash; ${billing_email_input} &ndash;&gt;-->
-    							<!--&lt;!&ndash; ${billing_phone_input} &ndash;&gt;-->
-    						<!--</div>-->
 
     						<!-- info -->
     						<div class="info">
@@ -104,7 +82,11 @@
     							</div>
     						</div>
 
-    						 ${hidden_inputs}
+							<!-- Hidden inputs-->
+
+							<input name="product_id" type="hidden" value="${product_id}">
+							<input name="sessid" type="hidden" value="${sessid}">
+
 
     						<!-- form -->
     						<div class="form">
@@ -112,8 +94,6 @@
     								<!--${submit}-->
     								Продолжить
     							</button>
-    							<!--<button class="btn btn_orange">Сканировать карту</button>-->
-    							<!--<a class="link" href="#">Политика конфиденциальности</a>-->
     						</div>
 
     						<ul class="provider-icons">
@@ -124,7 +104,6 @@
                             </ul>
     					</form>
     				</div>
-					<!-- split stop -->
     			</div>
     		</div>
     	</div>

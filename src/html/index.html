@@ -25,11 +25,16 @@
     						<div class="info__in">
                                 <!-- Привязка карты -->
                                 <!-- <p>
-                                    После нажатия кнопки «Продолжить» мы снимем с указанной карты <b>1,00 RUR</b> или эквивалентную сумму, чтобы убедиться, что она принадлежит вам. Мы возместим эти средства на ваш счет в течение 24 часов.
+                                    После нажатия кнопки «Продолжить» мы снимем с указанной карты <b>1,00 RUR</b> или
+                                    эквивалентную сумму, чтобы убедиться, что она принадлежит вам. Мы возместим эти
+                                    средства на ваш счет в течение 24 часов.
                                 </p> -->
                                 <!-- Оплата услуги -->
                                 <p>
-                                    После нажатия кнопки «Продолжить» мы снимем с указанной карты <b>1,00 RUR</b> для оплаты выбранной услуги. <!-- После этого Вы будете перенаправлены на страницу 3D Secure вашего банка для прохождения дополнительной проверки. -->
+                                    После нажатия кнопки «Продолжить» мы снимем с указанной карты <b>${amount}</b> для
+									оплаты выбранной услуги.
+									<!-- После этого Вы будете перенаправлены на страницу 3D Secure вашего банка для
+									прохождения дополнительной проверки. -->
                                 </p>
     						</div>
     					</div>
@@ -69,13 +74,10 @@
     										<input class="input" name="cvv" placeholder="•••" min="0" max="999" type="number" minlength="3" maxlength="3" required autocomplete="cc-csc" x-autocompletetype="cc-csc">
     									</div>
     								</div>
-    								<!--<label class="label_block" for="cvv">-->
     								<label for="cvv" class="icon icon-card-back"></label>
-    								<!--</label>-->
     							</div>
     							<!-- field -->
-    							<!-- ${card_holder} -->
-    							<div class="field field__cardholder">
+    							<div class="field field__cardholder"> <!-- ${card_holder} -->
     								<div class="field__label">Держатель карты</div>
     								<div class="field__el">
     									<input class="input" name="cardholder" placeholder="IVAN IVANOV" type="text" required minlength="3" autocomplete="cc-name" x-autocompletetype="cc-name">
@@ -84,16 +86,16 @@
     							</div>
     						</div>
 
-    						<!--<div class="iframe_inputs">-->
-    							<!--&lt;!&ndash; ${billing_address_input} &ndash;&gt;-->
-    							<!--&lt;!&ndash; ${billing_city_input} &ndash;&gt;-->
-    							<!--&lt;!&ndash; ${billing_country_input} &ndash;&gt;-->
-    							<!--<br>-->
-    							<!--&lt;!&ndash; ${billing_state_province_input} &ndash;&gt;-->
-    							<!--&lt;!&ndash; ${billing_zip_input} &ndash;&gt;-->
-    							<!--&lt;!&ndash; ${billing_email_input} &ndash;&gt;-->
-    							<!--&lt;!&ndash; ${billing_phone_input} &ndash;&gt;-->
-    						<!--</div>-->
+    						<div class="iframe_inputs">
+    							 ${billing_address_input}
+    							 ${billing_city_input}
+    							 ${billing_country_input}
+    							<br>
+    							 ${billing_state_province_input}
+    							 ${billing_zip_input}
+    							 ${billing_email_input}
+    							 ${billing_phone_input}
+    						</div>
 
     						<!-- info -->
     						<div class="info">
@@ -101,23 +103,20 @@
     								<i class="icon icon-lock"></i>
     							</div>
     							<div class="info__in">
-    								<p>
-    									<!-- ${secure} -->
-    									Передача данных шифруется высоконадежным 256-битным алгоритмом и осуществляется посредством SSL протокола
+    								<p><!-- ${secure} -->
+    									Передача данных шифруется высоконадежным 256-битным алгоритмом и осуществляется
+										посредством SSL протокола
     								</p>
     							</div>
     						</div>
 
-    						<!-- ${hidden_inputs} -->
+    						 ${hidden_inputs}
 
     						<!-- form -->
     						<div class="form">
-    							<button class="btn btn_submit" type="submit">
-    								<!--${submit}-->
+    							<button class="btn btn_submit" type="submit"> <!-- ${submit} -->
     								Продолжить
     							</button>
-    							<!--<button class="btn btn_orange">Сканировать карту</button>-->
-    							<!--<a class="link" href="#">Политика конфиденциальности</a>-->
     						</div>
 
     						<ul class="provider-icons">
