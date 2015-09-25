@@ -172,11 +172,10 @@ gulp.task('build-dist', function() {
     var html = gulp.src(['./www/**/*.html', '!./www/index.html', './www/**/*.properties'], {base: './www'})
         .pipe(gulp.dest('./dist/frontend/design/best_wallet/'));
 
-
     return merge(assets, html);
 });
 
-gulp.task('build-dist-copy', function() {
+gulp.task('dist-clone-html', function() {
   return gulp.src(['./dist/frontend/design/best_wallet/**/page.html'])
     .pipe(rename({
       basename: 'page_iframe'
@@ -185,7 +184,7 @@ gulp.task('build-dist-copy', function() {
 });
 
 // Export shortcut
-gulp.task('export', sequence('build', 'html-split', 'html-remove', 'build-dist', 'build-dist-copy'));
+gulp.task('export', sequence('build', 'html-split', 'html-remove', 'build-dist', 'dist-clone-html'));
 
 // Base tasks
 gulp.task('default', sequence('build', ['server', 'watch']));
