@@ -4,7 +4,7 @@ $(function() {
     var $card_pan = $form.find('input[name=pan]');
     var $card_exp_month = $form.find('input[name=exp_date_m]');
     var $card_exp_year = $form.find('input[name=exp_date_y]');
-    var $card_cvc = $form.find('input[name=code_cvv2]');
+    var $card_cvc = $form.find('input[name=cvv]');
     var $card_holder = $form.find('input[name=cardholder]');
     var $form_submit_btn = $form.find('.btn_submit');
     var $card_icon = $form.find('.paysys i');
@@ -28,7 +28,7 @@ $(function() {
             'minLength': "Номер карты слишком короткий",
             'maxLength': "Номер карты слишком длинный"
         },
-        'code_cvv2': {
+        'cvv': {
             'required': lang.card_cvv2_required,
             'minLength': lang.card_cvv2_length,
             'maxLength': lang.card_cvv2_length

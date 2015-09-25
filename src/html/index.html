@@ -32,7 +32,7 @@
     						</div>
     					</div>
     					<!-- paysys -->
-    					<form class="payment__form" method="post" action="endpoint">
+    					<form class="payment__form" method="post" action="endpoint" name="payment_page">
     						<div class="addcard__in">
     							<!-- field -->
     							<!--  ${card_number} -->
@@ -64,11 +64,11 @@
     								<div class="field field_right field_secure">
     									<div class="field__label">Код CVV</div>
     									<div class="field__el">
-    										<input class="input" name="code_cvv2" placeholder="•••" min="0" max="999" type="number" minlength="3" maxlength="3" required autocomplete="cc-csc" x-autocompletetype="cc-csc">
+    										<input class="input" name="cvv" placeholder="•••" min="0" max="999" type="number" minlength="3" maxlength="3" required autocomplete="cc-csc" x-autocompletetype="cc-csc">
     									</div>
     								</div>
-    								<!--<label class="label_block" for="code_cvv2">-->
-    								<label for="code_cvv2" class="icon icon-card-back"></label>
+    								<!--<label class="label_block" for="cvv">-->
+    								<label for="cvv" class="icon icon-card-back"></label>
     								<!--</label>-->
     							</div>
     							<!-- field -->
