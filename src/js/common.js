@@ -327,7 +327,8 @@ $(function() {
     });
 
     // Focus on first field
-    $card_pan.focus();
+    $('input:not(:disabled):not(:hidden):first').focus();
+    //$card_pan.focus();
 
     // Form ready
     postMessage({event: 'Card Add Screen Open'});

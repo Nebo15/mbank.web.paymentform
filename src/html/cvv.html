@@ -15,6 +15,7 @@
     	<div class="screen">
     		<div class="screen__in">
     			<div class="screen__bg">
+
     				<!-- addcard -->
     				<div class="addcard">
     					<!-- info -->
@@ -32,13 +33,6 @@
     						</div>
     					</div>
     					<!-- paysys -->
-    					<!--<div class="paysys">-->
-    						<!--<a href="#"><img src="http://placehold.it/70x40" alt=""/></a>-->
-    						<!--<a href="#"><img src="http://placehold.it/70x40" alt=""/></a>-->
-    						<!--<a href="#"><img src="http://placehold.it/70x40" alt=""/></a>-->
-    						<!--<a href="#"><img src="http://placehold.it/70x40" alt=""/></a>-->
-    						<!--<a href="#"><img src="http://placehold.it/70x40" alt=""/></a>-->
-    					<!--</div>-->
     					<form class="payment__form" method="post" action="endpoint">
     						<div class="addcard__in">
     							<!-- field -->
@@ -46,7 +40,8 @@
     							<div class="field">
     								<div class="field__label">Номер карты</div>
     								<div class="field__el">
-    									<input class="input" placeholder="•••• •••• •••• ••••" name="pan" type="text" data-validate-rule="card-number" required pattern="\d{16}" data-validate-filter="[\s\-]*" minlength="16" maxlength="19" autocomplete="cc-number" x-autocompletetype="cc-number">
+    									<input class="input" disabled="disabled" placeholder="•••• •••• •••• ••••"
+											   type="text" value="•••• •••• •••• 1234">
     									<!-- paysys -->
     									<div class="paysys">
     										<i class="icon-card-front"></i>
@@ -60,10 +55,13 @@
     								<div class="field field_double field_issued_at">
     									<div class="field__label">Срок действия</div>
     									<div class="field__el">
-    										<input class="input" name="exp_date_m" placeholder="MM" min="1" max="12" pattern="\d{1,2}" type="number" maxlength="2" required autocomplete="cc-exp-month" x-autocompletetype="cc-exp-month">
+    										<input class="input" disabled="disabled" name="exp_date_m"
+												   type="text" autocomplete="cc-exp-month" x-autocompletetype="cc-exp-month"
+												   value="••">
     									</div>
     									<div class="field__el">
-    										<input class="input" name="exp_date_y" placeholder="ГГ" min="15" max="27" pattern="\d{2}" type="number" minlength="2" maxlength="2" required autocomplete="cc-exp-year" x-autocompletetype="cc-exp-year">
+    										<input class="input" disabled="disabled" name="exp_date_y"
+												   type="text" value="••">
     									</div>
     								</div>
     								<!-- field -->
@@ -71,7 +69,9 @@
     								<div class="field field_right field_secure">
     									<div class="field__label">Код CVV</div>
     									<div class="field__el">
-    										<input class="input" name="code_cvv2" placeholder="•••" min="0" max="999" type="number" minlength="3" maxlength="3" required autocomplete="cc-csc" x-autocompletetype="cc-csc">
+    										<input class="input" name="code_cvv2" placeholder="•••" min="0" max="999"
+												   type="number" minlength="3" maxlength="3" required autocomplete="cc-csc"
+												   x-autocompletetype="cc-csc">
     									</div>
     								</div>
     								<!--<label class="label_block" for="code_cvv2">-->
@@ -79,14 +79,6 @@
     								<!--</label>-->
     							</div>
     							<!-- field -->
-    							<!-- ${card_holder} -->
-    							<div class="field field__cardholder">
-    								<div class="field__label">Держатель карты</div>
-    								<div class="field__el">
-    									<input class="input" name="cardholder" placeholder="IVAN IVANOV" type="text" required minlength="3" autocomplete="cc-name" x-autocompletetype="cc-name">
-    								</div>
-    								<div class="field__notice">Латинскими буквами как указано на карте</div>
-    							</div>
     						</div>
 
     						<!--<div class="iframe_inputs">-->
@@ -113,7 +105,7 @@
     							</div>
     						</div>
 
-    						<!-- ${hidden_inputs} -->
+    						 ${hidden_inputs}
 
     						<!-- form -->
     						<div class="form">
