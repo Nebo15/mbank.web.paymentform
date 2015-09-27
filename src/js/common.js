@@ -399,4 +399,12 @@ $(function() {
         });
         showToast(formTimeoutMessage);
     }, form_disabled_timeout*1000);
+
+    // Reload button in toast messages
+    $('body').on('click', function(event) {
+        var $this = $(event.target);
+        if($this.hasClass('btn_reload')) {
+            window.location.reload();
+        }
+    });
 });

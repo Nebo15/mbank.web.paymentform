@@ -35,7 +35,7 @@ var lang = {
             'unsupportedCardVendor': "К оплате принимаются только карты Visa, MasterCard и Maestro."
         }
     },
-    'form_disabled_timeout_message': "Время ожидания истекло. Пожалуйста, попробуйте еще раз. Форма должна быть заполнена в течении 15 минут.",
+    'form_disabled_timeout_message': "Время ожидания истекло. Пожалуйста, попробуйте еще раз. Форма должна быть заполнена в течении 15 минут. <button class='btn btn_red btn_reload'>Обновить страницу</button>",
     'form_submit_timout_message': "Через {{count}} {{seconds}} вы будете перенаправлены на страницу 3D Secure вашего банка.",
     'YY': 'ГГ',
     'pluralize': {

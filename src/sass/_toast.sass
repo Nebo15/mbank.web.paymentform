@@ -57,8 +57,14 @@
         font-size: 20px
 
     .toast__content
+      pointer-events: auto
       background-color: $white
       color: $dark
       //min-height: 88px
       text-align: center
       padding: 20px 10px
+      .btn
+        margin-top: 15px
+        transition: background-color 0.5s linear
+      .btn_red:hover
+        background: #fd2e36
