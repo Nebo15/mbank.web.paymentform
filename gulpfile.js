@@ -1,4 +1,5 @@
 var gulp         = require('gulp'),
+    zip          = require('gulp-zip'),
     sequence     = require('gulp-sequence'),
     debug        = require('gulp-debug'),
     merge        = require('merge-stream'),
@@ -191,6 +192,12 @@ gulp.task('dist-change-encoding', function() {
   return gulp.src(['./dist/frontend/design/best_wallet/**/*.html'])
     .pipe(convertEncoding({to: argv.encoding}))
     .pipe(gulp.dest('./dist/frontend/design/best_wallet/'));
+});
+
+gulp.task('dist-create-archive', function () {
+    return gulp.src('dist/**/*')
+        .pipe(zip('dist.zip'))
+        .pipe(gulp.dest('./'));
 });
 
 // Export shortcut
