@@ -342,6 +342,9 @@ $(function() {
     // Focus on first field
     $('input:not(:disabled):not(:hidden):first').focus();
 
+    // Button is red for browsers without JS
+    $form_submit_btn.removeClass('btn_red');
+
     // We use shorter exp year format
     // $card_exp_year.attr('maxlength', '2');
     // $card_exp_year.attr('pattern', '2?0?\d{2}');
