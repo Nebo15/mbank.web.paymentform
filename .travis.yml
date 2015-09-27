@@ -1,6 +1,10 @@
 language: node_js
 node_js: 2.0.0
 sudo: false
+cache:
+    bundler: true
+    directories:
+    - node_modules
 before_script:
   - gem install compass
   - npm install -g gulp bower
