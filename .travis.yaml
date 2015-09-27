@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+  - 2.0.0
+sudo: false
+before_script:
+  - npm install -g gulp bower
+  - npm install
+  - bower install
+script:
+  - gulp build --view
+  - gulp deploy

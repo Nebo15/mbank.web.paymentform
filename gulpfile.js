@@ -22,6 +22,7 @@ var gulp         = require('gulp'),
     htmlReplace  = require('gulp-html-replace'),
     htmlsplit    = require('gulp-htmlsplit'),
     replace      = require('gulp-replace'),
+    ghPages      = require('gulp-gh-pages'),
     convertEncoding = require('gulp-convert-encoding');
 
 var additinal_scripts = [
@@ -198,6 +199,12 @@ gulp.task('dist-create-archive', function () {
     return gulp.src('dist/**/*')
         .pipe(zip('dist.zip'))
         .pipe(gulp.dest('./'));
+});
+
+// Deploy gh-pages
+gulp.task('deploy', function() {
+  return gulp.src('./www/**/*')
+    .pipe(ghPages());
 });
 
 // Export shortcut
