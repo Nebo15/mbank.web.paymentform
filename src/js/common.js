@@ -309,9 +309,9 @@ $(function() {
             // Fix form data
             $card_holder.val($card_holder.val().toLocaleUpperCase());
             // TODO: check if IPSP accepts short exp year format
-            // if($card_exp_year.val().substring(0, 2) != '20') {
-            //     $card_exp_year.val('20' + $card_exp_year.val());
-            // }
+            if($card_exp_year.val().substring(0, 2) != '20') {
+                $card_exp_year.val('20' + $card_exp_year.val());
+            }
 
             var timer_value = form_submit_timout;
             showToast(formSubmitTimoutMessage, {count: timer_value, seconds: $.getPluralForm(lang.pluralize.seconds, timer_value)});
@@ -346,8 +346,12 @@ $(function() {
     $form_submit_btn.removeClass('btn_red');
 
     // We use shorter exp year format
-    // $card_exp_year.attr('maxlength', '2');
-    // $card_exp_year.attr('pattern', '2?0?\d{2}');
+    $card_exp_year.attr('min', '15');
+    $card_exp_year.attr('max', '27');
+    $card_exp_year.attr('minlength', '2');
+    $card_exp_year.attr('maxlength', '2');
+    $card_exp_year.attr('placeholder', lang.YY);
+    $card_exp_year.attr('pattern', '\\d{2}');
 
     // Form ready
     postMessage({event: 'Card Add Screen Open'});
