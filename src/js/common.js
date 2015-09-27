@@ -38,6 +38,7 @@ $(function() {
     // Localize toast texts
     var formTimeoutMessage = lang.form_disabled_timeout_message;
     var formSubmitTimoutMessage = lang.form_submit_timout_message;
+    var expYearPlaceholder = lang.YY;
 
     // Post message to parent window (if we in iFrame)
     var postMessage = function(msg, target) {
@@ -350,7 +351,7 @@ $(function() {
     $card_exp_year.attr('max', '27');
     $card_exp_year.attr('minlength', '2');
     $card_exp_year.attr('maxlength', '2');
-    $card_exp_year.attr('placeholder', lang.YY);
+    $card_exp_year.attr('placeholder', expYearPlaceholder);
     $card_exp_year.attr('pattern', '\\d{2}');
 
     // Form ready
