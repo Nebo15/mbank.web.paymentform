@@ -133,11 +133,27 @@ $(function() {
         });
 
         // Jump to previous field
+        $(this).on('keydown', function(event) {
+            var $this = $(this);
+
+            if($this.val() == "") {
+                if(event.keyCode == 8) {
+                    if(inputs[index-1]) {
+                        // Don't remove last digit in previous input
+                        setTimeout(function() {
+                            // inputs[index-1].focus();
+                            inputs[index-1].select();
+                        }, 10);
+                    }
+                }
+            }
+        });
+
         $(this).on('keyup', function(event) {
             var $this = $(this);
 
             if($this.val() == "") {
-                if(event.keyCode == 8 || event.keyCode == 37) {
+                if(event.keyCode == 37) {
                     if(inputs[index-1]) {
                         inputs[index-1].focus().select();
                     }
