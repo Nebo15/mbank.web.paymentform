@@ -202,10 +202,15 @@ gulp.task('dist-create-archive', function () {
 });
 
 // Deploy gh-pages
-gulp.task('deploy', function() {
-  return gulp.src('./www/**/*')
-    .pipe(prefix('/mbank.web.paymentform'))
-    .pipe(ghPages());
+gulp.task('deploy-prefix', function() {
+    return gulp.src('./www/**/*.html')
+        .pipe(prefix('/mbank.web.paymentform'))
+        .pipe('./www');
+});
+
+gulp.task('deploy', ['deploy-prefix'], function() {
+    return gulp.src('./www/**/*')
+        .pipe(ghPages());
 });
 
 // Export shortcut
