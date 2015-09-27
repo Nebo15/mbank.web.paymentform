@@ -106,7 +106,8 @@ gulp.task('build-html', ['build-styles', 'build-scripts'], function() {
         collapseWhitespace: argv.production ? true : false,
         removeComments: argv.production ? true : false,
     }))
-    .pipe(gulp.dest('./www'))
+    .pipe(gulpif(argv.view, replace(/\$\{[^\}]*\}/g, '')))
+    .pipe(gulp.dest('./www'));
 });
 
 // Move fonts to www
