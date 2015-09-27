@@ -160,7 +160,13 @@ $(function() {
                 }
             }
 
-            postMessage({event: 'Form Field Filled', metadata: {parameter_name: $this.attr('name'), valid: true, invalid_fields: []}});
+            postMessage({
+                event: 'Form Field Filled', metadata: {
+                    errors: [{
+                        parameter_name: $this.attr('name'),
+                    }]
+                }
+            });
         });
 
         // Validation errors
@@ -168,7 +174,16 @@ $(function() {
             var $this = $(this);
             var first_rule = rules_failed.slice(0).shift() || 'default';
             $this.showError(first_rule, rules);
-            postMessage({event: 'Form Validation Error', metadata: {parameter_name: $this.attr('name'), valid: false, invalid_fields: rules_failed}});
+            postMessage({
+                event: 'Form Validation Error',
+                metadata: {
+                    errors: [{
+                        parameter_name: $this.attr('name'),
+                        rule: rules_failed.join(';'),
+                        message: $this.getErrorText()
+                    }]
+                }
+            });
         });
     });
 
