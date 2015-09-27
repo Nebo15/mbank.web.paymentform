@@ -204,6 +204,7 @@ gulp.task('dist-create-archive', function () {
 // Deploy gh-pages
 gulp.task('deploy', function() {
   return gulp.src('./www/**/*')
+    .pipe(prefix('/mbank.web.paymentform'))
     .pipe(ghPages());
 });
 
