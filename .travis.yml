@@ -10,6 +10,8 @@ before_script:
   - npm install -g gulp bower
   - npm install
   - bower install
+  - git config --global user.email "marvin@nebo15.com"
+  - git config --global user.name "Marvin The Bot"
 script:
   - gulp build --view
   - gulp deploy
