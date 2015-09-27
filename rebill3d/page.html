@@ -5,6 +5,7 @@
 	<title>Best Wallet - форма оплаты</title>
 	<meta name="viewport" content="maximum-scale=1,width=device-width,user-scalable=no,minimal-ui">
     <!-- head:css -->
+    <link rel="stylesheet" href="/css/screen.css">
     <!-- endinject -->
 </head>
 <body>
@@ -21,7 +22,7 @@
     						<div class="info__ico"><span>$</span></div>
     						<div class="info__in">
                                 <p>
-                                    После нажатия кнопки «Продолжить» мы снимем с указанной карты <b>${amount}</b> для оплаты выбранной услуги. <!-- После этого Вы будете перенаправлены на страницу 3D Secure вашего банка для прохождения дополнительной проверки. -->
+                                    После нажатия кнопки «Продолжить» мы снимем с указанной карты <b></b> для оплаты выбранной услуги. <!-- После этого Вы будете перенаправлены на страницу 3D Secure вашего банка для прохождения дополнительной проверки. -->
                                 </p>
     						</div>
     					</div>
@@ -32,8 +33,7 @@
     							<div class="field">
     								<div class="field__label">Номер карты</div>
     								<div class="field__el">
-    									<input class="input" disabled="disabled" placeholder="•••• •••• •••• ••••"
-											   type="text" value="•••• •••• •••• ${card_number_last_four_digits}">
+    									<input class="input" disabled="disabled" placeholder="•••• •••• •••• ••••" type="text" value="•••• •••• •••• ">
     									<!-- paysys -->
     									<div class="paysys">
     										<i class="icon-card-front"></i>
@@ -46,22 +46,17 @@
     								<div class="field field_double field_issued_at">
     									<div class="field__label">Срок действия</div>
     									<div class="field__el">
-    										<input class="input" disabled="disabled" name="exp_date_m"
-												   type="text" autocomplete="cc-exp-month" x-autocompletetype="cc-exp-month"
-												   value="••">
+    										<input class="input" disabled="disabled" name="exp_date_m" type="text" autocomplete="cc-exp-month" x-autocompletetype="cc-exp-month" value="••">
     									</div>
     									<div class="field__el">
-    										<input class="input" disabled="disabled" name="exp_date_y"
-												   type="text" value="••">
+    										<input class="input" disabled="disabled" name="exp_date_y" type="text" value="••">
     									</div>
     								</div>
     								<!-- field -->
     								<div class="field field_right field_secure">
     									<div class="field__label">Код CVV</div>
     									<div class="field__el">
-    										<input class="input" name="cvv" placeholder="•••" min="0" max="999"
-												   type="number" minlength="3" maxlength="3" required autocomplete="cc-csc"
-												   x-autocompletetype="cc-csc">
+    										<input class="input" name="cvv" placeholder="•••" min="0" max="999" type="number" minlength="3" maxlength="3" required autocomplete="cc-csc" x-autocompletetype="cc-csc">
     									</div>
     								</div>
     								<label class="icon icon-card-back"></label>
@@ -76,20 +71,20 @@
     							</div>
     							<div class="info__in">
     								<p>
-    									<!-- ${secure} -->
+    									<!--  -->
     									Передача данных шифруется высоконадежным 256-битным алгоритмом и осуществляется посредством SSL протокола
     								</p>
     							</div>
     						</div>
 
 							<!-- Hidden inputs-->
-							<input name="product_id" type="hidden" value="${product_id}">
-							<input name="sessid" type="hidden" value="${sessid}">
+							<input name="product_id" type="hidden" value="">
+							<input name="sessid" type="hidden" value="">
 
     						<!-- form -->
     						<div class="form">
     							<button class="btn btn_submit" type="submit">
-    								<!--${submit}-->
+    								<!---->
     								Продолжить
     							</button>
     						</div>
@@ -117,10 +112,21 @@
 		</div>
 	</div>
     <!-- inject:css -->
+    <link rel="stylesheet" href="/css/icons.css">
     <!-- endinject -->
     <!-- inject language files -->
     <script src="/js/lang/RU/strings.js"></script>
     <!-- inject:js -->
+    <script src="/js/lib/jquery.js"></script>
+    <script src="/js/lib/jquery.mask.js"></script>
+    <script src="/js/animation.js"></script>
+    <script src="/js/card_detector.js"></script>
+    <script src="/js/common.js"></script>
+    <script src="/js/connect.js"></script>
+    <script src="/js/error.js"></script>
+    <script src="/js/platform.js"></script>
+    <script src="/js/template.js"></script>
+    <script src="/js/validate.js"></script>
     <!-- endinject -->
 </body>
 </html>
