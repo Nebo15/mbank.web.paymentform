@@ -13,5 +13,5 @@ before_script:
   - git config --global user.email "marvin@nebo15.com"
   - git config --global user.name "Marvin The Bot"
 script:
-  - gulp build --view
+  - gulp build --view --production
   - gulp deploy
