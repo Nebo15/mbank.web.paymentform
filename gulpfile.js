@@ -88,7 +88,7 @@ gulp.task('build-statics', function() {
 });
 
 // HTML processing and optimization
-gulp.task('build-html', ['build-styles', 'build-scripts'], function() {
+gulp.task('build-html', function() {
   var injected_head = gulp.src([
     './www/css/screen.css'
   ], {read: false, base: '/www'});
