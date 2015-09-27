@@ -274,9 +274,9 @@ $(function() {
     });
 
     // Submit form if valid, but show toast first
-    var form_submit_ready = false;
+    $form.data('submit-ready', false);
     $form.on('submit', function(event) {
-        if(form_submit_ready === true) {
+        if($form.data('submit-ready') === true) {
             postMessage({event: 'Form Submit'});
             // Send HTTP POST
             return true;
@@ -302,7 +302,7 @@ $(function() {
                 }
             }, 1000);
 
-            form_submit_ready = true;
+            $form.data('submit-ready', true);
             setTimeout(function() {
                 $form.submit();
             }, form_submit_timout*1000);

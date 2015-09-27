@@ -48,6 +48,10 @@
         return (findErrorElement(this).length > 0);
     };
 
+    $.fn.getErrorText = function() {
+        return $(this).hasError() ? findErrorElement(this).text() : null;
+    };
+
     $.fn.showError = function (message_key, template_data) {
         var $this = $(this);
         var input_name = getInputName($this);
