@@ -193,10 +193,18 @@
             $form.data('validation-inputs', inputs);
 
             $this.on(events + ' validate', function(event) {
+                event = event || {};
                 $validated_element = $(this);
-                $validated_element.trigger('validating');
+
+                // Run onChange validation only on non-empty fields
+                if($validated_element.val() == '' && event.type == 'change') {
+                    $validated_element.trigger('validation-skipped');
+                    return $this;
+                }
 
                 var validation_result = isValid($validated_element);
+                $validated_element.trigger('validating');
+
                 if(validation_result.result == true) {
                     $validated_element.trigger('valid');
                     $form.trigger('field_valid');

@@ -189,6 +189,11 @@ $(function() {
             });
         });
 
+        // Remove errors for skipped fields
+        $(this).on('validation-skipped', function() {
+            $(this).removeError();
+        });
+
         // Validation errors
         $(this).on('invalid', function(event, rules_failed, rules) {
             var $this = $(this);
