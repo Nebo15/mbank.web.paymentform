@@ -86,7 +86,7 @@ gulp.task('build-statics', function() {
         .pipe(gulp.dest('./www'));
 });
 
-// HTML minify
+// HTML processing and optimization
 gulp.task('build-html', ['build-styles', 'build-scripts'], function() {
   var injected_head = gulp.src([
     './www/css/screen.css'
