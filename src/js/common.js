@@ -352,7 +352,7 @@ $(function() {
     $card_exp_year.attr('minlength', '2');
     $card_exp_year.attr('maxlength', '2');
     $card_exp_year.attr('placeholder', expYearPlaceholder);
-    $card_exp_year.attr('pattern', '\\d{2}');
+
 
     // Form ready
     postMessage({event: 'Card Add Screen Open'});

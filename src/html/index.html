@@ -45,7 +45,7 @@
     							<div class="field">
     								<div class="field__label">Номер карты</div>
     								<div class="field__el">
-    									<input class="input" placeholder="•••• •••• •••• ••••" name="pan" type="text" data-validate-rule="card-number" required pattern="\d{16}" data-validate-filter="[\s\-]*" minlength="16" maxlength="19" autocomplete="cc-number" x-autocompletetype="cc-number">
+    									<input class="input" placeholder="•••• •••• •••• ••••" name="pan" type="text" data-validate-rule="card-number" required pattern="\d*" data-validate-filter="[\s\-]*" minlength="16" maxlength="19" autocomplete="cc-number" x-autocompletetype="cc-number" inputmode="numeric">
     									<!-- paysys -->
     									<div class="paysys">
     										<i class="icon-card-front"></i>
@@ -59,10 +59,10 @@
     								<div class="field field_double field_issued_at">
     									<div class="field__label">Срок действия</div>
     									<div class="field__el">
-    										<input class="input" name="exp_date_m" placeholder="MM" min="1" max="12" pattern="\d{1,2}" type="number" maxlength="2" required autocomplete="cc-exp-month" x-autocompletetype="cc-exp-month">
+    										<input class="input" name="exp_date_m" placeholder="MM" min="1" max="12" pattern="\d*" type="number" maxlength="2" required autocomplete="cc-exp-month" x-autocompletetype="cc-exp-month" inputmode="numeric">
     									</div>
     									<div class="field__el">
-    										<input class="input" name="exp_date_y" placeholder="ГГГГ" min="2015" max="2027" pattern="20\d{2}" type="number" minlength="4" maxlength="4" required autocomplete="cc-exp-year" x-autocompletetype="cc-exp-year">
+    										<input class="input" name="exp_date_y" placeholder="ГГГГ" min="2015" max="2027" pattern="\d*" type="number" minlength="4" maxlength="4" required autocomplete="cc-exp-year" x-autocompletetype="cc-exp-year" inputmode="numeric">
     									</div>
     								</div>
     								<!-- field -->
@@ -70,7 +70,7 @@
     								<div class="field field_right field_secure">
     									<div class="field__label">Код CVV</div>
     									<div class="field__el">
-    										<input class="input" name="cvv" placeholder="•••" min="0" max="999" type="number" minlength="3" maxlength="3" required autocomplete="cc-csc" x-autocompletetype="cc-csc">
+    										<input class="input" name="cvv" placeholder="•••" min="0" max="999" type="number" minlength="3" pattern="\d*" maxlength="3" required autocomplete="cc-csc" x-autocompletetype="cc-csc" inputmode="numeric">
     									</div>
     								</div>
     								<label for="cvv" class="icon icon-card-back"></label>
@@ -79,7 +79,7 @@
     							<div class="field field__cardholder"> <!-- ${card_holder} -->
     								<div class="field__label">Держатель карты</div>
     								<div class="field__el">
-    									<input class="input" name="cardholder" placeholder="IVAN IVANOV" type="text" required minlength="3" autocomplete="cc-name" x-autocompletetype="cc-name">
+    									<input class="input" name="cardholder" placeholder="IVAN IVANOV" type="text" required minlength="3" autocomplete="cc-name" x-autocompletetype="cc-name" inputmode="latin-name">
     								</div>
     								<div class="field__notice">Латинскими буквами как указано на карте</div>
     							</div>
