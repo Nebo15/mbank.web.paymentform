@@ -155,11 +155,13 @@ $(function() {
             if($this.val() == "") {
                 if(event.keyCode == 37) {
                     if(inputs[index-1]) {
-                        inputs[index-1].focus().select();
+                        // inputs[index-1].focus(); // TODO: Make sure select() changes focus in supported browsers
+                        inputs[index-1].select();
                     }
                 } else if(event.keyCode == 39) {
                     if(inputs[index+1]) {
-                        inputs[index+1].focus().select();
+                        // inputs[index+1].focus();
+                        inputs[index+1].select();
                     }
                 }
             }
