@@ -207,6 +207,7 @@ $(function() {
             $card_pan.mask(card_data.mask);
 
             $card_cvc.attr('maxlength', card_data.cvv_length);
+            $card_cvc.attr('minlength', card_data.cvv_length);
             $card_cvc.attr('max', lengthToMaxNumber(card_data.cvv_length));
 
             var pan_spaces = (card_data.mask.match(/[^0]/g) || []).length;
