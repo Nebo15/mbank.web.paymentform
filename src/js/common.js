@@ -144,6 +144,10 @@ $(function() {
                         setTimeout(function() {
                             // inputs[index-1].focus();
                             inputs[index-1].select();
+                            // Hack for jQuery mask plugin that disrupts cursor position on select event
+                            setTimeout(function() {
+                                inputs[index-1].select();
+                            }, 50);
                         }, 10);
                     }
                 }
