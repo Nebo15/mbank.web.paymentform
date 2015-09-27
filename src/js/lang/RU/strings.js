@@ -37,6 +37,7 @@ var lang = {
     },
     'form_disabled_timeout_message': "Время ожидания истекло. Пожалуйста, попробуйте еще раз. Форма должна быть заполнена в течении 15 минут.",
     'form_submit_timout_message': "Через {{count}} {{seconds}} вы будете перенаправлены на страницу 3D Secure вашего банка.",
+    'YY': 'ГГ',
     'pluralize': {
         'seconds': [
             'секунду',
