@@ -130,6 +130,7 @@ $(function() {
             if($this.val()) {
                 $(this).trigger('validate');
             }
+            event.preventDefault();
         });
 
         // Jump to previous field
