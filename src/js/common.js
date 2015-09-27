@@ -223,7 +223,9 @@ $(function() {
 
     // Validate exp month when year is valid
     $card_exp_year.on('valid', function() {
-        $card_exp_month.validate();
+        if($card_exp_month.val()) {
+            $card_exp_month.validate();
+        }
     });
 
     // Suggest card type
