@@ -1,29 +1,47 @@
 var lang = {
-    card_exp_date_required: "Введите срок действия карты",
-    card_exp_date_expired: "Неверный срок действия карты",
-    card_wrong_length: "Неправильная длина номера карты",
-    card_wrong_number: "Введён неверный номер карты",
-    card_number_required: "Введите номер карты",
-    card_number_length_rule: "Номер карты должен содержать от {0} до {1} цифр",
-    card_number_length_rule_exact: "Номер карты должен содержать {0} цифр",
-    card_number_minlength: "Номер карты должен содержать минимум {0} цифр",
-    card_number_maxlength: "Номер карты не может содержать более {0} цифр",
-    card_cvv2_required: "Введите код",
-    card_cvv2_length: "Неверный код",
-    card_holder_required: "Введите имя на карте",
-    card_holder_minlength: "Имя должно содержать как минимум 3 буквы.",
-    street_address_required: "Введите адрес",
-    street_address_latin: "Введите адрес латиницей",
-    city_address_required: "Введите город",
-    city_address_latin: "Введите город латиницей",
-    country_required: "Выберите страну",
-    state_required: "Введите область/край",
-    state_latin: "Введите область/край латиницей",
-    zip_required: "Введите почтовый индекс",
-    email_required: "Введите Email",
-    email_wrong: "Введите корректный Email",
-    phone_required: "Введите номер телефона",
-    wrong_phone: "Телефон должен быть в международном формате",
-    latin_without_characters: "Заполните поле только латинскими буквами"
-
-};
+    'error_messages': {
+        'pan': {
+            'required': "Введите номер карты.",
+            'pattern': "Введен неверный номер карты.",
+            'cardNumber': "Введен неверный номер карты.",
+            'minLength': "Номер карты должен быть не короче {{minLength}} цифр.",
+            'maxLength': "Номер карты должен содержать не более {{maxLength}} цифр.",
+        },
+        'cvv': {
+            'required': "Введите CVV/CVC2 код.",
+            'minLength': "CVV/CVC2 код состоит из {{minLength}} цифр.",
+            'maxLength': "CVV/CVC2 код состоит из {{maxLength}} цифр."
+        },
+        'cardholder': {
+            'required': "Введите имя держателя карты.",
+            'minLength': "Имя должно содержать как минимум {{minLength}} буквы."
+        },
+        'exp_date': {
+            'required': "Введите срок действия карты.",
+            'pattern': "Неверный срок действия карты.",
+            'minValue': "Срок действия карты истек.",
+            'maxValue': "Срок действия карты слишком большой."
+        },
+        'default': {
+            'default': "Вы ввели неверные данные.",
+            'required': "Это поле обязательно к заполнению.",
+            'pattern': "Вы ввели неверные данные.",
+            'minLength': "Длинна должна содержать не менее {{minLength}} символов.",
+            'maxLength': "Длинна должна содержать не более {{maxLength}} символов.",
+            'fixLength': "Длинна должна содержать {{fixLength}} символов.",
+            'minValue': "Значение должно быть не меньше {{minValue}}.",
+            'maxValue': "Значение должно быть не больше {{maxValue}}.",
+            'cardNumber': "Введён неверный номер карты.",
+            'unsupportedCardVendor': "К оплате принимаются только карты Visa, MasterCard и Maestro."
+        }
+    },
+    'form_disabled_timeout_message': "Время ожидания истекло. Пожалуйста, попробуйте еще раз. Форма должна быть заполнена в течении 15 минут.",
+    'form_submit_timout_message': "Через {{count}} {{seconds}} вы будете перенаправлены на страницу 3D Secure вашего банка.",
+    'pluralize': {
+        'seconds': [
+            'секунду',
+            'секунды',
+            'секунд'
+        ]
+    }
+}

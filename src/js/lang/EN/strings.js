@@ -1,30 +1,47 @@
 var lang = {
-    card_exp_date_required: "Expiration date is required",
-    card_exp_date_expired: "Wrong expiration date",
-    card_wrong_length: "Wrong card length",
-    card_wrong_number: "Invalid card number",
-    card_number_required: "Card number is required",
-    card_number_length_rule: "Card number should be between {0} and {1} numeric characters",
-    card_number_length_rule_exact: "Card number should consist of {0} numeric characters",
-    card_number_minlength: "Card number should consist at least {0} characters",
-    card_number_maxlength: "Card number should consist no more than {0} characters",
-    card_cvv2_required: "Code is required",
-    card_cvv2_length: "Invalid code",
-    card_holder_required: "Card holder name is required",
-    card_holder_minlength: "Should contain at least 3 letters",
-    street_address_required: "Street address is required",
-    street_address_latin: "Enter the address in Latin",
-    city_address_required: "City is required",
-    city_address_latin: "Enter the city in Latin",
-    country_required: "Country is required",
-    state_required: "State/province is required",
-    state_latin: "Enter the State/Province in Latin",
-    zip_required: "ZIP is required",
-    email_required: "Email is required",
-    email_wrong: "Wrong email format",
-    phone_required: "Phone is required",
-    phone_wrong: "Wrong phone format",
-    wrong_phone: "Phone number should be in the international format (ITU-T E.164)",
-    latin_without_characters: "Enter value with only latin letters"
-
-};
+    'error_messages': {
+        'pan': {
+            'required': "Card number is required.",
+            'pattern': "Invalid card number.",
+            'cardNumber': "Invalid card number.",
+            'minLength': "Card number should consist at least {{minLength}} characters.",
+            'maxLength': "Card number should consist no more than {{maxLength}} characters.",
+        },
+        'cvv': {
+            'required': "CVV/CVC2 code is required.",
+            'minLength': "CVV/CVC2 should be {{minLength}} characters long.",
+            'maxLength': "CVV/CVC2 should be {{maxLength}} characters long."
+        },
+        'cardholder': {
+            'required': "Card holder name is required.",
+            'minLength': "Card holder should contain at least {{minLength}} letters."
+        },
+        'exp_date': {
+            'required': "Expiration date is required.",
+            'pattern': "Wrong expiration date.",
+            'minValue': "This card is expired.",
+            'maxValue': "Expiration date is too big."
+        },
+        'default': {
+            'default': "Invalid data",
+            'required': "This field is required",
+            'pattern': "Invalid data",
+            'minLength': "This field should consist at least {{minLength}} characters.",
+            'maxLength': "This field should consist no more than {{maxLength}} characters.",
+            'fixLength': "This field should be {fixLength} characters long.",
+            'minValue': "Value should be at least {{minValue}}.",
+            'maxValue': "Value should be no more than {{maxValue}}.",
+            'cardNumber': "Invalid card number.",
+            'unsupportedCardVendor': "We accept only Visa, MasterCard and Maestro cards."
+        }
+    },
+    'form_disabled_timeout_message': "Session time out. Please, try again. You have 15 minutes to submit this form.",
+    'form_submit_timout_message': "In {{count}} {{seconds}} you will be redirected to 3D Secure page of your bank.",
+    'pluralize': {
+        'seconds': [
+            'second',
+            'seconds',
+            'seconds'
+        ]
+    }
+}

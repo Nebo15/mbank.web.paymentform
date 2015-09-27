@@ -20,50 +20,24 @@ $(function() {
 
     var supported_card_brands = ['visa', 'mastercard', 'maestro'];
 
-    $.mergeErrorMessages({
-        'pan': {
-            'required': "Введите номер карты",
-            'pattern': "Введен неверный номер карты",
-            'cardNumber': "Введен неверный номер карты",
-            'minLength': "Номер карты слишком короткий",
-            'maxLength': "Номер карты слишком длинный"
-        },
-        'cvv': {
-            'required': lang.card_cvv2_required,
-            'minLength': lang.card_cvv2_length,
-            'maxLength': lang.card_cvv2_length
-        },
-        'cardholder': {
-            'required': lang.card_holder_required,
-            'minLength': lang.card_holder_minlength
-        },
-        'exp_date': {
-            'required': "Неверный срок действия карты",
-            'minValue': "Срок действия карты истек",
-            'maxValue': "Срок действия карты слишком большой"
-        },
-        'default': {
-            'default': "Вы ввели неверные данные",
-            'required': "Это поле обязательно к заполнению",
-            'pattern': "Вы ввели неверные данные",
-            'minLength': "Длинна поля меньше максимальной",
-            'maxLength': "Длинна поля больше максимальной",
-            'fixLength': "Длинна поля не соответствует заданой",
-            'minValue': "Значение меньше минимального",
-            'maxValue': "Превышено максимальное значение",
-            'cardNumber': lang.card_wrong_number,
-            'unsupportedCardVendor': "К оплате принимаются только карты Visa и MasterCard"
-        }
-    });
+    // Redirect to 3DS timeout (seconds)
+    var form_submit_timout = 6;
 
+    // Disabled form in N seconds
+    var form_disabled_timeout = 900;
 
+    // Set error messages from language file
+    $.mergeErrorMessages(lang.error_messages || {});
+
+    // Join exp date error messages in one group
     $.mergeErrorGroups({
         'exp_date_m': 'exp_date',
         'exp_date_y': 'exp_date'
     });
 
-    var formTimeoutMessage = "Время ожидания истекло. Пожалуйста, попробуйте еще раз. Форма должна быть заполнена в течении 15 минут.";
-    var toast_message = "Через 5 секунд вы будете перенаправлены на страницу 3D Secure вашего банка.";
+    // Localize toast texts
+    var formTimeoutMessage = lang.form_disabled_timeout_message;
+    var formSubmitTimoutMessage = lang.form_submit_timout_message;
 
     // Post message to parent window (if we in iFrame)
     var postMessage = function(msg, target) {
@@ -71,8 +45,9 @@ $(function() {
     };
 
     // Show temporary alert
-    var showToast = function(msg) {
-        $toast.find('.toast__content').html(msg);
+    var showToast = function(msg, template_object) {
+        template_object = template_object || {};
+        $toast.find('.toast__content').html($.parseTemplate(msg, template_object));
         $toast.addClass('is-active');
     };
 
@@ -189,10 +164,10 @@ $(function() {
         });
 
         // Validation errors
-        $(this).on('invalid', function(event, rules_failed) {
+        $(this).on('invalid', function(event, rules_failed, rules) {
             var $this = $(this);
             var first_rule = rules_failed.slice(0).shift() || 'default';
-            $this.showError(first_rule);
+            $this.showError(first_rule, rules);
             postMessage({event: 'Form Validation Error', metadata: {parameter_name: $this.attr('name'), valid: false, invalid_fields: rules_failed}});
         });
     });
@@ -314,11 +289,23 @@ $(function() {
             $(inputs).each(function(index) {
                 $(this).attr('disabled', 'disabled');
             });
-            showToast(toast_message);
+
+            var timer_value = form_submit_timout;
+            showToast(formSubmitTimoutMessage, {count: timer_value, seconds: $.getPluralForm(lang.pluralize.seconds, timer_value)});
+
+            var timer = setInterval(function() {
+                if(timer_value > 0) {
+                    timer_value--;
+                    showToast(formSubmitTimoutMessage, {count: timer_value, seconds: $.getPluralForm(lang.pluralize.seconds, timer_value)});
+                } else {
+                    clearInterval(timer);
+                }
+            }, 1000);
+
             form_submit_ready = true;
             setTimeout(function() {
                 $form.submit();
-            }, 5000);
+            }, form_submit_timout*1000);
             postMessage({event: 'Form Submit Tap', metadata: {valid: true}});
         } else {
             $('.addcard__in').shake();
@@ -342,5 +329,5 @@ $(function() {
             $(this).attr('disabled', 'disabled');
         });
         showToast(formTimeoutMessage);
-    }, 900000);
+    }, form_disabled_timeout*1000);
 });

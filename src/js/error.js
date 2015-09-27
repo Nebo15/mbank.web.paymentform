@@ -48,14 +48,18 @@
         return (findErrorElement(this).length > 0);
     };
 
-    $.fn.showError = function (message_key) {
+    $.fn.showError = function (message_key, template_data) {
         var $this = $(this);
         var input_name = getInputName($this);
         var group_name = getInputGroup(input_name);
         message_key = message_key || 'default';
+        template_data = template_data || {};
 
         var error_message_group = error_messages[group_name] || error_messages['default'];
         var error_message = error_message_group[message_key] || error_messages['default'][message_key] || message_key;
+
+        // Parse error templates
+        error_message = $.parseTemplate(error_message, template_data);
 
         $this.addClass('error');
         var error_el = errorMessageElement(error_message, input_name, group_name);

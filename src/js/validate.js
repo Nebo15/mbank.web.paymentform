@@ -35,7 +35,7 @@
         var valid = true;
 
         if($el.attr('disabled') == true || $el.attr('disabled') == 'disabled' || $el.hasClass('hidden') || $el.attr('type') == 'hidden') {
-            return {result: valid, rules_failed: rules_failed};
+            return {result: valid, rules_failed: rules_failed, rules: rules};
         }
 
         // Filter input
@@ -51,34 +51,6 @@
                 rules_failed.push('required');
                 valid = false;
             }
-        }
-
-        if(rules.cardNumber == true) {
-            var numericDashRegex = /^[\d\-\s]+$/;
-            if (numericDashRegex.test(value)) {
-                var nCheck = 0, nDigit = 0, bEven = false;
-                var strippedField = value.replace(/\D/g, "");
-
-                for (var n = strippedField.length - 1; n >= 0; n--) {
-                    var cDigit = strippedField.charAt(n);
-                    nDigit = parseInt(cDigit, 10);
-                    if (bEven) {
-                        if ((nDigit *= 2) > 9) nDigit -= 9;
-                    }
-
-                    nCheck += nDigit;
-                    bEven = !bEven;
-                }
-
-                 if((nCheck % 10) !== 0) {
-                    rules_failed.push('cardNumber');
-                    valid = false;
-                 }
-            } else {
-                rules_failed.push('cardNumber');
-                valid = false;
-            }
-
         }
 
         if(rules.minValue && rules.minValue !== null) {
@@ -116,6 +88,33 @@
             }
         }
 
+        if(rules.cardNumber == true) {
+            var numericDashRegex = /^[\d\-\s]+$/;
+            if (numericDashRegex.test(value)) {
+                var nCheck = 0, nDigit = 0, bEven = false;
+                var strippedField = value.replace(/\D/g, "");
+
+                for (var n = strippedField.length - 1; n >= 0; n--) {
+                    var cDigit = strippedField.charAt(n);
+                    nDigit = parseInt(cDigit, 10);
+                    if (bEven) {
+                        if ((nDigit *= 2) > 9) nDigit -= 9;
+                    }
+
+                    nCheck += nDigit;
+                    bEven = !bEven;
+                }
+
+                 if((nCheck % 10) !== 0) {
+                    rules_failed.push('cardNumber');
+                    valid = false;
+                 }
+            } else {
+                rules_failed.push('cardNumber');
+                valid = false;
+            }
+        }
+
         if(rules.pattern && rules.pattern !== null) {
             var regexp = new RegExp(rules.pattern, 'g');
             if(!regexp.test(value)) {
@@ -123,7 +122,7 @@
                 valid = false;
             }
         }
-        return {result: valid, rules_failed: rules_failed};
+        return {result: valid, rules_failed: rules_failed, rules: rules};
     }
 
     $.fn.isValid = function () {
@@ -203,7 +202,7 @@
                     $form.trigger('field_valid');
                 } else {
                     $form.trigger('field_invalid');
-                    $validated_element.trigger('invalid', [validation_result.rules_failed.slice(0)]);
+                    $validated_element.trigger('invalid', [validation_result.rules_failed.slice(0), rules]);
                 }
 
                 $form.trigger('change', [this, $.extend(validation_result)]);
