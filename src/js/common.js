@@ -371,6 +371,10 @@ $(function() {
     $card_exp_year.attr('maxlength', '2');
     $card_exp_year.attr('placeholder', expYearPlaceholder);
 
+    var card_exp_year_value = $card_exp_year.val();
+    if(card_exp_year_value && card_exp_year_value.length == 4) {
+        $card_exp_year.val(card_exp_year_value.substring(2));
+    }
 
     // Form ready
     postMessage({event: 'Card Add Screen Open'});
