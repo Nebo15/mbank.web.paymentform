@@ -247,7 +247,6 @@ $(function() {
 
             $card_pan.attr('minlength', pan_minlen);
             $card_pan.attr('maxlength', pan_maxlen);
-            $card_pan.attr('pattern', '\\d{' + pan_minlen + ',' + pan_maxlen + '}');
 
             if($.inArray(card_data.brand, supported_card_brands) !== -1) {
                 return;
