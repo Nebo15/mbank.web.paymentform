@@ -205,7 +205,7 @@ gulp.task('dist-create-archive', function () {
 gulp.task('deploy-prefix', function() {
     return gulp.src('./www/**/*.html')
         .pipe(prefix('/mbank.web.paymentform'))
-        .pipe('./www');
+        .pipe(gulp.dest('./www'));
 });
 
 gulp.task('deploy', ['deploy-prefix'], function() {
