@@ -20,22 +20,11 @@
         }).each(function(){
             for(string in strings) {
                 if(string.indexOf($.trim(this.nodeValue)) === 0) {
-                    console.log(string.indexOf($.trim(this.nodeValue)), this.nodeValue, string);
                     this.nodeValue = this.nodeValue.replace(string, strings[string]);
-                    // delete strings[string];
-                    // break;
+                    break;
                 }
             }
         });
-
-        // for(string in strings) {
-        //     // console.log(string);
-        //     var $el = $all.filter(':contains("'+ string + '"):last');
-        //     $el.each(function() {
-        //         var $this = $(this);
-        //         $this.text($this.text().replace(string, strings[string]));
-        //     });
-        // }
 
         return this;
     }
