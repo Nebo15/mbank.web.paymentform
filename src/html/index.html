@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Best Wallet - форма оплаты</title>
+	<title>Best Wallet - форма оплаты <!-- ${title} --></title>
 	<meta name="viewport" content="maximum-scale=1,width=device-width,user-scalable=no,minimal-ui">
     <!-- head:css -->
     <!-- endinject -->
@@ -41,9 +41,8 @@
                         <form class="payment__form" method="post" action="endpoint" name="payment_page">
     						<div class="addcard__in">
     							<!-- field -->
-    							<!--  ${card_number} -->
     							<div class="field">
-    								<div class="field__label">Номер карты</div>
+    								<div class="field__label">Номер карты <!--  ${card_number} --> <!--  ${form_card_number} --> <!--  ${form.card.number} --></div>
     								<div class="field__el">
     									<input class="input" placeholder="•••• •••• •••• ••••" name="pan" type="text" data-validate-rule="card-number" required pattern="\d*" data-validate-filter="[\s\-]*" minlength="16" maxlength="19" autocomplete="cc-number" x-autocompletetype="cc-number" inputmode="numeric" id="cardNumber">
     									<!-- paysys -->
@@ -55,9 +54,8 @@
     							<!-- fieldset -->
     							<div class="fieldset">
     								<!-- field -->
-    								<!--  ${card_expiration_date} -->
     								<div class="field field_double field_issued_at">
-    									<div class="field__label">Срок действия</div>
+    									<div class="field__label">Срок действия <!--  ${card_expiration_date} --> <!--  ${form_expiration_date} --></div>
     									<div class="field__el">
     										<input class="input" name="exp_date_m" placeholder="MM" min="1" max="12" pattern="\d*" type="number" maxlength="2" required autocomplete="cc-exp-month" x-autocompletetype="cc-exp-month" inputmode="numeric" id="cardExpirationMonth">
     									</div>
@@ -66,9 +64,8 @@
     									</div>
     								</div>
     								<!-- field -->
-    								<!-- ${card_verification_code} -->
-    								<div class="field field_right field_secure">
-    									<div class="field__label">Код CVV</div>
+                                    <div class="field field_right field_secure">
+    									<div class="field__label">Код CVV <!-- ${card_verification_code} --> <!-- ${form_verification_code} --></div>
     									<div class="field__el">
     										<input class="input" name="cvv" placeholder="•••" min="0" max="999" type="number" minlength="3" pattern="\d*" maxlength="3" required autocomplete="cc-csc" x-autocompletetype="cc-csc" inputmode="numeric">
     									</div>
@@ -76,12 +73,16 @@
     								<label for="cvv" class="icon icon-card-back"></label>
     							</div>
     							<!-- field -->
-    							<div class="field field__cardholder"> <!-- ${card_holder} -->
-    								<div class="field__label">Держатель карты</div>
+    							<div class="field field__cardholder">
+    								<div class="field__label">Держатель карты <!-- ${card_holder} --> <!-- ${form_card_holder_name} --> <!-- ${card_holder_name} --></div>
     								<div class="field__el">
     									<input class="input" name="cardholder" placeholder="IVAN IVANOV" type="text" required minlength="3" autocomplete="cc-name" x-autocompletetype="cc-name" inputmode="latin-name" id="cardName">
     								</div>
-    								<div class="field__notice">Латинскими буквами как указано на карте</div>
+    								<div class="field__notice">
+                                        Латинскими буквами как указано на карте
+                                        <!-- ${card_holder_name_tip} -->
+                                        <!-- ${form_card_holder_name_tip} -->
+                                    </div>
     							</div>
     						</div>
 
@@ -101,9 +102,10 @@
     								<i class="icon icon-lock"></i>
     							</div>
     							<div class="info__in">
-    								<p><!-- ${secure} -->
+    								<p>
     									Передача данных шифруется высоконадежным 256-битным алгоритмом и осуществляется
 										посредством SSL протокола
+                                        <!-- ${secure} -->
     								</p>
     							</div>
     						</div>
@@ -112,8 +114,9 @@
 
     						<!-- form -->
     						<div class="form">
-    							<button class="btn btn_submit btn_red" type="submit"> <!-- ${submit} -->
+    							<button class="btn btn_submit btn_red" type="submit">
     								Продолжить
+                                    <!-- ${submit} -->
     							</button>
     						</div>
 
@@ -144,7 +147,7 @@
     <!-- inject:css -->
     <!-- endinject -->
     <!-- inject language files -->
-    <script src="/js/lang/RU/strings.js"></script>
+    <script src="/js/lang/RU/strings.js"></script><!-- ${page_locale_dir_name} -->
     <!-- inject:js -->
     <!-- endinject -->
 </body>
