@@ -102,11 +102,11 @@ gulp.task('build-html', function() {
   return gulp.src(['./src/html/**/*.html', '!./src/html/success.html'])
     .pipe(inject(injected_head, {ignorePath: '/www', name: 'head'}))
     .pipe(inject(injected, {ignorePath: '/www'}))
-    .pipe(replace('${page_locale_dir_name}', 'RU'))
     .pipe(htmlmin({
         collapseWhitespace: argv.production ? true : false,
         removeComments: argv.production ? true : false,
     }))
+    .pipe(gulpif(argv.view, replace('${page_locale_dir_name}', 'RU')))
     .pipe(gulpif(argv.view, replace(/\$\{[^\}]*\}/g, '')))
     .pipe(gulp.dest('./www'));
 });
