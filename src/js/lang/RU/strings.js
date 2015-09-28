@@ -1,4 +1,21 @@
 var lang = {
+    'page': {
+        'payment form': 'форма оплаты',
+        'Card number': 'Номер карты',
+        'Expiration date': 'Срок действия',
+        'CVV code': 'Код CVV',
+        'Card holder name': 'Держатель карты',
+        'JOHN SMITH': 'IVAN IVANOV',
+        'As written on the card': 'Латинскими буквами как указано на карте',
+        'The connection is highly secured by the 256-bit algorithm and uses TLS connection.': 'Передача данных шифруется высоконадежным 256-битным алгоритмом и осуществляется посредством TLS протокола.',
+        'Continue': 'Продолжить',
+        'After clicking «Continue» we will charge your card in amount of': 'После нажатия кнопки «Продолжить» мы снимем с указанной карты',
+        'to pay for selected service.': 'для оплаты выбранной услуги.',
+        'MM': 'ММ',
+        'YYYY': 'ГГ',
+        '***': '•••',
+        '**** **** **** ****': '•••• •••• •••• ••••',
+    },
     'error_messages': {
         'pan': {
             'required': "Введите номер карты.",

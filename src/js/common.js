@@ -399,6 +399,9 @@ $(function() {
         showToast(formTimeoutMessage);
     }, form_disabled_timeout*1000);
 
+    // Localize page
+    $.localize(lang.page);
+
     // Reload button in toast messages
     $('body').on('click', function(event) {
         var $this = $(event.target);

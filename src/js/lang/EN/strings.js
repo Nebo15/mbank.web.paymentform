@@ -1,4 +1,8 @@
 var lang = {
+    'page': {
+        '***': '•••',
+        '**** **** **** ****': '•••• •••• •••• ••••',
+    },
     'error_messages': {
         'pan': {
             'required': "Card number is required.",
