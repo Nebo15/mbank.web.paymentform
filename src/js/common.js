@@ -333,7 +333,7 @@ $(function() {
         if($form.isValid()) {
             $form_submit_btn.attr('disabled', true).removeClass('active');
             $(inputs).each(function(index) {
-                $(this).attr('disabled', 'disabled');
+                $(this).attr('readonly', 'readonly');
             });
 
             // Fix form data
@@ -370,7 +370,7 @@ $(function() {
     });
 
     // Focus on first field
-    $('input:not(:disabled):not(:hidden):first').focus();
+    $('input:not(:disabled):not(:hidden):not([readonly]):first').focus();
 
     // Button is red for browsers without JS
     $form_submit_btn.removeClass('btn_red');
@@ -394,7 +394,7 @@ $(function() {
     setTimeout(function() {
         $form_submit_btn.attr('disabled', true).removeClass('active');
         $(inputs).each(function() {
-            $(this).attr('disabled', 'disabled');
+            $(this).attr('readonly', 'readonly');
         });
         showToast(formTimeoutMessage);
     }, form_disabled_timeout*1000);
