@@ -191,7 +191,7 @@ gulp.task('dist-clone-html', function() {
 
 gulp.task('dist-hotfix-form', function() {
   return gulp.src(['./dist/frontend/design/best_wallet/form.html'])
-    .pipe(replace('${hidden_inputs}', '${billing_inputs}'))
+    .pipe(replace('${hidden_inputs}', '${billing_inputs}</div>'))
     .pipe(gulp.dest('./dist/frontend/design/best_wallet/'));
 });
 
