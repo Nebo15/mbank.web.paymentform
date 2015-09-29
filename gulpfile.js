@@ -174,6 +174,7 @@ gulp.task('build-dist', function() {
     var prefixUrl = "/stat/frontend/design/best_wallet";
     var html = gulp.src(['./www/**/*.html', '!./www/index.html', './www/**/*.properties'], {base: './www'})
         .pipe(prefix(prefixUrl))
+        .pipe(replace('src="/js/lang', 'src="' + prefixUrl + '/js/lang'))
         .pipe(gulp.dest('./dist/frontend/design/best_wallet/'));
 
     return merge(assets, html);
