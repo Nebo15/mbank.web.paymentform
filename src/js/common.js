@@ -371,7 +371,7 @@ $(function() {
         return false;
     });
 
-    // Insert amount and currency values
+    // Insert amount and currency values, and pluralize currency
     var amount = parseInt($.getUrlParameter('amount'), 10);
     var currency = $.getUrlParameter('currency').substring(0, 3).replace(/[^A-Z]*/g, '');
     currency =$.getPluralForm(lang.pluralize[currency], amount) || currency;
