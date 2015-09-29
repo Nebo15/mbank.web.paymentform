@@ -104,7 +104,7 @@ gulp.task('build-html', function() {
     .pipe(inject(injected, {ignorePath: '/www'}))
     .pipe(htmlmin({
         collapseWhitespace: argv.production ? true : false,
-        removeComments: argv.production ? true : false,
+        removeComments: false,
     }))
     .pipe(gulpif(argv.view, replace('${page_locale_dir_name}', 'RU')))
     .pipe(gulpif(argv.view, replace(/\$\{[^\}]*\}/g, '')))
@@ -189,6 +189,20 @@ gulp.task('dist-clone-html', function() {
     .pipe(gulp.dest('./dist/frontend/design/best_wallet/'));
 });
 
+gulp.task('dist-hotfix-form', function() {
+  return gulp.src(['./dist/frontend/design/best_wallet/form.html'])
+    .pipe(replace('${hidden_inputs}', '${billing_inputs}'))
+    .pipe(gulp.dest('./dist/frontend/design/best_wallet/'));
+});
+
+gulp.task('dist-remove-comments', function() {
+  return gulp.src(['./dist/frontend/design/best_wallet/**/*.html'])
+    .pipe(htmlmin({
+        removeComments: true,
+    }))
+    .pipe(gulp.dest('./dist/frontend/design/best_wallet/'));
+});
+
 gulp.task('dist-change-encoding', function() {
   return gulp.src(['./dist/frontend/design/best_wallet/**/*.html'])
     .pipe(convertEncoding({to: argv.encoding}))
@@ -214,7 +228,7 @@ gulp.task('deploy', ['deploy-prefix'], function() {
 });
 
 // Export shortcut
-gulp.task('export', sequence('build', 'html-split', 'html-remove', 'build-dist', 'dist-clone-html'));
+gulp.task('export', sequence('build', 'html-split', 'html-remove', 'build-dist', 'dist-clone-html', 'dist-hotfix-form', 'dist-remove-comments'));
 
 // Base tasks
 gulp.task('default', sequence('build', ['server', 'watch']));
