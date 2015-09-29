@@ -370,6 +370,9 @@ $(function() {
         return false;
     });
 
+    // Localize page
+    $.localize(lang.page);
+
     // Focus on first field
     $('input:not(:disabled):not(:hidden):not([readonly]):first').focus();
 
@@ -387,9 +390,6 @@ $(function() {
         });
         showToast(formTimeoutMessage);
     }, form_disabled_timeout*1000);
-
-    // Localize page
-    $.localize(lang.page);
 
     // Reload button in toast messages
     $('body').on('click', function(event) {
