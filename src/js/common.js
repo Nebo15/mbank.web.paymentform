@@ -9,6 +9,7 @@ $(function() {
     var $form_submit_btn = $form.find('.btn_submit');
     var $card_icon = $form.find('.paysys i');
     var $toast = $('.toast');
+    var $amount = $('.payment-info-amount');
 
     var inputs = [
         $card_pan,
@@ -369,6 +370,12 @@ $(function() {
         }
         return false;
     });
+
+    // Insert amount and currency values
+    var amount = parseInt($.getUrlParameter('amount'), 10);
+    var currency = $.getUrlParameter('currency').substring(0, 3).replace(/[^A-Z]*/g, '');
+    currency =$.getPluralForm(lang.pluralize[currency], amount) || currency;
+    $amount.text(amount + ' ' + currency);
 
     // Localize page
     $.localize(lang.page);

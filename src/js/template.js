@@ -1,7 +1,9 @@
 (function() {
     $.getPluralForm = function (endings, n) {
-        if(!endings.length || endings.length != 3) {
-            return endings[0] || endings;
+        if(!endings) {
+             return endings;
+        } else if(!endings.length || endings.length != 3) {
+            return endings[0]
         }
 
         var cases = [2, 0, 1, 1, 1, 2];
