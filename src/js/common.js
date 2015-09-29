@@ -331,6 +331,10 @@ $(function() {
 
         // Cancel POST and do magic
         event.preventDefault();
+        if($form_submit_btn.attr('disabled') === true) {
+            return false;
+        }
+
         if($form.isValid()) {
             $form_submit_btn.attr('disabled', true).removeClass('active');
             $(inputs).each(function(index) {
