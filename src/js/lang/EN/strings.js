@@ -41,7 +41,6 @@ var lang = {
     },
     'form_disabled_timeout_message': "Session time out. Please, try again. You have 15 minutes to submit this form.  <button class='btn btn_red btn_reload'>Reload page</button>",
     'form_submit_timout_message': "In {{count}} {{seconds}} you will be redirected to 3D Secure page of your bank.",
-    'YY': 'YY',
     'pluralize': {
         'seconds': [
             'second',

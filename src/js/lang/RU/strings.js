@@ -9,10 +9,10 @@ var lang = {
         'As written on the card': 'Латинскими буквами как указано на карте',
         'The connection is highly secured by the 256-bit algorithm and uses TLS connection.': 'Передача данных шифруется высоконадежным 256-битным алгоритмом и осуществляется посредством TLS протокола.',
         'Continue': 'Продолжить',
-        'After clicking «Continue» we will charge your card in amount of': 'После нажатия кнопки «Продолжить» мы снимем с указанной карты',
+        'After clicking "Continue" we will charge your card in amount of': 'После нажатия кнопки «Продолжить» мы снимем с указанной карты',
         'to pay for selected service.': 'для оплаты выбранной услуги.',
         'MM': 'ММ',
-        'YYYY': 'ГГ',
+        'YY': 'ГГ',
         '***': '•••',
         '**** **** **** ****': '•••• •••• •••• ••••',
     },
@@ -54,7 +54,6 @@ var lang = {
     },
     'form_disabled_timeout_message': "Время ожидания истекло. Пожалуйста, попробуйте еще раз. Форма должна быть заполнена в течении 15 минут. <button class='btn btn_red btn_reload'>Обновить страницу</button>",
     'form_submit_timout_message': "Через {{count}} {{seconds}} вы будете перенаправлены на страницу 3D Secure вашего банка.",
-    'YY': 'ГГ',
     'pluralize': {
         'seconds': [
             'секунду',
