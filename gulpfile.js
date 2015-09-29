@@ -228,7 +228,7 @@ gulp.task('deploy', ['deploy-prefix'], function() {
 });
 
 // Export shortcut
-gulp.task('export', sequence('build', 'html-split', 'html-remove', 'build-dist', 'dist-clone-html', 'dist-hotfix-form', 'dist-remove-comments'));
+gulp.task('export', sequence('build', 'html-split', 'html-remove', 'build-dist', 'dist-clone-html', 'dist-remove-comments', 'dist-hotfix-form'));
 
 // Base tasks
 gulp.task('default', sequence('build', ['server', 'watch']));
