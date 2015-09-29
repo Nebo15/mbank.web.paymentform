@@ -343,7 +343,9 @@ $(function() {
             });
 
             // Fix form data
-            $card_holder.val($card_holder.val().toLocaleUpperCase());
+            if($card_holder.length > 0) {
+                $card_holder.val($card_holder.val().toLocaleUpperCase());
+            }
             // TODO: check if IPSP accepts short exp year format
             var timer_value = form_submit_timout;
             showToast(formSubmitTimoutMessage, {count: timer_value, seconds: $.getPluralForm(lang.pluralize.seconds, timer_value)});
