@@ -2,82 +2,69 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Best Wallet - форма оплаты</title>
+	<title>Best Wallet - payment form</title>
 	<meta name="viewport" content="maximum-scale=1,width=device-width,user-scalable=no,minimal-ui">
     <!-- head:css -->
     <!-- endinject -->
 </head>
 <body>
-    <!-- wrapper, screen, head, addcard, info, paysy, field, , input, fieldset, form, icon, btn, link -->
-    <!-- wrapper -->
     <div class="wrapper">
-    	<!-- screen -->
     	<div class="screen">
     		<div class="screen__in">
     			<div class="screen__bg">
 					<div class="addcard">
-    					<!-- info -->
     					<div class="info">
     						<div class="info__ico"><span>$</span></div>
     						<div class="info__in">
-                                <p>
-                                    После нажатия кнопки «Продолжить» мы снимем с указанной карты <b>${amount}</b> для оплаты выбранной услуги. <!-- После этого Вы будете перенаправлены на страницу 3D Secure вашего банка для прохождения дополнительной проверки. -->
+                                <p class="action-pay payment-info-text">
+                                    For security purposes we ask you to enter your CVV/CVC2 code each time we charge your card.
                                 </p>
     						</div>
     					</div>
-    					<!-- paysys -->
     					<form class="payment__form" method="post" action="endpoint">
     						<div class="addcard__in">
-    							<!-- field -->
     							<div class="field">
-    								<div class="field__label">Номер карты</div>
+    								<div class="field__label">Card number</div>
     								<div class="field__el">
-    									<input class="input" disabled="disabled" placeholder="•••• •••• •••• ••••"
-											   type="text" value="•••• •••• •••• ${card_number_last_four_digits}">
-    									<!-- paysys -->
+    									<input class="input" disabled="disabled" placeholder="**** **** **** ****"
+											   type="text" value="**** **** **** ${card_number_last_four_digits}">
     									<div class="paysys">
     										<i class="icon-card-front"></i>
     									</div>
     								</div>
     							</div>
-    							<!-- fieldset -->
     							<div class="fieldset">
-									<!-- field -->
     								<div class="field field_double field_issued_at">
-    									<div class="field__label">Срок действия</div>
+    									<div class="field__label">Expiration date</div>
     									<div class="field__el">
     										<input class="input" disabled="disabled" name="exp_date_m"
 												   type="text" autocomplete="cc-exp-month" x-autocompletetype="cc-exp-month"
-												   value="••">
+												   value="**">
     									</div>
     									<div class="field__el">
     										<input class="input" disabled="disabled" name="exp_date_y"
-												   type="text" value="••">
+												   type="text" value="**">
     									</div>
     								</div>
-    								<!-- field -->
     								<div class="field field_right field_secure">
-    									<div class="field__label">Код CVV</div>
+    									<div class="field__label">CVV code</div>
     									<div class="field__el">
-    										<input class="input" name="cvv" placeholder="•••" min="0" max="999"
+    										<input class="input" name="cvv" placeholder="***" min="0" max="999"
 												   type="number" minlength="3" pattern="\d*" maxlength="3" required autocomplete="cc-csc"
 												   x-autocompletetype="cc-csc">
     									</div>
     								</div>
     								<label class="icon icon-card-back"></label>
     							</div>
-    							<!-- field -->
     						</div>
 
-    						<!-- info -->
     						<div class="info">
     							<div class="info__ico">
     								<i class="icon icon-lock"></i>
     							</div>
     							<div class="info__in">
     								<p>
-    									<!-- ${secure} -->
-    									Передача данных шифруется высоконадежным 256-битным алгоритмом и осуществляется посредством SSL протокола
+    									The connection is highly secured by the 256-bit algorithm and uses TLS connection.
     								</p>
     							</div>
     						</div>
@@ -86,11 +73,9 @@
 							<input name="product_id" type="hidden" value="${product_id}">
 							<input name="sessid" type="hidden" value="${sessid}">
 
-    						<!-- form -->
     						<div class="form">
     							<button class="btn btn_submit" type="submit">
-    								<!--${submit}-->
-    								Продолжить
+    								Continue
     							</button>
     						</div>
 

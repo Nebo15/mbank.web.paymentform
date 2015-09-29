@@ -19,13 +19,13 @@
                         <div class="info">
                             <div class="info__ico"><span>$</span></div>
                             <div class="info__in">
-                                <!-- Привязка карты -->
+                                <!-- Attach card -->
                                 <p class="action-attach attach-info-text hidden">
                                     After clicking "Continue" we will charge your card in amount of
                                     <b class="payment-info-amount"></b>
                                     to make sure that it belongs to you. We will refund this funds withing 24 hours.
                                 </p>
-                                <!-- Оплата услуги -->
+                                <!-- Pay for service -->
                                 <p class="action-pay payment-info-text">
                                     After clicking "Continue" we will charge your card in amount of
                                     <b class="payment-info-amount"></b>
@@ -94,6 +94,10 @@
     							</div>
     						</div>
 
+                            <div class="hidden">
+                                ${hidden_inputs}
+                            </div>
+
                             <div class="form">
                                 <button class="btn btn_submit btn_red" type="submit">
                                     Continue
@@ -106,11 +110,6 @@
                                 <li><i class="icon-partner-visa-verified"></i></li>
                                 <li><i class="icon-partner-pci-dss"></i></li>
                             </ul>
-
-                            <!-- here they insert tons of invalid code -->
-                            <div class="hidden">
-                                ${hidden_inputs}
-                            </div>
                         </form>
                     </div>
 					<!-- split stop -->

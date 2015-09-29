@@ -26,6 +26,10 @@
             }
         });
 
+        $('input[value]').each(function() {
+            $(this).val($(this).val().replace(/\*/g, strings['*']));
+        });
+
         return this;
     }
 })();

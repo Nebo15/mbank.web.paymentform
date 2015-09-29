@@ -12,10 +12,14 @@ var lang = {
         'After clicking "Continue" we will charge your card in amount of': 'После нажатия кнопки «Продолжить» мы снимем с указанной карты',
         'to pay for selected service.': 'для оплаты выбранной услуги.',
         'to make sure that it belongs to you. We will refund this funds withing 24 hours.': 'или эквивалентную сумму, чтобы убедиться, что она принадлежит вам. Мы возместим эти средства на ваш счет в течение 24 часов.',
+        'For security purposes we ask you to enter your CVV/CVC2 code each time we charge your card.': 'В целях безопасности мы простим вас вводить CVV/CVC2 код при каждом списании с карты.',
         'MM': 'ММ',
         'YY': 'ГГ',
         'RUB': 'руб.',
+        '*': '•',
+        '**': '••',
         '***': '•••',
+        '**** **** ****': '•••• •••• ••••',
         '**** **** **** ****': '•••• •••• •••• ••••',
     },
     'error_messages': {
@@ -55,7 +59,7 @@ var lang = {
         }
     },
     'form_disabled_timeout_message': "Время ожидания истекло. Пожалуйста, попробуйте еще раз. Форма должна быть заполнена в течении 15 минут. <button class='btn btn_red btn_reload'>Обновить страницу</button>",
-    'form_submit_timout_message': "Через {{count}} {{seconds}} вы будете перенаправлены на страницу 3D Secure вашего банка.",
+    'form_submit_timout_message': "Через {{count}} {{seconds}} вы будете перенаправлены на страницу 3-D Secure вашего банка.",
     'pluralize': {
         'seconds': [
             'секунду',

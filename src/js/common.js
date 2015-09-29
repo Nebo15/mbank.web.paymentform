@@ -22,7 +22,7 @@ $(function() {
     var supported_card_brands = ['visa', 'mastercard', 'maestro'];
 
     // Redirect to 3DS timeout (seconds)
-    var form_submit_timout = 6;
+    var form_submit_timout = 4;
 
     // Disabled form in N seconds
     var form_disabled_timeout = 900;
@@ -373,9 +373,11 @@ $(function() {
 
     // Insert amount and currency values, and pluralize currency
     var amount = parseInt($.getUrlParameter('amount'), 10);
-    var currency = $.getUrlParameter('currency').substring(0, 3).replace(/[^A-Z]*/g, '');
-    currency =$.getPluralForm(lang.pluralize[currency], amount) || currency;
-    $amount.text(amount + ' ' + currency);
+    if(amount) {
+        var currency = $.getUrlParameter('currency').substring(0, 3).replace(/[^A-Z]*/g, '');
+        currency =$.getPluralForm(lang.pluralize[currency], amount) || currency;
+        $amount.text(amount + ' ' + currency);
+    }
 
     // Localize page
     $.localize(lang.page);
