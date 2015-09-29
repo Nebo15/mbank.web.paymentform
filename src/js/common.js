@@ -405,4 +405,27 @@ $(function() {
             window.location.reload();
         }
     });
+
+    // Catch messages about form action text
+    var $action_attach_text = $('.action-attach');
+    var $action_pay_text = $('.action-pay');
+    var action_texts = [
+        $action_attach_text,
+        $action_pay_text
+    ];
+    $(window).on('message', function(event){
+        if(event.originalEvent && event.originalEvent.data) {
+            if(event.originalEvent.data.event == 'Show Card Attach Message') {
+                $(action_texts).each(function() {
+                    $(this).addClass('hidden');
+                });
+                $action_attach_text.removeClass('hidden');
+            } else if(event.originalEvent.data.event == 'Show Pay Message') {
+                $(action_texts).each(function() {
+                    $(this).addClass('hidden');
+                });
+                $action_pay_text.removeClass('hidden');
+            }
+        }
+    });
 });
