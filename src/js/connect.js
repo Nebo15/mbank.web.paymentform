@@ -22,7 +22,7 @@
 
     var getFieldMeta = function(el) {
         var $field = $(el);
-        $field.trigger('input');
+        $field.trigger('input').validate();
         return {
             meta: {
                 valid: $field.isValid(),
