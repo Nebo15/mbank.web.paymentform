@@ -48,7 +48,7 @@ gulp.task('server', function() {
 
 // Clean temporary folders
 gulp.task('clean', function () {
-    return gulp.src(['./www', './dist', './.sass-cache', './.tmp', './src/js/lib'], {read: false})
+    return gulp.src(['./www', './dist', './.sass-cache', './.tmp', './src/js/lib', './dist.zip'], {read: false})
         .pipe(clean());
 });
 
