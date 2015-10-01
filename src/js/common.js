@@ -389,8 +389,6 @@ $(function() {
     // Button is red for browsers without JS
     $form_submit_btn.removeClass('btn_red');
 
-    // Form ready
-    postMessage({event: 'Card Add Screen Open'});
 
     // Show timeout toast
     setTimeout(function() {
@@ -431,4 +429,7 @@ $(function() {
             }
         }
     });
+
+    // Form ready
+    postMessage({event: 'Card Add Screen Open'});
 });
