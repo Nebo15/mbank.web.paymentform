@@ -38,7 +38,7 @@ gulp.task('server', function() {
             baseDir: './www',
             index: 'index.html'
         },
-        files: ["./www/css/*.css", "./www/*.html", "./www/js/**/*.js"],
+        files: ["www/**/*"],
         port: 8080,
         open: true,
         notify: false,
@@ -63,7 +63,7 @@ gulp.task('build-styles', function() {
             css: 'www/css',
             sass: 'src/sass',
             image: 'src/img',
-            debug: true,
+            debug: !argv.production,
             relative: true,
             style: argv.production ? 'compressed' : 'nested'
         }))
@@ -99,7 +99,7 @@ gulp.task('build-html', function() {
     '!./www/css/screen.css'
   ], {read: false, base: '/www'});
 
-  return gulp.src(['./src/html/**/*.html', '!./src/html/success.html'])
+  return gulp.src(['./src/html/**/*.html'])
     .pipe(inject(injected_head, {ignorePath: '/www', name: 'head'}))
     .pipe(inject(injected, {ignorePath: '/www'}))
     .pipe(htmlmin({
